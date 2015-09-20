@@ -1,0 +1,128 @@
+<extend name="Public:layout" />
+<block name="main-content">
+ <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">展示图管理</a>
+                </li>
+                <li class="active">展示图列表</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search" method="post">
+                    <span class="input-icon">
+                        <input name="id" type="text" placeholder="请输入..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <button type="submit" value="查询" class="btn btn-purple btn-xs">搜索</button>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/add">添加展示图</a>
+                </h1>
+                
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </th>
+                                            <th>ID</th>
+                                            <th>标题</th>
+                                            <th class="hidden-480">图片</th>
+                                            <th class="hidden-480">链接</th>
+                                            <th>添加时间</th>
+                                            <th class="hidden-480">发布人</th>
+                                            <th>状态</th>
+											<th>操作</th>
+                                        </tr>
+                                    </thead>
+									<tbody>
+                                        <foreach name="posts" item="post">
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td><a href="#">{$post['id']}</a></td>
+                                            <td>{$post['title']}</td>
+                                            <td class="hidden-480"><img width="150" src="__PUBLIC__/Uploads/posts/a_{$post['pic']}" /></td>
+                                            <td class="hidden-480"><a target="_blank" href="{$post['link']}">{$post['link']}</a></td>
+											<td class="hidden-480">{$post['addtime']|date='Y-m-d H:i:s',###}</td>
+											<td class="hidden-480">{$post['user_id']}</td>
+											<td class="hidden-480">
+                                                <if condition="$post['state']==1">新添加
+												<elseif condition="$post['state']==2"/>已发布
+												<else/>已过期
+												</if>
+											</td>
+										    <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                    <p><a href="__CONTROLLER__/del/id/{$post['id']}" class="btn btn-xs btn-danger">
+                                                        <i class="delposts icon-trash bigger-120">删除</i>
+                                                    </a></p>
+													<p><a href="__CONTROLLER__/update/id/{$post['id']}/type/1" class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120">设置为新添加</i>
+                                                    </a></p>
+													<p><a href="__CONTROLLER__/update/id/{$post['id']}/type/2" class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120">设置为已发布</i>
+                                                    </a></p>
+													<p><a href="__CONTROLLER__/update/id/{$post['id']}/type/3" class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120">设置为已过期</i>
+                                                    </a></p>
+												</div>
+                                            </td>
+                                        </tr>
+                                        </foreach>
+                                        <tr><td colspan="9">{$page}</td></tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- /.table-responsive -->
+                        </div><!-- /span -->
+                    </div><!-- /row -->
+                    <div class="hr hr-18 dotted hr-double"></div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+<!--
+$(".delposts").click(function(){
+    if(!confirm("确定删除此账号?")){
+        return false;
+    }
+});
+
+//-->
+</script>
+</block>

@@ -1,0 +1,203 @@
+<extend name="Public:layout" />
+<block name="css">
+<style type="text/css">
+   .attrs td,th{padding-left: 20px;}
+   ul,li{list-style: none;padding: 0;margin:0;}
+   .Father_Title li{float: right;}
+   .li_width{float: left;margin-right: 5px}
+   .li_width label{margin: 0px}
+</style>
+<js href="__PUBLIC__/js/jquery.js" />
+<js href="__PUBLIC__/Admin/js/addGoods.js" />
+<script type="text/javascript">
+
+var a = document.getElementById('goodsattr');
+//获取商品属性组合
+    function getGoodsAttrs(){
+        $('#attrValue').val('');//清空原来内容
+        var colorsize ='';
+        var eqs =  $('#process tr').length;
+        for(var k = 0; k < eqs; k++){
+            var index = $('#process tr').eq(k).children('.color').length;
+            for(var i = 0; i< index; i++){
+                colorsize += $('#process tr').eq(k).children('.color').eq(i).html()+",";
+            }
+            colorsize += '@';//用@符号分割每一组尺码颜色组合
+        }
+        $('#attrcolorSize').val(colorsize);//赋值商品颜色和尺码
+    }
+
+</script>
+</block>
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="__APP__/Index">首页</a>
+                </li>
+
+                <li>
+                    <a onclick="history.back();" style="cursor:pointer;">商品修改</a>
+                </li>
+                <li class="active">属性修改</li>
+            </ul><!-- .breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/index">返回商品列表</a>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <form action="__CONTROLLER__/insertAttr" method="post" class="form-horizontal" >
+                        <input type="hidden" name="goods_id" value="{$_GET['id']}" />
+                        <div class="form-group">
+                            <h2 style="color:#2A6496">属性列表</h2>
+                            <hr style="width: 50%;float:left;"/>
+                         <div class="col-sm-9">
+                         <table class="attrs">
+                            <tr>
+                                <th>颜色</th>
+                                <th>尺码</th>
+                                <th>价格</th>
+                                <th>库存</th>
+                                <th>操作</th>
+                            </tr>
+                            <foreach name="goods" item="good">
+                            <tr>
+                                <td>
+                                    <span class="lbl" contentEditable="true">{$attrs[$good['color']]}</span>
+                                </td>
+                                <td>
+                                    <span class="lbl" contentEditable="true">{$attrs[$good['size']]}</span>
+                                </td>
+                                <td class="price">
+                                    <input type="text" name="price" class="ace ace-checkbox-2" value="{$good['price']}" />
+                                </td>
+                                <td class="stock">
+                                    <input type="text" name="stock" class="ace ace-checkbox-2" value="{$good['stock']}" />
+                                </td>
+                                <td>
+                                    <button class="editAttr" type="button">修改</button>
+                                    <button class="delAttr" type="button">删除</button>
+                                    <input type="hidden" name="id" value="{$good['id']}" />
+                                </td>
+                            </tr>
+                            </foreach>
+                            </table>
+                         </div>
+                    </div>
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" id="addAttr" type="button">
+                            <i class="icon-ok bigger-110"></i>
+                            <span>添加更多</span>
+                        </button>
+                    </div>
+                    <div id="goodsattrvaluse">
+                        <div class="form-group">
+                         <ul class="Father_Title col-sm-1 no-padding-right" style="margin:0"><li>颜色</li></ul>
+
+                         <div class="col-sm-9">
+                            <ul class="Father_Item0" style="margin:0">
+                                <foreach name="attrAll" item="attr">
+                                    <if condition="$attr['attrname'] eq '颜色'">
+                                    <li class="li_width"><label><input type="checkbox" name="colors[]" class="ace ace-checkbox-2" value="{$attr['id']}" />{$attr['attrvalue']}<span  class="lbl"  contentEditable="true"></span></label></li>
+                                    </if>
+                                </foreach>
+                            </ul>
+                         </div>
+                        </div>
+                        <div class="form-group">
+                            <ul class="Father_Title col-sm-1 no-padding-right" style="margin:0"><li>尺寸</li></ul>
+                         <div class="col-sm-9">
+                            <ul class="Father_Item1" style="margin:0">
+                                <foreach name="attrAll" item="attr">
+                                    <if condition="$attr['attrname'] eq '尺码'">
+                                    <li class="li_width"><label><input type="checkbox" name="sizes[]" class="ace ace-checkbox-2" value="{$attr['id']}" />{$attr['attrvalue']}<span class="lbl"> </span></label></li>
+                                    </if>
+                                </foreach>
+                            </ul>
+                         </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <!--{begin 添加商品属性-->
+                    <!-- 创建商品属性表单 START -->
+                    <div class="form-group">
+                         <label class="col-sm-1 control-label no-padding-right" for="form-field-2"></label>
+                        <div id="createTable" class="col-sm-9"></div>
+                    </div><!-- 创建商品属性表单 END -->
+                    <div class="space-4"></div>
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" id="sub" type="submit">
+                                <i class="icon-ok bigger-110"></i>
+                                提交
+                            </button>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="reset">
+                                <i class="icon-undo bigger-110"></i>
+                                重填
+                            </button>
+                        </div>
+                    </div>
+                    </form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+
+</block>
+<block name="js">
+<script type="text/javascript">
+    //属性修改
+    $('.editAttr').click(function(){
+        var id = $(this).parent().children('input[name=id]').val();
+        var price = $(this).parent().siblings('.price').children('input[name=price]').val();
+        var stock = $(this).parent().siblings('.stock').children('input[name=stock]').val();
+        $.ajax({
+                url : "__CONTROLLER__/updateAttr",
+                data : "id=" + id + "&price=" + price + "&stock=" + stock,
+                type : 'POST',
+                dataType : 'json',
+                success: function(data){
+                    alert(data);
+                }
+            });
+    })
+    //属性删除
+    $('.delAttr').click(function(){
+        if(confirm('确认删除吗！')){
+            var id = $(this).parent().children('input[name=id]').val();
+            $.ajax({
+                url : "__CONTROLLER__/delAttr",
+                data : "id=" + id,
+                type : 'POST',
+                dataType : 'json',
+                success : function(data){
+                    alert(data);
+                    window.location.reload();
+                }
+            })
+        }
+    });
+    //添加更多属性
+    $('#goodsattrvaluse').hide();
+    $('#addAttr').click(function(){
+        $('#goodsattrvaluse').show();
+        $(this).hide();
+    })
+</script>
+</block>

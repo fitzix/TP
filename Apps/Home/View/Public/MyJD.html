@@ -1,0 +1,39 @@
+<div id="myjd">
+		<a href="#">
+			<div class="mac"></div>
+			<div class="myjdong"> <a href="__APP__/User/index">我的京东</a></div>
+			<div class="btriangle"></div>
+		</a>
+		
+		<div class="myjd-details">
+			<div class="de-hd">
+				
+				
+					<if condition="$v = session('username')">你好，<span style="color:#e4393c">{$v}</span>
+					<else/><a href="__APP__/login/index">请登录</a>
+					</if>
+				
+				
+			</div>
+			<div class="de-list">
+				<ul style="border-right:1px solid #ddd;">
+					<li><a href="#">全部订单（{$order_count['all']}）</a></li>
+					<li><a href="#">未完成订单（{$order_count['n']}）</a></li>
+					<li><a href="#">已完成订单（{$order_count['y']}）</a></li>
+					<li><a href="#">待评价商品（{$review_count}）</a></li>
+				
+		
+			
+				</ul>
+				<ul>
+					<li><a href="#">全部售后（{$after_count['all']}）</a></li>
+					<li><a href="#">退货（{$after_count['t']}）</a></li>
+					<li><a href="#">换货（{$after_count['h']}）</a></li>
+					<li><a href="#">保修（{$after_count['b']}）</a></li>
+				</ul>
+			</div>
+			<div class="de-view">
+				<a href="#">查看浏览历史</a>
+			</div>
+		</div>
+</div>

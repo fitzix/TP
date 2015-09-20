@@ -1,0 +1,105 @@
+<extend name="Public:layout" />
+<block name="main-content">
+<div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">商品属性管理</a>
+                </li>
+                <li class="active">修改属性</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/index">返回属性列表</a>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form action="__CONTROLLER__/update" class="form-horizontal" method="post" role="form" >
+                        <input type="hidden" name="id" value="{$attrvalue['id']}" />
+                        <!-- <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">所属类别</label>
+                            <div class="col-sm-9">
+                                <select name="type_id" class="col-xs-10 col-sm-3">
+                                    <foreach name="types" item="type">
+                                        <if condition="$type['id'] eq $attrvalue['type_id']">
+                                            <option value="{$type['id']}" selected>{$type['name']}</option>
+                                        <else />
+                                            <option value="{$type['id']}">{$type['name']}</option>
+                                        </if>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div> -->
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 属性名称 </label>
+                            <div class="col-sm-9">
+                                <input name="attrname" value="{$attrvalue['attrname']}" type="text" id="form-field-1" class="col-xs-10 col-sm-3" />
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 属性值 </label>
+                            <div class="col-sm-9">
+                                <input name="attrvalue" value="{$attrvalue['attrvalue']}" type="text" id="form-field-1" placeholder="请输入用户名" class="col-xs-10 col-sm-3" />
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 状态 </label>
+                            <div class="col-sm-9">
+                                <input name="state" class="ace" value="1"  {$attrvalue['state'] == 1?'checked' : ''} type="radio">
+                                <span class="lbl"> 显示</span>
+                                <input name="state" class="ace" value="2" {$attrvalue['state'] == 2?'checked' : ''} type="radio">
+                                <span class="lbl"> 不显示</span>
+                            </div>
+                        </div>
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重填
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+</block>

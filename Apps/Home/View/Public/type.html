@@ -1,0 +1,41 @@
+<div  class="w">
+    <div id="categorys">
+        <div class="dt">
+            <a href="__APP__/List">全部商品分类</a>
+        </div>
+        <!--{begin 主类-->
+        <div class="dd" >
+            <foreach name="types" item="type">
+            <div class="dd-list">
+                <div class="dd-items">
+                    <h3><a target="_blank" href="__APP__/List/index/typeid/{$type['id']}">{$type['name']}</a>
+                        <for start="0" end="2" name="i">
+                            <a target="_blank" href="__APP__/List/index/typeid/{$typeHost[$type['id']]['id'][$i]}">{$typeHost[$type['id']]['name'][$i]}</a>
+                        </for>
+                    </h3><i>></i>
+                </div>
+                <!--{begin 子类模块-->
+                <div class="dd-content">
+                    <ul class="pop-list">
+                    <foreach name="type['child']" item="v">
+                        <li><a target="_blank" href="__APP__/List/index/typeid/{$v['id']}">{$v['name']}</a></li>
+                    </foreach>
+                    </ul>
+                    <ul class="brand-list">
+                    <for start="0" end="count($brands[$type['id']]['id'])" name="i">
+                        <li><a style="display:none" href="__APP__/List/index/brandid/{$brands[$type['id']]['id'][$i]}"></a><a href="__APP__/List/index/brandid/{$brands[$type['id']]['id'][$i]}"><img width="70" src="__PUBLIC__/Uploads/brands/s_{$brands[$type['id']]['logo'][$i]}" alt="" /></a></li>
+                    </for>
+                    </ul>
+                </div><!--}end 子类模块-->
+            </div>
+            </foreach>
+        </div><!--}end 主类-->
+    </div>
+    <div id="navitems">
+        <ul>
+            <volist name="typeIndex" id="type">
+            <li><a href="__APP__/List/index/typeid/{$type['id']}">{$type['name']}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>

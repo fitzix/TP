@@ -1,0 +1,365 @@
+<extend name="Public:layout"/>
+<block name="main-content">
+<extend name="Public:layout" />
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">权限管理</a>
+                </li>
+                <li class="active">设置权限</li>
+				
+            </ul><!-- .breadcrumb -->
+            
+			
+
+        </div>
+
+        <div class="page-content">
+           
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <form action="__CONTROLLER__/insert" method="post">
+								<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                  
+										<tr>
+                                            <th class="center" style="width:100px;">
+                                                <label>
+                                                    <input type="checkbox" class="ace" id="ischeck" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </th>
+                                            <th style="width:200px;">控制器</th>
+                                            <th>方法</th>
+                                    
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace"  />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td class="hidden-480">员工操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Admin/index" value="查看员工"><span class="lbl"> 查看员工</span>
+												<input type="checkbox" class="ace" name="Admin/add" value="添加员工页面"><span class="lbl"> 添加员工页面</span>
+												<input type="checkbox" class="ace" name="Admin/insert" value="执行添加员工"><span class="lbl"> 执行添加员工</span>
+												<input type="checkbox" class="ace" name="Admin/edit" value="员工修改页面"><span class="lbl"> 员工修改页面</span>
+												<input type="checkbox" class="ace" name="Admin/update" value="执行员工修改"><span class="lbl"> 执行员工修改</span>
+												<input type="checkbox" class="ace" name="Admin/del" value="删除员工"><span class="lbl"> 删除员工</span>
+												<input type="checkbox" class="ace" name="Admin/editgroup" value="获取设置组页面"><span class="lbl"> 获取设置组页面</span>
+												<input type="checkbox" class="ace" name="Admin/updategroup" value="设置组权限"><span class="lbl"> 设置组权限</span>
+											</td>
+										</tr>
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td class="hidden-480">会员操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Users/index" value="查看会员"><span class="lbl"> 查看会员</span>
+												<input type="checkbox" class="ace" name="Users/add" value="添加会员页面"><span class="lbl"> 添加会员页面</span>
+												<input type="checkbox" class="ace" name="Users/insert" value="执行添加会员"><span class="lbl"> 执行添加会员</span>
+												<input type="checkbox" class="ace" name="Users/edit" value="会员修改页面"><span class="lbl"> 会员修改页面</span>
+												<input type="checkbox" class="ace" name="Users/update" value="执行会员修改"><span class="lbl"> 执行会员修改</span>
+												<input type="checkbox" class="ace" name="Users/del" value="删除会员"><span class="lbl"> 删除会员</span>
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">会员安全操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Userdetails/index" value="查看会员安全信息"><span class="lbl"> 查看会员安全信息</span>
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">商品操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Goods/index" value="查看商品"><span class="lbl"> 查看商品</span>
+												<input type="checkbox" class="ace" name="Goods/add" value="添加商品页面"><span class="lbl"> 添加商品页面</span>
+												<input type="checkbox" class="ace" name="Goods/insert" value="执行添加商品"><span class="lbl"> 执行添加商品</span>
+												<input type="checkbox" class="ace" name="Goods/edit" value="商品修改页面"><span class="lbl"> 商品修改页面</span>
+												<input type="checkbox" class="ace" name="Goods/update" value="执行商品修改"><span class="lbl"> 执行商品修改</span>
+												<input type="checkbox" class="ace" name="Goods/del" value="删除商品"><span class="lbl"> 删除商品</span>
+											</td>
+										</tr>
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">商品类别操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Type/index" value="查看商品类别"><span class="lbl"> 查看商品类别</span>
+												<input type="checkbox" class="ace" name="Type/add" value="添加商品类别页面"><span class="lbl"> 添加商品类别页面</span>
+												<input type="checkbox" class="ace" name="Type/insert" value="执行添加商品类别"><span class="lbl"> 执行添加商品类别</span>
+												<input type="checkbox" class="ace" name="Type/del" value="删除商品类别"><span class="lbl"> 删除商品类别</span>
+												<input type="checkbox" class="ace" name="Type/getType" value="验证商品类别"><span class="lbl"> 验证商品类别</span>
+							
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">商品品牌操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Brands/index" value="查看商品品牌"><span class="lbl"> 查看商品品牌</span>
+												<input type="checkbox" class="ace" name="Brands/add" value="添加商品品牌页面"><span class="lbl"> 添加商品品牌页面</span>
+												<input type="checkbox" class="ace" name="Brands/insert" value="执行添加商品品牌"><span class="lbl"> 执行添加商品品牌</span>
+												<input type="checkbox" class="ace" name="Brands/edit" value="商品品牌修改页面"><span class="lbl"> 商品品牌修改页面</span>
+												<input type="checkbox" class="ace" name="Brands/update" value="执行商品品牌修改"><span class="lbl"> 执行商品品牌修改</span>
+												<input type="checkbox" class="ace" name="Brands/del" value="删除商品品牌"><span class="lbl"> 删除商品品牌</span>
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">商品属性值操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Attrvalue/index" value="查看商品属性值"><span class="lbl"> 查看商品属性值</span>
+												<input type="checkbox" class="ace" name="Attrvalue/add" value="添加商品属性值页面"><span class="lbl"> 添加商品属性值页面</span>
+												<input type="checkbox" class="ace" name="Attrvalue/insert" value="执行添加商品属性值"><span class="lbl"> 执行添加商品属性值</span>
+												<input type="checkbox" class="ace" name="Attrvalue/edit" value="商品属性值修改页面"><span class="lbl"> 商品属性值修改页面</span>
+												<input type="checkbox" class="ace" name="Attrvalue/update" value="执行商品属性值修改"><span class="lbl"> 执行商品属性值修改</span>
+												<input type="checkbox" class="ace" name="Attrvalue/del" value="删除商品属性值"><span class="lbl"> 删除商品属性值</span>
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">订单操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Orders/index" value="查看订单"><span class="lbl"> 查看订单</span>
+												<input type="checkbox" class="ace" name="Orders/edit" value="修改订单页面"><span class="lbl"> 修改订单页面</span>
+												<input type="checkbox" class="ace" name="Orders/update" value="执行订单修改"><span class="lbl"> 执行订单修改</span>
+												
+											</td>
+										</tr>
+										
+                                        
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+
+                                      
+                                            <td class="hidden-480">留言操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Leave/index" value="查看留言"><span class="lbl"> 查看留言</span>
+												<input type="checkbox" class="ace" name="Leave/add" value="添加留言页面"><span class="lbl"> 添加留言页面</span>
+												<input type="checkbox" class="ace" name="Leave/insert" value="执行添加留言"><span class="lbl"> 执行添加留言</span>
+												<input type="checkbox" class="ace" name="Leave/edit" value="留言修改页面"><span class="lbl"> 留言修改页面</span>
+												<input type="checkbox" class="ace" name="Leave/update" value="执行留言修改"><span class="lbl"> 执行留言修改</span>
+												<input type="checkbox" class="ace" name="Leave/del" value="删除留言"><span class="lbl"> 删除留言</span>
+											</td>
+										</tr>
+                            
+							            <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+
+                                      
+                                            <td class="hidden-480">回复留言操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Review/index" value="查看回复留言"><span class="lbl"> 查看回复留言</span>
+												<input type="checkbox" class="ace" name="Review/reply" value="回复留言页面"><span class="lbl"> 回复留言页面</span>
+												<input type="checkbox" class="ace" name="Review/insert" value="执行回复留言"><span class="lbl"> 执行回复留言</span>
+                                                <input type="checkbox" class="ace" name="Review/del" value="删除回复留言"><span class="lbl"> 删除回复留言</span>
+											</td>
+										</tr>
+                                        
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+
+                                      
+                                            <td class="hidden-480">新闻操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="News/index" value="查看新闻"><span class="lbl"> 查看新闻</span>
+												<input type="checkbox" class="ace" name="News/add" value="添加新闻页面"><span class="lbl"> 添加新闻页面</span>
+												<input type="checkbox" class="ace" name="News/insert" value="执行添加新闻"><span class="lbl"> 执行添加新闻</span>
+												<input type="checkbox" class="ace" name="News/edit" value="新闻修改页面"><span class="lbl"> 新闻修改页面</span>
+												<input type="checkbox" class="ace" name="News/update" value="执行新闻修改"><span class="lbl"> 执行新闻修改</span>
+												<input type="checkbox" class="ace" name="News/del" value="删除新闻"><span class="lbl"> 删除新闻</span>
+											</td>
+										</tr>
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">消息操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="notices/index" value="查看消息"><span class="lbl"> 查看消息</span>
+												<input type="checkbox" class="ace" name="notices/add" value="添加消息页面"><span class="lbl"> 添加消息页面</span>
+												<input type="checkbox" class="ace" name="notices/insert" value="执行添加消息"><span class="lbl"> 执行添加消息</span>
+												<input type="checkbox" class="ace" name="notices/edit" value="消息修改页面"><span class="lbl"> 消息修改页面</span>
+												<input type="checkbox" class="ace" name="notices/update" value="执行消息修改"><span class="lbl"> 执行消息修改</span>
+												<input type="checkbox" class="ace" name="notices/del" value="删除消息"><span class="lbl"> 删除消息</span>
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">登录操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Login/code" value="验证码"><span class="lbl"> 验证码</span>
+												<input type="checkbox" class="ace" name="Login/prologin" value="登录"><span class="lbl"> 登录</span>
+												<input type="checkbox" class="ace" name="Login/logout" value="退出"><span class="lbl"> 退出</span>
+												
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+											<td class="hidden-480">商城操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Market/index" value="查看商城信息"><span class="lbl"> 查看商城信息</span>
+												<input type="checkbox" class="ace" name="market/edit" value="修改商城信息页面"><span class="lbl"> 修改商城信息页面</span>
+												<input type="checkbox" class="ace" name="market/update" value="执行修改商城信息"><span class="lbl"> 执行修改商城信息</span>
+											
+											</td>
+										</tr>
+										<tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+
+                                      
+                                            <td class="hidden-480">友情链接操作权限</td>
+                                            <td class="hidden-480">
+												<input type="checkbox" class="ace" name="Link/index" value="查看友情链接"><span class="lbl"> 查看链接</span>
+												<input type="checkbox" class="ace" name="Link/add" value="添加友情链接页面"><span class="lbl"> 添加链接页面</span>
+												<input type="checkbox" class="ace" name="Link/insert" value="执行添加友情链接"><span class="lbl"> 执行添加链接</span>
+												<input type="checkbox" class="ace" name="Link/edit" value="友情链接修改页面"><span class="lbl"> 链接修改页面</span>
+												<input type="checkbox" class="ace" name="Link/update" value="执行友情链接修改"><span class="lbl"> 执行链接修改</span>
+												<input type="checkbox" class="ace" name="Link/del" value="删除友情链接"><span class="lbl"> 删除链接</span>
+											</td>
+										</tr>
+										
+										
+										
+							            
+                            
+                                   
+                                    
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									</tbody>
+									<tr>
+										<td colspan="3"><input type="submit" value="提交"></td>
+									</tr>
+                                 </table>
+								 
+								</form>
+                            </div><!-- /.table-responsive -->
+                        </div><!-- /span -->
+                    </div><!-- /row -->
+
+                   
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+	$("#ischeck").click(function)(){
+		alert(1);
+	});
+	/*
+	$(".ischeck").click(function(){
+		if($(this).checked == true){
+			$(":input").checkde = true;
+		}else{
+		    $(":input").checked = false;
+		}
+	
+	});
+	*/
+</script>
+</block>

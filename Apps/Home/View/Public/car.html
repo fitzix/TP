@@ -1,0 +1,12 @@
+<ul>
+	<foreach name="goods" item="g">
+		<li>
+			<div class="g-img"><a href="#"><img width="50" src="__PUBLIC__/Uploads/goods/{$g['goods']['pic']}"></a></div>
+			<div class="g-title"><a  href="#">{$g['goods']['name']}</a></div>
+			<div class="g-price">
+				<p>　　<span style="color:#e4393c;">{$g['goods']['saleprice']}</span> * {$g['num']}</p>
+				<p>　　　　<a style="color:#005ea7;" href="__APP__/List/del/car_id/{$g['car_id']}">删除</a></p>
+			</div>
+		</li>
+	</foreach>	
+</ul>

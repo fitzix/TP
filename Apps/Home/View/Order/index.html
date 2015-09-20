@@ -1,0 +1,246 @@
+<extend name="Public:layout" />
+<block name="css">
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/index/css/order.css">
+	<script src="__PUBLIC__/index/js/jquery.js"></script>
+	<style type="text/css">
+		#order_list{width:850px;border:1px solid #ddd;}
+		#order_list div.order_list_top{background:#fa8072;width:850px;height:40px;border-bottom:1px solid #ddd;line-height:40px;font-size:12px;color:#e4393c;}
+		#order_list div.order_list_top > a{display:block;float:left;width:80px;height:40px;color:#fff;text-align:center}
+		
+		
+		#order_list div.order_list_nav{background:#f7f7f7;width:850px;height:30px;border-bottom:1px solid #ddd;line-height:30px;}
+		#order_list div.order_list_nav ul li{float:left;width:115px;height:30px;border-left:1px solid #ddd;line-height:30px;text-align:center;color:#666;}
+        #order_list div.order_list_details{width:850px;height:50px;border-bottom:1px solid #ddd;line-height:50px;background:#fff;}
+		#order_list div.order_list_details ul li{float:left;width:115px;height:50px;line-height:50px;text-align:center;color:#666;}
+        
+	
+	 
+	
+	</style>
+</block>
+<block name="main-content">
+<div id="main_center">
+	<div id="content">
+		<div id="content_top">
+			<div class="tit">
+				<a href="__CONTROLLER__/index">我的京东</a>
+			</div>
+			<div class="page">
+				<a href="">个人主页</a>
+			</div>
+			<div class="set">
+				<a href="">设置</a>
+			</div>
+			<div class="com">
+				<a href="">社区</a>
+			</div>
+		</div>
+		<div id="clear"></div>
+		<div id="content_host">
+			<div id="left">
+				<div id="menu">
+					<ul>
+						<li><b>订单中心</b></li>
+						<li><a href="#" style="font-weight:bold;color:#e4393c;">我的订单</a></li>
+						<li><a href="">团购订单</a></li>
+						<li><a href="">本地生活订单</a></li>
+						<li><a href="">我的预售</a></li>
+						<li><a href="">评价晒单</a></li>
+						<li><a href="">取消订单记录</a></li>
+					</ul>
+					<ul>
+						<li><b>关注中心</b></li>
+						<li><a href="">关注的商品</a></li>
+						<li><a href="">关注的店铺</a></li>
+						<li><a href="">关注的活动</a></li>
+						<li><a href="">浏览历史<img src="__PUBLIC__/Uploads/images/red_new.png"></a></li>
+					</ul>
+					<ul>
+						<li><b>资产中心</b></li>
+						<li><a href="">小金库</a></li>
+						<li><a href="">余额</a></li>
+						<li><a href="">优惠劵</a></li>
+						<li><a href="">京东卡/E卡</a></li>
+						<li><a href="">京豆</a></li>
+					</ul>
+					<ul>
+						<li><b>特色业务</b></li>
+						<li><a href="">京东通信</a></li>
+						<li><a href="">定期送</a></li>
+					</ul>
+					<ul>
+						<li><b>客户服务</b></li>
+						<li><a href="">返修退换货</a></li>
+						<li><a href="">价格保护</a></li>
+						<li><a href="">意见建议</a></li>
+						<li><a href="">购买咨询</a></li>
+					</ul>
+					<ul>
+						<li><b>设置</b></li>
+						<li><a href="">个人信息</a></li>
+						<li><a href="">收货地址</a></li>
+					</ul>
+				</div>
+			
+			</div>
+			<div id="right">
+				
+				
+	<!--=======================订单列表开始===============================-->
+        <div id="order_list">
+				<div class="order_list_top">
+					<a class="all_order" href="javascript:">全部订单</a>
+					<a class="n_order" href="javascript:">未完成订单</a>
+					<a class="y_order" href="javascript:">已完成订单</a>
+					
+				</div>
+			    <div class="order_list_nav">
+					<ul>
+						<li>订单号</li>
+						<li>联系人</li>
+						<li>地址</li>
+						<li>电话</li>
+						<li>时间</li>
+						<li>总金额</li>
+						<li style="width:150px">操作</li>
+						
+					</ul>
+				</div>
+				
+				<foreach name="orders" item="order">
+				<div class="order_list_details all_order_list">
+					<ul>
+						<li>{$order['osn']}</li>
+						<li>{$order['linkman']}</li>
+						<li style="line-height:25px;">{$order['address']|explode='#',###|implode='',###}</li>
+						<li>{$order['phone']}</li>
+						<li>{$order['addtime']|date='Y-m-d H:i:s',###}</li>
+						<li>{$order['money']}</li>
+						<li style="width:150px;line-height:50px;">
+						  　<a style="color:#005aa3" href="__CONTROLLER__/checkorder/id/{$order['id']}">详情</a>
+						
+						    <a style="color:#005aa3"  href="__APP__/review/index/id/{$order['id']}">评价/售后</a> 
+							<a style="color:#e4393c" class="delOrder" href="__CONTROLLER__/delete_order/id/{$order['id']}">取消</a>　
+						</li>
+					</ul>
+				</div>
+				</foreach>
+		</div>		
+			<!--=======================订单列表结束===============================-->
+				<div id="order3">
+					<div class="mt">
+						<span><b>猜你喜欢</b></span>
+						<div class="tab_menu">
+							<a href="#" class="tab-item tab-selected"><b>1</b></a>
+							<a href="#" class="tab-item"><b>2</b></a>
+							<a href="#" class="tab-item"><b>3</b></a>
+						</div>
+					</div>
+					<div class="nt" style="display:block;">
+						<foreach name="goods_data" item="v">
+						<ul class="hide">
+							<li>
+								<div>
+									<a href="__APP__/details/index/id/{$v['id']}" target="_bank">
+										<img src="__PUBLIC__/Uploads/goods/l_{$v['pic']}" alt="{$v['name']}" width="160px" height="160px"/>
+									</a>
+								</div>
+								<div class="name">
+									<a href="__APP__/details/index/id/{$v['id']}" target="_bank">{$v['name']}</a>
+								</div>
+								 <div class="price">
+									<strong>￥{$v['saleprice']}</strong>
+								 </div>
+								 <div class="num">
+									<a href="跳转地址" target="_bank">(商品评价数量{$v['reviewcount']})</a>
+								 </div>
+							</li>
+						</ul>
+						</foreach>
+					</div>
+					<div class="nt" style="display:none;">
+						<foreach name="rel" item="r">
+						<ul class="hide">
+							<li>
+								<div>
+									<a href="__APP__/details/index/id/{$r['id']}" target="_bank">
+										<img src="__PUBLIC__/Uploads/goods/l_{$r['pic']}" alt="{$r['name']}" width="160px" height="160px"/>
+									</a>
+								</div>
+								<div class="name">
+									<a href="__APP__/details/index/id/{$r['id']}" target="_bank">{$r['name']}</a>
+								</div>
+								 <div class="price">
+									<strong>￥{$r['saleprice']}</strong>
+								 </div>
+								 <div class="num">
+									<a href="跳转地址" target="_bank">(商品评价数量{$r['reviewcount']})</a>
+								 </div>
+							</li>
+						</ul>
+						</foreach>
+					</div>
+					<div class="nt" style="display:none;">
+						<foreach name="rel" item="r">
+						<ul class="hide">
+							<li>
+								<div>
+									<a href="__APP__/details/index/id/{$r['id']}" target="_bank">
+										<img src="__PUBLIC__/Uploads/goods/l_{$r['pic']}" alt="{$r['name']}" width="160px" height="160px"/>
+									</a>
+								</div>
+								<div class="name">
+									<a href="__APP__/details/index/id/{$r['id']}" target="_bank">{$r['name']}</a>
+								</div>
+								 <div class="price">
+									<strong>￥{$r['saleprice']}</strong>
+								 </div>
+								 <div class="num">
+									<a href="跳转地址" target="_bank">(商品评价数量{$r['reviewcount']})</a>
+								 </div>
+							</li>
+						</ul>
+						</foreach>
+					</div>
+				</div>
+				
+			</div>
+			<div id="clear"></div>
+		</div>
+	</div>
+</div>
+<div id="clear"></div>
+</block>
+<block name="js">
+		<script src="__PUBLIC__/index/js/order.js"></script>
+		<script type="text/javascript">
+			$(".all_order").hover(function(){
+				//===========样式变化============
+				$(".order_list_top a").css({'background':'#fa8072'});
+				$(this).css({'background':'#e4393c'});
+				//===========数据==============
+				//alert(1);
+				//===========数据==============
+			   
+			});
+			
+			
+				
+			$(".n_order").hover(function(){
+				//===========样式变化============
+				$(".order_list_top a").css({'background':'#fa8072'});
+				$(this).css({'background':'#e4393c'});
+			});
+			$(".y_order").hover(function(){
+				//===========样式变化============
+				$(".order_list_top a").css({'background':'#fa8072'});
+				$(this).css({'background':'#e4393c'});
+			});
+            
+            $('.delOrder').click(function(){
+                if(!confirm('确认取消？')){
+                    return false;
+                }
+            });
+</script>
+</block>

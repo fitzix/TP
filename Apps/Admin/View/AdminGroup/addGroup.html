@@ -1,0 +1,243 @@
+<extend name="Public:layout"/>
+<block name="main-content">
+<extend name="Public:layout" />
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">权限管理</a>
+                </li>
+                <li class="active">设置权限</li>
+				
+            </ul><!-- .breadcrumb -->
+            
+			
+
+        </div>
+
+        <div class="page-content">
+           
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <form action="__CONTROLLER__/insert" method="post">
+								<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
+										<tr>
+                                           
+											<th colspan="3" align="center" style="width:200px;">组名：
+												<input type="text" name="title"  />
+											</th>
+                                        </tr>
+										<tr>
+                                            <th class="center" style="width:100px;">
+                                                <label>
+                                                  
+                                                    <span class="lbl">控制器</span>
+                                                </label>
+                                            </th>
+                                           
+                                            <th>方法</th>
+										</tr>
+                                    </thead>
+
+                                    <tbody>
+                                       <foreach name="data" item="rules">
+											<tr>
+												 <td class="center">
+													<label>
+														<input type="checkbox"   class="ace checkall{$key} test"  />
+														<span class="lbl"></span>
+													</label>
+												</td>
+							
+												<td>
+												<foreach name="rules" item="rule">
+													<input type="checkbox" class="ace check{$rule['sort']} a" name="rules[]" value="{$rule['id']}"> <span class="lbl"> {$rule['title']}</span> 
+												</foreach>
+												</td>
+											</tr>
+									   </foreach>
+									</tbody>
+									<tr>
+										<td colspan="3"><input type="submit" value="提交"></td>
+									</tr>
+                                 </table>
+								 
+								</form>
+                            </div><!-- /.table-responsive -->
+                        </div><!-- /span -->
+                    </div><!-- /row -->
+
+                   
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+	
+
+
+//================1===================
+	$(".checkall1").click(function(){
+	var inputs = document.getElementsByClassName("check1");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================2===================
+	$(".checkall2").click(function(){
+	var inputs = document.getElementsByClassName("check2");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================3===================
+	$(".checkall3").click(function(){
+	var inputs = document.getElementsByClassName("check3");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================4===================
+	$(".checkall4").click(function(){
+	var inputs = document.getElementsByClassName("check4");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================5===================
+	$(".checkall5").click(function(){
+	var inputs = document.getElementsByClassName("check5");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================6===================
+	$(".checkall6").click(function(){
+	var inputs = document.getElementsByClassName("check6");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================7===================
+	$(".checkall7").click(function(){
+	var inputs = document.getElementsByClassName("check7");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================8===================
+	$(".checkall8").click(function(){
+	var inputs = document.getElementsByClassName("check8");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================9===================
+	$(".checkall9").click(function(){
+	var inputs = document.getElementsByClassName("check9");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================10===================
+	$(".checkall10").click(function(){
+	var inputs = document.getElementsByClassName("check10");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================11===================
+	$(".checkall11").click(function(){
+	var inputs = document.getElementsByClassName("check11");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================12===================
+	$(".checkall12").click(function(){
+	var inputs = document.getElementsByClassName("check12");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================13===================
+	$(".checkall13").click(function(){
+	var inputs = document.getElementsByClassName("check13");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+	//================14===================
+	$(".checkall14").click(function(){
+	var inputs = document.getElementsByClassName("check14");
+	var len = inputs.length;
+		for(var i=0;i<len;i++){
+			//alert(inputs[i].checked);
+			inputs[i].checked = this.checked;
+		}
+	});
+	
+
+
+	
+	
+</script>
+</block>

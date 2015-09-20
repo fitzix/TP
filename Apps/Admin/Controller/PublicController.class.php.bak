@@ -1,0 +1,9 @@
+<?php
+namespace Admin\Controller;
+use Think\Controller;
+class PublicController extends Controlelr{
+	//³õÊ¼»¯
+	public function _initialize(){
+		
+	}
+}

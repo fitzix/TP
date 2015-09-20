@@ -1,0 +1,151 @@
+<extend name="Public:layout" />
+<block name="css">
+	<style type="text/css">
+		#auth_box{display:none;width:500px;height:500px;border:1px solid #ddd;background:#fff;position:fixed;top:50px;left:400px;z-index:1000000}
+		#auth_box div.auth_box_top{width:498px;height:50px;background:#438eb9;}
+		#auth_box div.auth_box_top div.top_left{width:298px;height:50px;background:#438eb9;float:left;line-height:50px;text-indent:10px;font-size:16px;color:#fff;}
+		#auth_box div.auth_box_top div.top_right{width:25px;height:25px;background:#438eb9;border:1px solid #438eb9;float:right;font-size:16px;line-height:20px;text-align:center;color:#fff;cursor:pointer;}
+		#auth_box div.auth_box_top div.top_right:hover{background:#e4393c;border:1px solid #e4393c;color:#fff;}
+		#auth_box div.auth_box_content{width:480px;height:440px;border:1px solid #fff;background:#fff;margin:5px auto;overflow-y:scroll;}
+	    .data_list{width:100%;height:30px;background:#f7f7f7;margin-top:1px;text-indent:20px;line-height:30px;}
+	
+	</style>
+</block>
+<block name="main-content">
+    
+	<!--======================弹出窗口查看详细权限开始===============================-->
+	<div id="auth_box">
+		<div class="auth_box_top">
+			<div class="top_left">所有权限:</div>
+			<div class="top_right">╳</div>
+		</div>
+		<div class="auth_box_content">
+			
+		</div>
+	</div>
+	
+	
+	
+	
+    <!--======================弹出窗口查看详细权限结束===============================-->
+	<div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="__APP__/index/index">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">权限组管理</a>
+                </li>
+                <li class="active">权限组列表</li>
+				
+            </ul><!-- .breadcrumb -->
+			  <a style="float:right" href="__CONTROLLER__/addgroup">添加权限组</a>
+        </div>
+		<div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+					<div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                       
+										<tr>
+                                            
+                                            <th>ID</th>
+                                            <th>标题</th>
+                                            <th class="hidden-480">权限ID</th>
+                                            <th class="hidden-480">状态</th>
+											<th>操作</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <foreach name="data" item="d">
+                                        <tr>
+                                            <td class="auth_group_id">{$d['id']}</td>
+                                            <td class="hidden-480 auth_group_title">{$d['title']}</td>
+                                            <td class="hidden-480 auth_group_rules" style="width:700px;word-break:break-all;">{$d['rules']}</td>
+                                            <td>
+												<if condition="$d['status']==1">可用
+												<else/>禁用
+												</if>
+											
+											</td>
+											<td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                  
+													<a href="javascript:" class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120 check_auth_group">详情</i>
+                                                    </a>
+													<a href="__CONTROLLER__/del_auth_group/id/{$d['id']}" class="btn btn-xs btn-danger">
+                                                        <i class="delete_user icon-trash bigger-120">删除</i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </foreach>
+                                        <tr><td colspan="12">{$page}</td></tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- /.table-responsive -->
+                        </div><!-- /span -->
+                    </div><!-- /row -->
+
+                   
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+	//=============弹出窗口关闭按钮====================
+	$(".top_right").click(function(){
+		$("#auth_box").css("display","none");
+	});
+    //==============查看弹出窗口=====提交数据，获取返回信息======
+	$(".check_auth_group").click(function(){
+		$("#auth_box").css("display","block");
+		
+		//获取权限组的规则权限
+		var rules = $(this).parents("td").siblings(".auth_group_rules").html();
+		//alert(rules);
+		$.ajax({
+			url:"__CONTROLLER__/check_all_rules",
+		    dataType:'json',
+			type:'post',
+			async:true,
+			data:{'rules':rules},
+			success:function(data){
+				//alert(data);
+				var html = "";
+				$(data).each(function(i,data){
+					//alert(data.title);
+					html +="<p class='data_list'>"+data.title+"</p>";
+					
+				});
+				$(".auth_box_content").html(html);
+			}
+		});
+	});
+
+	<!--
+	$(".delete_user").click(function(){
+		if(!confirm("确定删除此账号?")){
+			return false;
+		}
+	});
+
+//-->
+</script>
+</block>

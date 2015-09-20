@@ -1,0 +1,145 @@
+<extend name="Public:layout" />
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="__APP__/index/index">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">员工管理</a>
+                </li>
+                <li class="active">员工列表</li>
+				
+            </ul><!-- .breadcrumb -->
+			  <a style="float:right" href="__APP__/admin/add">添加员工</a>
+        </div>
+		<div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+					<div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+											<td colspan="10">
+												<form action="__CONTROLLER__/index" method="get">
+												 
+													<input type="text" class="username_search" name="name" size="30" placeholder="请输入用户名搜索"   style="border:1px solid #7461AA;height:31px;" />
+												 
+													<select name="state" style="border:1px solid #7461AA;height:31px;margin-top:-2px;">
+														<option value="">状态</option>
+														<option value="1">使用中</option>
+														<option value="2">禁用</option>
+													</select>
+												   <button  class="btn btn-purple btn-sm">
+														Search
+														<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+											    </form>
+											</td>
+											
+											
+									    </tr>
+										<tr>
+                                            
+                                            <th>ID</th>
+                                            <th>用户名</th>
+                                            <th class="hidden-480">真实姓名</th>
+                                            <th class="hidden-480">性别</th>
+											<th> 电话 </th>
+                                            <th class="hidden-480">地址</th>
+                                            <th>邮箱</th>
+                            
+                                            <th>状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <foreach name="list" item="admin">
+                                        <tr>
+                                            
+                                            <td>
+                                                <a href="#">{$admin['id']}</a>
+                                            </td>
+                                            <td>{$admin['name']}</td>
+                                            <td class="hidden-480">{$admin['realname']}</td>
+                                            <td class="hidden-480">{$admin['sex']}</td>
+                                            <td>{$admin['phone']}</td>
+											<td class="hidden-480">
+                                                <span >{$admin['address']|explode="#",###|implode="",###}
+												
+												
+												
+												</span>
+                                            </td>
+                                             <td>{$admin['email']}</td>
+										
+											  <td>{$admin['state']==1?"使用中":"禁用"}</td>
+								
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                    <a href="__CONTROLLER__/edit/id/{$admin['id']}" class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120">编辑</i>
+                                                    </a>
+													
+												 
+													<a href="__CONTROLLER__/editgroup/id/{$admin['id']}/name/{$admin['name']}" class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120">查看组</i>
+                                                    </a>
+													   <a href="__CONTROLLER__/editpwd/id/{$admin['id']}" class="btn btn-xs btn-info">
+                                                        <i class="icon-edit bigger-120">修改密码</i>
+                                                    </a>
+													<a href="__CONTROLLER__/del/id/{$admin['id']}" class="btn btn-xs btn-danger">
+                                                        <i class="delete_user icon-trash bigger-120">删除</i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </foreach>
+                                        <tr><td colspan="12">{$page}</td></tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- /.table-responsive -->
+                        </div><!-- /span -->
+                    </div><!-- /row -->
+
+                   
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+	/*
+	$(".username_search").focus(function(){
+		$(this).val("");
+	});
+    $(".username_search").blur(function(){
+		if(!$(this).val()){
+			$(this).val("用户名搜索");
+		}
+		
+	});
+   */
+<!--
+$(".delete_user").click(function(){
+    if(!confirm("确定删除此账号?")){
+        return false;
+    }
+});
+
+//-->
+</script>
+</block>

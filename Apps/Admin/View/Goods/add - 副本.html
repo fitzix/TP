@@ -1,0 +1,314 @@
+<extend name="Public:layout" />
+<block name="css">
+<js href="__PUBLIC__/js/jquery-2.0.2.js" />
+<js href="__PUBLIC__/ueditor/ueditor.config.js" />    
+<js href="__PUBLIC__/ueditor/ueditor.all.min.js" />
+<js href="__PUBLIC__/Admin/js/addGoods.js" />
+<script type="text/javascript">
+    //初始化编辑器
+    //window.UEDITOR_HOME_URL = "__PUBLIC__/ueditor/";
+    $(function(){
+        var ue = UE.getEditor('container',{
+            //serverUrl :'{:U('Home/Index/ueditor')}',
+            initialFrameWidth : 800,//编辑栏宽度
+            initialFrameHeight : 500,//编辑栏高度
+            autoFloatEnabled : false,//工具栏自动悬浮
+            saveInterval : 60000,//自动保存时间ms
+            autoHeightEnabled : false
+        });
+        
+        var html = '';//定义空字串存放图片名称
+        $("form").submit(function(){
+            //表单验证
+            var msgs = '<i style="font-style: normal; color: red">请补充信息！</i>';
+            var cname = checkForm($('#name'), msgs);
+            var ctype = checkForm($('#type'), msgs);
+            var cbrands = checkForm($('#brands'), msgs);
+            var csale = checkForm($('#saleprice'), msgs);
+            var ccost = checkForm($('#costprice'), msgs);
+            if (!(cname || ctype || cbrands || csale || ccost)) {
+                //return false;
+            }
+            
+            //获取商品描述图
+            $("#imgsName").val('');//清空内容
+            html = ue.getContent();//获取html商品描述内容
+            var imgSrc = /\/[0-9]{16}[.]{1}[a-z]{3,}/gi;//正则匹配src内容
+            var imgName = /[0-9]{16}[.]{1}[a-z]{3,}/gi;//正则过滤出图片地址,
+            if(html.match(imgSrc)){
+                var imgsStr = '';
+                var imgsName = '';
+                imgsStr = html.match(imgSrc).toString();//匹配得到title内容字串,
+                imgsName = imgsStr.match(imgName).toString();//匹配得到图片名称字符串,
+                $("#imgsName").val(imgsName);//图片名称字串赋值
+           }
+        });
+        
+        /**
+         * 表单验证函数
+         * Obj 要验证的对象
+         * msg 提示信息
+         */
+        function checkForm(Obj, msg){
+            Obj.next().html('');
+            if(!Obj.val() || Obj.val() == 0){
+                Obj.next().html(msg);
+                return false;
+            }
+        }
+          
+    })
+    
+</script>
+    
+</block>
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">商品管理</a>
+                </li>
+                <li class="active">添加商品</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/index">返回商品列表</a>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form id="goodsinfo" action="__CONTROLLER__/insert" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                        <input type="hidden" name="imagesName" id="imgsName" value="" />
+                        <input type="hidden" name="attrNum" id="attrNum" value="1" />
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 商品名 </label>
+
+                            <div class="col-sm-9">
+                                <input name="name" type="text" id='name' class="col-xs-10 col-sm-5" />
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle">60个字符以内</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 商品类别 </label>
+
+                            <div class="col-sm-9">
+                                <select name="type_id" id="type" type="text" class="msgs col-xs-10 col-sm-3" >
+                                    <option value='0'>请选择商品类别</option>
+                                    <foreach name="types" item="type">
+                                        <option value="{$type['id']}">{$type['html']}{$type['name']}</option>
+                                    </foreach>
+                                </select>
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle" style="color: red;font-size: 20px">*</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                         <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 商品品牌 </label>
+
+                            <div class="col-sm-9">
+                                <select name="brand_id" type="text" id="brands" class="msgs col-xs-10 col-sm-3" >
+                                    <option value="0">请选择商品品牌</option>
+                                </select>
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle" style="color: red;font-size: 20px">*</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 主价格 </label>
+
+                            <div class="col-sm-9">
+                                <input type="text" name="saleprice" id="saleprice" class="msgs col-xs-10 col-sm-3" />
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle">两位小数点</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 成本价格 </label>
+
+                            <div class="col-sm-9">
+                                <input type="text" name="costprice" id="costprice" class="msgs col-xs-10 col-sm-3" />
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle">两位小数点</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                    <div class="form-group" id="attrvaList">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 颜色 </label>
+
+                            <div class="col-sm-9">
+                                <foreach name="attrs" item="attr">
+                                    <if condition="$attr['attrname'] eq '颜色'">
+                                    <input type="checkbox" name="attrcolor[]" value="{$attr['id']}" class="ace ace-checkbox-2" />
+                                    <span class="lbl" style="margin-right:5px">{$attr['attrvalue']}</span>
+                                    </if>
+                                </foreach>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 尺码 </label>
+
+                            <div class="col-sm-9">
+                                <foreach name="attrs" item="attr">
+                                    <if condition="$attr['attrname'] eq '尺码'">
+                                    <input type="checkbox" name="attrsize[]" value="{$attr['id']}" class="ace ace-checkbox-2" />
+                                    <span class="lbl" style="margin-right:5px">{$attr['attrvalue']}</span>
+                                    </if>
+                                </foreach>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 颜色 </label>
+
+                            <div class="col-sm-9">
+                                <foreach name="attrs" item="attr">
+                                    <if condition="$attr['attrname'] eq '颜色'">
+                                    <input type="checkbox" name="attrcolor[]" value="{$attr['id']}" class="ace ace-checkbox-2" />
+                                    <span class="lbl" style="margin-right:5px">{$attr['attrvalue']}</span>
+                                    </if>
+                                </foreach>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 尺码 </label>
+
+                            <div class="col-sm-9">
+                                <foreach name="attrs" item="attr">
+                                    <if condition="$attr['attrname'] eq '尺码'">
+                                    <input type="checkbox" name="attrsize[]" value="{$attr['id']}" class="ace ace-checkbox-2" />
+                                    <span class="lbl" style="margin-right:5px">{$attr['attrvalue']}</span>
+                                    </if>
+                                </foreach>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                    </div>
+                    
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 选择主图 </label>
+                            <div class="col-xs-10 col-sm-3">
+                                <input name="pic" type="file" class="msgs" />
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 商品描述 </label>
+                            <div class="col-xs-10 col-sm-6">
+                                <textarea id="container" name="editorValue" type="text/plain"></textarea>
+                            </div>
+                        </div>
+                        <input type="text" name="aaa[]" />
+                        <input type="text" name="aaa[]" />
+                        <input type="text" name="aaa[]" />
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button class="btn btn-info" id="sub" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重填
+                                </button>
+                            </div>
+                        </div>
+					</form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+
+</block>
+<block name="js">
+<script type="text/javascript">
+    
+    //根据类别获取商品品牌，属性
+    var a = $("#type").change(function(){
+            $("#brands").html('<option value="0">请选择商品品牌</option>');
+            getBrands($("#type"))
+        }).change(function(){
+            getAttrs($("#type"), $("#attrColor"));
+        }).change(function(){
+            getAttrs($("#type"), $("#attrSize"));
+        });
+    
+    //alert($("#type").change(getType()));
+    //ajax后台提交数据 根据商品类别获取商品品牌(参数为商品类别对象)
+    function getBrands(obj){
+        $.post('__CONTROLLER__/getBrands',
+            {'id' : obj.val()},
+            function(data){
+                if (data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += "<option value='" + data[i]['id'] + "'>" + data[i]['name'] + "</option>";
+                }
+                $("#brands").append(html);
+                }
+            },'json');
+    }
+    
+    //ajax后台提交数据 根据商品类别获取商品属性(参数1：商品类别对象；2：商品属性对象)
+    function getAttrs(obj, attrObj){
+        var attr = attrObj;
+        var attrvalue = attr.val();
+        $.post('__CONTROLLER__/getAttrs',
+            {'id' : obj.val(), 'attrname' : attrvalue},
+            function(data){
+                if (data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += "<option value='" + data[i]['id'] + "'>" + data[i]['attrvalue'] + "</option>";
+                }
+                attr.append(html);
+                }
+            },'json');
+    }
+</script>
+</block>

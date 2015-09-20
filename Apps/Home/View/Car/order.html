@@ -1,0 +1,297 @@
+<extend name="Public:layout"/>
+<block name="css">
+	<style type="text/css">
+		#container{width:1349px;margin-top:10px;}
+		#content{width:990px;margin:0px auto;}
+		#content div.wt{width:990px;height:35px;background:#fff;line-height:35px;text-indent:10px;color:#e4393c;font-size:18px;}
+		#content div.wt_nav{width:990px;height:35px;;line-height:35px;text-indent:10px;border-bottom:1px solid #ddd;border-top:1px solid #ddd;}
+		#content div.wt_nav > div{width:495px;height:35px;background:#f7f7f7;line-height:35px;text-indent:10px;float:left;}
+		#content div.wt_nav div.l_nav ul li{width:150px;height:35px;line-height:35px;text-align:center;float:left;}
+		#content div.wt_nav div.r_nav ul li{width:120px;height:35px;line-height:35px;text-align:center;float:left;}
+		#car_goods{width:990px;background:#666;}
+		#car_goods div.goods_list{width:990px;height:120px;background:#fff;border-bottom:1px solid #ddd;}
+		#car_goods div.goods_list > div{float:left;}
+		#car_goods div.goods_list div.g_check{width:50px;height:120px;line-height:100px;text-align:center;}
+		#car_goods div.goods_list div.g_img{width:350px;height:120px;}
+		#car_goods div.goods_list div.g_img > div{float:left;}
+		#car_goods div.goods_list div.g_img div.img{width:80px;height:80px;margin-top:10px;}
+		#car_goods div.goods_list div.g_img div.goodsname{width:240px;height:80px;margin-left:10px;margin-top:10px;}
+		#car_goods div.goods_list div.g_attr{width:130px;height:120px;line-height:40px;}
+		#car_goods div.goods_list div.g_price{width:100px;height:120px;line-height:40px;}
+		#car_goods div.goods_list div.g_num{width:150px;height:120px;line-height:40px;}
+		#car_goods div.goods_list div.g_num div.g_num_box{width:100px;height:30px;line-height:40px;margin-top:10px;}
+		#car_goods div.goods_list div.g_num div.g_num_box > div{float:left;}
+		#car_goods div.goods_list div.g_num div.g_num_box div.inp{width:36px;height:30px;line-height:30px;text-align:center;}
+
+		
+		#car_goods div.goods_list div.g_total{width:130px;height:120px;line-height:40px;}
+		#car_goods div.goods_list div.g_handle{width:80px;height:120px;line-height:40px;}
+		
+		/*===================固定底栏======================*/
+		#option_box{width:990px;height:40px;background:#000;position:fixed;bottom:0px;left:180px;}
+		#option_box div.l_box{width:400px;height:50px;float:left;line-height:40px;}
+		
+		#option_box div.r_box{width:590px;height:50px;float:right;}
+		#option_box div.r_box > div{float:left;}
+		#option_box div.r_box div.r_price{width:390px;height:50px;}
+		#option_box div.r_box div.r_price > div{float:left;width:195px;height:50px;line-height:40px;text-align:center;}
+		#option_box div.r_box div.r_sub{width:200px;height:50px;background:#e4393c;}
+		#option_box div.r_box div.r_sub a{display:block;width:200px;height:50px;background:#e4393c;line-height:40px;text-align:center;font-size:24px;color:#fff;}
+	    
+		
+		/*====================地址开始===============================*/
+		#address_top{width:990px;height:35px;background:#fff;margin:10px auto;border-top:1px solid #fff;}
+		#address_top > div{width:200px;height:35px;line-height:35px;}
+		#address{width:990px;background:#fff;margin:10px auto;margin-top:-10px;;border:1px solid #ddd;}
+		#address ul{width:950px;margin:0px auto;}
+		#address ul li{width:950px;height:35px;margin:10px auto;}
+		#address ul li > div{float:left;}
+		#address ul li div.name_address{width:190px;height:33px;background:#f7f7f7;border:1px solid #ddd;line-height:35px;text-indent:30px; }
+
+		
+		#address ul li div.details_address{width750px;height:35px;background:#f7f7f7;line-height:35px;text-indent:10px;}
+		#address ul li div.details_address div.u_d_p{width:540px;height:35px;line-height:35px;text-indent:10px;}
+		#address ul li div.details_address > div{float:left}
+		#address ul li div.details_address:hover{background:#ffd3d3;}
+		.edit_address{width:200px;height:35px;line-height:35px;text-indent:10px;float;right;}
+		.edit_address a{color:#f7f7f7}
+		.edit_address a:hover{color:#e4393c}
+		#address div.adds_box{width:990px;height:35px;background:#fff;line-height:35px;text-indent:25px;}
+		.show_hide{display:none;}
+		/*====================地址结束===============================*/
+		
+		/*====================添加地址弹出框=========================*/
+		#add_address_box{display:none;width:600px;border:1px solid #ddd;position:fixed;top:100px;left:350px;background:#f7f7f7;z-index:9999;}
+		#add_address_box div.box{width:550px;margin:0px auto;}
+		#add_address_box div.box div.box_top{width:550px;height:50px;line-height:70px;text-indent:10px;font-size:18px;color:#e4393c;border-bottom:2px solid #e4393c}
+		#add_address_box div.box div.box_foot{width:550px;height:50px;margin-top:50px;}
+		
+		#add_address_box div.box ul{width:550px;}
+		
+		#add_address_box div.box ul li{width:550px;height:50px;border:1px solid #f7f7f7;margin-top:5px;line-height:50px;text-indent:50px;;}
+		#add_address_box div.box ul li span{color:#e4393c}
+		.box_inp{width:350px;height:30px;border:1px solid #ddd;}
+	    .box_btn{width:120px;height:35px;border:1px solid #e4393c;float:right;font-size:18px;color:#fff;background:#e4393c;line-height:35px;text-align:center;cursor:pointer;}
+		.close_btn{width:25px;height:25px;background:#f7f7f7;float:right;line-height:25px;text-align:center;font-size:22px;color:#aaa;cursor:pointer}
+		.close_btn:hover{width:25px;height:25px;background:#e4393c;float:right;line-height:25px;text-align:center;font-size:22px;color:#fff}
+		
+	</style>
+</block>
+<block name="main-content">
+	<!--=============添加地址弹出框=================-->
+	<div id="add_address_box">
+		<div class="close_btn">╳</div>
+		<div class="box">
+			
+			<form id="add_address" action="" method="">
+			<div class="box_top">添加收货人地址 >>> </div>
+			<ul>
+				<li><span>*</span>　姓　名：<input class="box_inp" type="text" name="linkman" ></li>
+				<li><span>*</span>　电　话：<input class="box_inp" type="text" name="phone" ></li>
+				<li><span>*</span>　邮　编：<input class="box_inp" type="text" name="code" ></li>
+				<li><span>*</span>　地　址：{$city}</li>
+				<li><span>*</span>　详细地址：<input class="box_inp" type="text" name="address2" ></li>
+			</ul>
+			<div class="box_foot"><div class="box_btn">提　交</div></div>
+			</form>
+		</div>
+	</div>
+	
+	<!--=========主体部分================-->
+	<div id="container">
+		<!--===================地址开始===========================-->
+		<div id="address_top">
+			<div style="float:left;text-indent:10px;font-size:18px;color:#e4393c;">填写并核对订单信息</div>
+			<div style="float:right;text-align:center;font-size:18px;"><a id="new_address" style="color:#e4393c" href="javascript:">添加新地址</a></div>
+		</div>
+		<div id="address">
+			<ul>
+				<!--=======默认地址=======-->
+				<li>
+					<div class="name_address"  style="border:1px solid #e4393c"><input type="radio" style="visibility:hidden"  checked name="address" value="{$main_add['id']}"><span>{$main_add['linkman']}</span>　<span style="color:#e4393c">（默认地址）</span></div>
+					<div class="details_address">
+						<div class="u_d_p">
+						<span>{$main_add['linkman']}</span>　　
+						<span class="d_address">{$main_add['address']|explode="#",###|implode=###," "}</span>　　
+						<span>{$main_add['phone']}</span>
+						</div>
+						<div class="edit_address">
+						</div>
+						<input type="hidden" name="" value="{$main_add['ismain']}">
+					</div>
+				</li>
+				
+				<foreach name="adds" item="add">
+					<li class="adds show_hide">
+						<div class="name_address"><input style="visibility:hidden"  type="radio" name="address" value="{$add['id']}"><span>{$add['linkman']}</span></div>
+						<div class="details_address">
+							<div class="u_d_p">
+							<span class="linkman">{$add['linkman']}</span>　　
+							<span class="d_address">{$add['address']|explode="#",###|implode=###," "}</span>　　
+							<span class="phone">{$add['phone']}</span>
+							</div>
+							<div class="edit_address">
+								<a class="edit_main_address" href="__CONTROLLER__/edit_address/address_id/{$add['id']}">设为默认地址</a>　　
+							　
+								<a class="del_address" href="__CONTROLLER__/del_address/address_id/{$add['id']}">删除</a>
+							</div>
+							<input type="hidden" name="" value="{$add['ismain']}">
+						</div>
+					</li>
+				</foreach>
+			
+			</ul>
+			<div class="adds_box"><a class="adds_btn" href="javascript:">更多地址 ...</a></div>
+		</div>
+		
+		
+		<!--===================地址结束===========================-->
+		<div id="content">
+			<div class="wt">全部商品</div>
+			<div class="wt_nav">
+				<div class="l_nav">
+					<ul>
+						<li>商品</li>
+					</ul>
+				</div>
+				<div class="r_nav">
+					<ul>
+						<li>单价(元)</li>
+						<li>数量</li>
+						<li>小计</li>
+						<li>有/无货</li>
+					</ul>
+				</div>
+			</div>
+			<div id="car_goods">
+				<foreach name="orders" item="order">
+					<div class="goods_list">
+						<div class="g_check">
+						</div>
+						<div class="g_img">
+							<div class="img"><img width="80" src="{$order['goods_pic']}"></div>
+							<div class="goodsname"><span>{$order['goods_name']}</span></div>
+						</div>
+						<div class="g_attr">
+							<p>颜色：<span class="c1">{$order['goods_color']}</span></p>
+							<p>尺码：<span class="c2">{$order['goods_size']}</span></p>
+						</div>
+						<div class="g_price">
+							<p><span class="goods_price" style="margin-left:10px;">{$order['goods_price']}</span></p>
+						</div>
+						<div class="g_num">
+							<div class="g_num_box">
+								<input type="hidden" name="car_id" class="car_id" value="{$g['car_id']}">
+								
+								<div class="inp" style="margin-left:32px;">{$order['goods_num']}</div>
+								
+							</div>
+						</div>
+						<div class="g_total">
+							<p><span style="margin-left:10px;">{$order['goods_price'] * $order['goods_num']}</span></p>
+						</div>
+						<div class="g_handle">
+							<p>有货</p>
+						</div>
+					</div>
+				</foreach>
+			</div>
+			<div id="option_box">
+				<div class="r_box">
+					<div class="r_price">
+						<div>已选择 <span class="total_num" style="color:#e4393c">0</span> 件商品</div>
+						<div>总价（不含运费）<span class="total_price" style="color:#e4393c;font-size:15px;">{:W('Car/car_total')}</span></div>
+					</div> 
+					<div class="r_sub"><a class="settle_btn" href="javascript:">提 交 订 单</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+
+<block name="js">
+	<script type="text/javascript">
+        $('.del_address').click(function(){
+            if(!confirm('确认删除此地址?')){
+                return false;
+            }
+        });
+		//选择发货地址
+		$(".name_address").click(function(){
+			if($(this).children("input").attr("checked")){
+				//$(this).children("input").attr("checked",false);
+			   // $(this).css("border","1px solid #ddd");
+			}else{
+				$(".name_address").children("input").attr("checked",false);
+				$(this).children("input").attr("checked",true);
+				$(".name_address").css("border","1px solid #ddd");
+				$(this).css("border","1px solid #e4393c");
+			}
+		});
+		
+		
+		//弹出添加地址框
+		$("#new_address").click(function(){
+				//alert(1);
+		    $("#add_address_box").css("display","block");
+		});
+		//关闭按钮
+		$(".close_btn").click(function(){
+			$("#add_address_box").css("display","none");
+		});
+		//提交数据
+		$(".box_btn").click(function(){
+			var address_data = $("#add_address").serialize();
+			$.ajax({
+				url:"__CONTROLLER__/add_address",
+			    type:"post",
+				dataType:"json",
+				async:true,
+				data:address_data,
+				success:function(data){
+					//alert(data);
+				    if(data==1){
+						alert("添加成功！");
+						$("#add_address_box").css("display","none");
+					}else{
+						alert("添加失败！");
+					}
+				}
+			});
+		});
+		
+		
+		
+		
+		
+		
+		
+		//======多地址显示、隐藏=========
+		$(".adds_btn").click(function(){
+			$(".adds").slideToggle(10);
+		});
+		
+		//==========选中地址============
+		$(".settle_btn").click(function(){
+			var address_id = $(".name_address input:checked").val();  //获取地址 id
+			//alert(address_id);
+			$.ajax({
+				url:"__CONTROLLER__/add_order",
+				type:"post",
+				async:true,
+				dataType:"json",
+				data:{"address_id":address_id},
+				success:function(data){
+					//alert(data);
+					if(data==1){
+						window.location.href = "__APP__/Order/index";
+					}else{
+						
+					}
+					
+				}
+			});
+		});
+	</script>
+</block>
+

@@ -1,0 +1,377 @@
+<extend name="Public:layout" />
+<block name="plugin-css">
+	
+</block>
+<block name="main-content">
+    <div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">会员管理</a>
+							</li>
+							<li class="active">添加会员</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- #nav-search -->
+					</div>
+
+					<div class="page-content">
+						<div class="page-header">
+							<h1>
+								<a href="__CONTROLLER__/index">返回会员列表</a>
+							</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<form action="__CONTROLLER__/insert" id="regform" class="form-horizontal" method="post" role="form" >
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 用户名 </label>
+
+										<div class="col-sm-9">
+											<input name="username" type="text" id="username" placeholder="至少六位包含字母、数字" class="col-xs-10 col-sm-3" />
+                                            <span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzusername" class="middle"></span>
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 昵称 </label>
+
+										<div class="col-sm-9">
+											<input name="nickname" type="text" id="nickname" placeholder="至少六位包含字母、数字" class="col-xs-10 col-sm-3" />
+                                            <span class="help-inline col-xs-12 col-sm-7">
+												<span id="yznickname" class="middle"></span>
+											</span>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 密码 </label>
+
+										<div class="col-sm-9">
+											<input type="password" name="password" id="password" placeholder="至少六位包含字母、数字" class="col-xs-10 col-sm-3" />
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzpassword" class="middle"></span>
+											</span>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 确认密码 </label>
+
+										<div class="col-sm-9">
+											<input type="password" name="password2" id="password2" placeholder="至少六位包含字母、数字" class="col-xs-10 col-sm-3" />
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzpassword2" class="middle"></span>
+											</span>
+										</div>
+									</div>
+                                    
+                                    <div class="space-4"></div>
+                                    
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 邮箱 </label>
+
+										<div class="col-sm-9">
+											<input name="email" type="text" id="email" placeholder="请输入有效邮箱"  class="col-xs-10 col-sm-3" />
+                                            <span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzemail" class="middle"></span>
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 电话 </label>
+
+										<div class="col-sm-9">
+											<input name="phone" type="text" id="phone" placeholder="请输入11位有效电话"  class="col-xs-10 col-sm-3" />
+                                            <span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzphone" class="middle"></span>
+											</span>
+										</div>
+									</div>
+									 <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 生日 </label>
+
+										<div class="col-sm-9">
+									
+												<select name="year" id="sel_year"></select>年
+												<select name="month" id="sel_month"></select>月
+												<select name="day" id="sel_day"></select>日
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 性别 </label>
+
+										<div class="col-sm-9">
+											<input name="sex" class="ace" value="男"  type="radio">
+											<span class="lbl"> 男</span>
+                                            <input name="sex" class="ace" value="女" type="radio">
+											<span class="lbl"> 女</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 状态 </label>
+
+										<div class="col-sm-9">
+											<input name="state" class="ace" value="1"  type="radio">
+											<span class="lbl"> 使用中</span>
+                                            <input name="state" class="ace" value="2" type="radio">
+											<span class="lbl"> 禁用</span>
+										</div>
+									</div>
+                                    <div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9"  >
+											<button class="btn btn-info" type="submit">
+												<i class="icon-ok bigger-110"></i>
+												提交
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="reset">
+												<i class="icon-undo bigger-110"></i>
+												重填
+											</button>
+										</div>
+									</div>
+								 <!-- PAGE CONTENT ENDS -->
+								</form>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+
+</block>
+
+<block name="js">
+    
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/birthday.js"></script>
+    
+	
+	<script type="text/javascript">
+	$(function () {
+	$.ms_DatePicker({
+            YearSelector: ".sel_year",
+            MonthSelector: ".sel_month",
+            DaySelector: ".sel_day"
+    });
+	$.ms_DatePicker();
+}); 
+		
+   
+
+		
+//============================ 表 单 验 证 ===============================================		
+
+	
+	
+	var a=false, b=false, c=false, d=false, e=false, f=false, g=false, h=false;
+		
+		
+		//验证用户名
+		$('#username').blur(function(){
+			var username = $(this).val();
+			var len = username.length;
+			//alert(name);
+			
+			if(username==""){
+				$("#yzusername").html("用户名不能为空！");
+				$("#yzusername").css("color","red");
+			}else if(len < 6){
+				$("#yzusername").html("用户名至少六位！");
+				$("#yzusername").css("color","red");
+			}else{
+				$("#yzusername").html("可以注册！");
+				$("#yzusername").css("color","green");
+				a = true;
+				
+			}
+		
+		});
+		
+		//验证昵称
+		$('#nickname').blur(function(){
+			var nickname = $(this).val();
+			var len = nickname.length;
+			//alert(nickname);
+			
+			if(nickname==""){
+				$("#yznickname").html("用户名不能为空！");
+				$("#yznickname").css("color","red");
+			}else if(len < 6){
+				$("#yznickname").html("用户名至少六位！");
+				$("#yznickname").css("color","red");
+			}else{
+				$("#yznickname").html("可以注册！");
+				$("#yznickname").css("color","green");
+				h = true;
+			
+			}
+		
+		});
+		
+		//验证密码
+		$("#password").blur(function(){
+			var password = $(this).val();
+			var len = password.length;
+			if(password==""){
+				$("#yzpassword").html("密码不能为空");
+				$("#yzpassword").css("color","red");
+			}else if(len < 6){
+			    $("#yzpassword").html("密码至少六位");
+				$("#yzpassword").css("color","red");
+			
+			}else{
+				$("#yzpassword").html("有效！");
+				$("#yzpassword").css("color","green");
+				b = true;
+			}		
+		});
+		
+		//验证密码是否一致
+		$("#password2").blur(function(){
+			var password = $("#password").val();
+			var password2 = $(this).val();
+			//alert(password);
+			//alert(password2);
+			if(password==password2){
+			//alert(1);
+				$("#yzpassword2").html("密码一致");
+				$("#yzpassword2").css("color","green");
+				c = true;
+				
+			}else{
+			//alert(2);
+				$("#yzpassword2").html("输入密码不一致！");
+				$("#yzpassword2").css("color","red");
+			}
+		    
+		});
+		
+		
+		
+		
+		/*
+		//自定义一个函数验证汉字
+		function isChn(str){ 
+			var reg = /^[\u4E00-\u9FA5]+$/; 
+			if(!reg.test(str)){ 
+				$("#yzrealname").html("请输入中文！");
+				$("#yzrealname").css("color","red");
+            }else{ 
+			    $("#yzrealname").html("可用！");
+				$("#yzrealname").css("color","green");
+				d = true;
+			
+			}
+		}
+		*/
+		
+		
+		
+	
+		
+		$("#realname").blur(function(){
+			var realname = $(this).val();
+			if(realname!=""){
+				isChn(realname);
+			}
+		});
+		
+		//自定义一个函数用来验证手机号
+		function isPhone(str){
+		    var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			//var reg = /^[0-9]{11}$/;
+			if(reg.test(str)){
+				$("#yzphone").html("有效！");
+				$("#yzphone").css("color","green");
+				e = true;
+				
+			}else{
+				$("#yzphone").html("请输入11位有效手机号！");
+				$("#yzphone").css("color","red");
+			}
+		}
+		
+		$("#phone").blur(function(){
+			var phone = $(this).val();
+			var len = phone.length;
+			//alert(phone);
+			if(phone==""){
+			    $("#yzphone").html("手机号不能为空！");
+				$("#yzphone").css("color","red");
+			}else if(len != 11){
+				$("#yzphone").html("请输入11位有效手机号！");
+				$("#yzphone").css("color","red");
+			}else{
+			    isPhone(phone);
+			}
+		});
+		
+	
+		
+		//自定义一盒函数来验证邮箱格式
+		function isEmail(str){
+			var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            if(reg.test(str)){
+				$("#yzemail").html("有效！");
+				$("#yzemail").css("color","green");
+				g = true;
+				
+			}else{
+				$("#yzemail").html("无效！");
+				$("#yzemail").css("color","red");
+			}
+		}
+		
+		$("#email").blur(function(){
+			var email = $(this).val();
+			//alert(email.length);
+		    if(email.length==0){
+			//alert(1);
+				$("#yzemail").html("不能为空！");
+				$("#yzemail").css("color","red");
+			}else{
+			    isEmail(email);
+			}
+		});
+		
+	   
+	    document.getElementById("regform").onsubmit = function(){
+		     if(a==true && b==true && c==true &&e==true  &&g==true &&h==true){
+				return  true;
+			}else{
+			    
+				return false;
+			}
+		
+		}
+		
+
+		
+		
+    </script>
+</block>

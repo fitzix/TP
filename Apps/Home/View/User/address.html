@@ -1,0 +1,155 @@
+<extend name="Public:layout" />
+<block name="css">
+<link rel="stylesheet" href="__PUBLIC__/index/css/user.css" type="text/css" />
+<style type="text/css">
+.w{width:1210px}
+#main{background:#f5f5f5;}
+#container{width:990px;margin:0px auto;}
+#content{width:870px;padding-left:120px;padding-top:20px;display:block;}
+#sub{float:left;width:120px;height:387px;position:relative;left:-120px;}
+#sub div{padding-left:20px;margin-top:10px;}
+#sub ul li a{color:#777;}
+#sub ul li a:hover{color:#f00; text-decoration:underline;}
+#sub ul li{font-size:12px;line-height:28px;}
+#add{background:#fff;width:869px;position:relative;}
+.mt{width:829px;height:180px;border:2px solid #e6e6e6;top:20px;left:20px;margin-top:10px;}
+.smt{padding-left:10px;line-height:40px;margin-left:110px;}
+.item{width:450px;float:left;padding:3px 0}
+.smc{line-height:50px;font:12px/150% Arial,Verdana,"\5b8b\4f53";margin-left:110px;}
+.smc_left{width:450px;float:left;}
+.span{float:right;margin-right:20px;}
+.item span{float:left;width:70px;color:#999;text-align:right;}
+.item div{float:left;width:360px;color:#666;}
+.address{font-size:20px;font-weight:bold;color:red;margin:6px 0px;}
+/*============添加地址弹出框=========================*/
+#add_address_box{display:none;width:850px;border:1px solid #ddd;position:fixed;top:100px;left:250px;background:#fff;z-index:9999;color:#999;}
+#add_address_box div.box{width:550px;margin:0px auto;}
+#add_address_box div.box div.box_top{width:550px;height:50px;line-height:70px;text-indent:10px;font-size:18px;color:#aaa;}
+#add_address_box div.box div.box_foot{width:550px;height:50px;margin-top:50px;}
+#add_address_box div.box ul{width:550px;}
+#add_address_box div.box ul li{width:550px;height:50px;border:1px solid #f7f7f7;margin-top:5px;line-height:50px;text-indent:50px;;}
+#add_address_box div.box ul li span{color:#e4393c}
+.box_inp{width:350px;height:30px;border:0px solid #ddd;}
+.box_btn{width:120px;height:35px;border:1px solid #BFD6AF;float:right;font-size:18px;background:#EEF8E7;line-height:35px;text-align:center;cursor:pointer;border-radius:10px;}
+.close_btn{width:25px;height:25px;color:#333;float:right;line-height:25px;text-align:center;font-size:22px;cursor:pointer;border:1px solid #ddd;}
+/*.close_btn:hover{width:25px;height:25px;background:#e4393c;float:right;line-height:25px;text-align:center;font-size:22px;color:#fff}
+*/</style>
+</block>
+
+<block name="main-content">
+<div id="add_address_box">
+		<div class="close_btn">╳</div>
+		<div class="box">
+			
+			<form id="add_address" action="" method="">
+			<div class="box_top">添加收货地址</div>
+			<ul>
+				<li><span>*</span>　收货人：<input class="box_inp" type="text" name="linkman" /></li>
+				<li><span>*</span>　地　址：{$city}</li>
+				<li><span>*</span>　详细地址：<input class="box_inp" type="text" name="address2" /></li>
+				<li><span>*</span>	手机号码：<input class="box_inp" type="text" name="phone" /></li>
+				<li><span>*</span>　邮　编：<input class="box_inp" type="text" name="code" /></li>
+			</ul>
+			<div class="box_foot"><div class="box_btn">保存收货地址</div></div>
+			</form>
+		</div>
+	</div>
+
+<div id="main">
+	<div id="container">
+		
+		<div id="content">
+			<div id="sub">
+				<div class="menu_text">
+					<ul>
+						<li><b>设置</b></li>
+						<li><a href="__APP__/user">个人信息</a></li>
+						<li><a href="">账号绑定</a></li>
+						<li><a href="__CONTROLLER__/safety">账户安全</a></li>
+						<li><a href="">我的级别</a></li>
+						<li><a href="#" style="font-weight:bold;color:red;" >收货地址</a></li>
+						<li><a href="">分享绑定</a></li>
+						<li><a href="">邮件订阅</a></li>
+						<li><a href="">消费记录</a></li>
+						<li><a href="">应用授权</a></li>
+						<li><a href="">快捷支付</a></li>
+						<li><a href="">增票资质</a></li>
+					</ul>
+				</div>
+				<div>
+				</div>
+			</div>
+			<div id="add">
+                <div class="address" id="new_address"><a href="javascript:;">添加收货地址</a></div>
+				<foreach name="address" item="v">
+				<div class="mt">
+					<div class="smt">
+						<h3>{$v['linkman']}</h3>
+					</div>
+					<div class="smc">
+						<div class="smc_left">
+							<div class="item">
+								<span>收货人：</span>
+								<div>{$v['linkman']}</div>
+							</div>
+							<div class="item">
+								<span>所在第区：</span>
+								<div>{$v[$v['id']]}</div>
+							</div>
+							<div class="item">
+								<span>地址：</span>
+								<div>{$v['last']}</div>
+							</div>
+							<div class="item">
+								<span>手机：</span>
+								<div>{$v['phone']}</div>
+							</div>
+							<div class="item">
+								<span>邮编：</span>
+								<div>{$v['code']}</div>
+							</div>
+							
+						</div>
+							<span class="span"><a href="__CONTROLLER__/del/id/{$v['id']}">删除地址</a></span>
+					</div>
+				</div>
+				</foreach>
+			</div>
+		</div>
+	</div>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		//弹出添加地址框
+		$("#new_address").click(function(){
+				//alert(1);
+		    $("#add_address_box").css("display","block");
+			$("#add_address_box").val() = "";
+		});
+		//关闭按钮
+		$(".close_btn").click(function(){
+			$("#add_address_box").css("display","none");
+		});
+		//提交数据
+		$(".box_btn").click(function(){
+			var address_data = $("#add_address").serialize();
+			$.ajax({
+				url:"__CONTROLLER__/addAddress",
+			    type:"post",
+				dataType:"json",
+				async:true,
+				data:address_data,
+				success:function(data){
+				    if(data==1){
+						alert("添加成功！");
+						$("#add_address_box").css("display","none");
+						window.location.reload();
+					}else{
+						alert("添加失败！");
+					}
+				}
+			});
+		});
+	</script>
+</block>

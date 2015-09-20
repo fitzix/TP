@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" type="text/html">
+		<title>{~W('market/index')}</title>
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/index/css/lay.css">
+		<block name="css">
+        <style type="text/css">
+
+        </style>
+        </block>
+		
+		<script src="__PUBLIC__/js/jquery.js"></script>
+	</head>
+	<body>
+		<!--======================头部公共部分开始==============================-->
+		<div id="shortcut">
+			<div class="w">
+				
+				<ul class="fleft">
+					<li class="star"></li>
+					<li><a href="#">收藏京东</a></li>
+				</ul>
+				<ul class="fright">
+					
+						<if condition="$v = session('username')">
+								<li><a href="__APP__/User/index">{$v}</a></li><li>
+								<a href="__APP__/login/logout">退出登录</a></li>
+						
+						<else/> <li><a href="__APP__/Login/login">请登录</a></li>
+								<li><a href="__APP__/Reg/index">快速注册</a></li>
+						</if>
+					
+					
+					<li><a href="__APP__/order/index">我的订单</a></li>
+					<li><a href="#">京东会员</a></li>
+					<li><a href="#">手机京东</a></li>
+					<li><a class="u-server" href="#">客户服务</a></li>
+						<ul class="userserver">
+							<li><a href="#">帮助中心</a></li>
+							<li><a href="#">帮助中心</a></li>
+							<li><a href="#">帮助中心</a></li>
+							<li><a href="#">帮助中心</a></li>
+							<li><a href="#">帮助中心</a></li>
+							<li><a href="#">帮助中心</a></li>
+						</ul>
+					
+					<li><a class="url" href="#">网址导航</a></li>
+						<ul class="url-nav">
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+							<li><a href="#">网址导航</a></li>
+						</ul>
+				</ul>
+			</div>
+		</div>
+        <block name="header">
+		<div id="header">
+			<div class="headertop">
+				<!--===========LOGO====================-->
+				<div id="logo"><a href="__APP__/Index"><img src="__PUBLIC__/index/images/logo-201305.png"></a></div>
+				<!--===========search====================-->
+				<div id="search">
+					<div class="sear">
+						<form action="__APP__/List/index" method="get">
+							<input class="searchinput" type="text" name="keyword" />
+                            <button type="submit" class="searcher">搜索</button>
+						</form>	
+					</div>
+					<div class="hotwords">
+						<ul>
+							<li>热门搜索：</li>
+							<li><a href="__APP__/List/index/keyword/太阳镜">太阳镜</a></li>
+                            <li><a href="__APP__/List/index/keyword/短裤">短裤</a></li>
+                            <li><a href="__APP__/List/index/keyword/T恤">T恤</a></li>
+                            <li><a href="__APP__/List/index/keyword/男装">男装</a></li>
+                            <li><a href="__APP__/List/index/keyword/吊带">吊带</a></li>
+                            <li><a href="__APP__/List/index/keyword/女鞋">女鞋</a></li>
+                            <li><a href="__APP__/List/index/keyword/精品">精品</a></li>
+                            <li><a href="__APP__/List/index/keyword/亲子">亲子</a></li>
+                            <li><a href="__APP__/List/index/keyword/凉鞋">凉鞋</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--=================我的京东=====================-->
+				<!--
+				<div id="myjd">
+					<a href="#">
+						<div class="mac"></div>
+						<div class="myjdong"> <a href="__APP__/User/index">我的京东</a></div>
+						<div class="btriangle"></div>
+					</a>
+					<div class="myjd-details">
+						<div class="de-hd">
+							
+							
+								<if condition="$v = session('username')">你好，<span style="color:#e4393c">{$v}</span>
+								<else/><a href="__APP__/login/index">请登录</a>
+								</if>
+							
+							
+						</div>
+						<div class="de-list">
+							<ul style="border-right:1px solid #ddd;">
+								<li><a href="#">全部订单（0）</a></li>
+								<li><a href="#">未完成订单（0）</a></li>
+								<li><a href="#">已完成订单（0）</a></li>
+								<li><a href="#">待评价商品（0）</a></li>
+							
+					
+						
+							</ul>
+							<ul>
+								<li><a href="#">全部售后（0）</a></li>
+								<li><a href="#">退货（0）</a></li>
+								<li><a href="#">换货（0）</a></li>
+								<li><a href="#">保修（0）</a></li>
+							</ul>
+						</div>
+						<div class="de-view">
+							<a href="#">查看浏览历史</a>
+						</div>
+					</div>
+				</div>
+				-->
+				
+				{:W('MyJD/index')}
+				<!--=================去购物车结算=====================-->
+				
+				<div id="settleup">
+					
+					<a href="#">
+						<div class="car"><div class="carimg"></div></div>
+						<div class="jiesuan"><a href="#">去购物车结算</a></div>
+						<div class="rtriangle"></div>
+					</a>
+					<div class="mycar-details">
+						<div class="g-new"><h3>最新加入的商品</h3></div>
+						<div class="g-list">
+							{:W('Car/index')}
+						</div>
+						<div class="g-total">
+							<span>共有<a style="color:#e4393c;font-size:14px;" href="javascript:"> {:W('Car/car_num')} </a>件商品</span>　　　　　　
+							<span>共计<a style="color:#e4393c;font-size:20px;" href="javascript:"> ￥{:W('Car/car_total')}</a></span>
+				
+						</div>
+						<div class="g-settle">
+							<a href="__APP__/Car/index">去购物车结算</a>
+						</div>
+					</div>
+				</div>
+				<!--=======购物车商品数量========-->
+				<div class="car-count">{:W('Car/car_num')}</div>
+			</div>
+
+			{:W('Type/index')}
+			</block>
+			<div style="clear:both;"></div>
+			<!--======================头部公共部分结束==============================-->
+			<block name="main-content"></block>
+			<!--=========================footer开始======================================-->
+		<div id="footer">
+            <div class="w">
+			<div class="footer-m">
+				<ul>
+				     
+					{:W('Links/index')}
+				</ul>
+			</div>
+            </div>
+			<div class="footer-g" style="clear:both">
+				<ul>
+					<li><a href="#">北京市公安局朝阳分局备案编号110105014669</a></li>
+					
+					<li><a href="#">出版物经营许可证编号新出发(苏)批字第N-012号 </a></li>
+					<li><a href="#"> 互联网出版许可证编号新出网证(京)字150号</a></li>
+					<li><a href="#">Copyright © 2004-2015  京东JD.com 版权所有</a></li>
+					<li><a href="#">京ICP证070359号</a>　电话:{~W('market/dex')} </li>
+				</ul>
+			</div>
+			<div class="footer-k">
+				<ul>
+					<li><a href="#"><a href="#"><img src="__PUBLIC__/index/images/108_40_zZOKnl.gif"></a></a></li>
+					<li><a href="#"><a href="#"><img src="__PUBLIC__/index/images/112_40_WvArIl.png"></a></a></li>
+					<li><a href="#"><a href="#"><img src="__PUBLIC__/index/images/rBEIDE_nzcIIAAAAAAB30mYXo5QAACrhACj22IAAHfq378.png"></a></a></li>
+				</ul>
+			</div>
+		
+		</div>
+		
+		<!--=========================footer结束======================================-->
+		
+	</body>
+	<script src="__PUBLIC__/index/js/lay.js"></script>
+	<block name="js">
+    
+    </block>
+</html>

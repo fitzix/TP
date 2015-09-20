@@ -1,0 +1,37 @@
+
+<foreach name="goods" item="g">
+		
+		<div class="goods_list">
+			
+			<input class="goods_id" type="hidden" name="" value="{$g['goods']['id']}">
+			<div class="g_check">
+				<input class="box_check"  style="width:18px;height:18px" type="checkbox" name="" value="{$g['car_id']}">
+				<input type="hidden" name="" value="{$g['car_id']}">
+			</div>
+			<div class="g_img">
+				<div class="img"><img width="50" src="__PUBLIC__/Uploads/goods/l_{$g['goods']['pic']}"/></div>
+				<div class="goodsname"><span>{$g['goods']['name']}</span></div>
+			</div>
+			<div class="g_attr">
+				<p>颜色：<span class="c1">{$g['color']}</span></p>
+				<p>尺码：<span class="c2">{$g['size']}</span></p>
+			</div>
+			<div class="g_price">
+				<p><span class="goods_price">{$g['goods']['saleprice']}</span></p>
+			</div>
+			<div class="g_num">
+				<div class="g_num_box">
+					<input type="hidden" name="car_id" class="car_id" value="{$g['car_id']}">
+					<div class="desc">-</div>
+					<div class="inp"><input class="buy-num" style="width:36px;height:28px;border:0px;text-align:center" type="text" name="num" value="{$g['num']}"/></div>
+					<div class="add">+</div>
+				</div>
+			</div>
+			<div class="g_total">
+				<p><span class="goods_total_price">{$g['goods']['saleprice']*$g['num']}</span></p>
+			</div>
+			<div class="g_handle">
+				<p><a href="__CONTROLLER__/del_car_goods/id/{$g['car_id']}">删除</a></p>
+			</div>
+		</div>
+</foreach>

@@ -1,0 +1,307 @@
+<extend name="Public:layout" />
+<block name="main-content">
+    <div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">员工管理</a>
+							</li>
+							<li class="active">员工信息修改</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- #nav-search -->
+					</div>
+
+					<div class="page-content">
+						<div class="page-header">
+							<h1>
+								<a href="__CONTROLLER__/index">返回员工列表</a>
+							</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<form action="__CONTROLLER__/update" class="form-horizontal" id="regform" method="post" role="form" >
+									<input type="hidden" name="id" value="{$admin['id']}">
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 用户名 </label>
+                                        <div class="col-sm-9">
+											<input name="name" type="text" id="name" placeholder="请输入用户名" value="{$admin['name']}" class="col-xs-10 col-sm-3" />
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzname" class="middle"></span>
+											</span>
+                                        </div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 真实姓名 </label>
+
+										<div class="col-sm-9">
+											<input name="realname" type="text" id="realname" placeholder="请输入真实名" value="{$admin['realname']}" class="col-xs-10 col-sm-3" />
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzrealname" class="middle"></span>
+											</span>
+									   </div>
+									</div>
+                                 
+									
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 联系电话 </label>
+
+										<div class="col-sm-9">
+											<input type="text" name="phone" class="col-xs-10 col-sm-3" value="{$admin['phone']}" id="phone" />
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzphone" class="middle"></span>
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 邮箱 </label>
+
+										<div class="col-sm-9">
+											<input type="text" name="email" class="col-xs-10 col-sm-3" value="{$admin['email']}" id="email" />
+											<span class="help-inline col-xs-12 col-sm-7">
+													<span id="yzemail" class="middle"></span>
+												</span>	
+											</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 地址 </label>
+											<div class="col-sm-9">
+										     {$city}
+										</div>
+									</div>
+                                    
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 详细地址 </label>
+
+										<div class="col-sm-9">
+											<input type="text" name="address" class="col-xs-10 col-sm-3" value="{$admin['address']}" id="address" />
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span id="yzaddress" class="middle"></span>
+											</span>
+										</div>
+									</div>
+                                    
+                                 
+
+									
+                                    <div class="space-4"></div>
+                                     <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 性别 </label>
+
+										<div class="col-sm-9">
+											<input name="sex" class="ace" value="男" {$admin['sex']=="男"?"checked":" "}  type="radio">
+											<span class="lbl"> 男</span>
+                                            <input name="sex" class="ace" value="女"   {$admin['sex']=="女"?"checked":" "}  type="radio" >
+											<span class="lbl"> 女</span>
+									
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 状态 </label>
+                                            <div class="col-sm-9">
+											<input name="state" class="ace" value="1" {$admin['state']==1?"checked":" "}  type="radio">
+											<span class="lbl"> 工作中</span>
+                                            <input name="state" class="ace" value="2" {$admin['state']==2?"checked":" "}  type="radio">
+											<span class="lbl"> 禁用</span>
+											
+										</div>
+									
+									</div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 用户组 </label>
+
+										<div class="col-sm-9">
+											<input name="admingroup" class="ace" value="1" {$admin['admingroup']==1?"checked":" "}  type="radio">
+											<span class="lbl"> 普通员工</span>
+                                            <input name="admingroup" class="ace" value="0"   {$admin['admingroup']==0?"checked":" "} type="radio">
+											<span class="lbl"> 超级管理员</span>
+											
+										</div>
+									</div>
+                                    
+                                    <div class="space-4"></div>
+                                    
+                                    
+                                    <div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="submit">
+												<i class="icon-ok bigger-110"></i>
+												提交
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="reset">
+												<i class="icon-undo bigger-110"></i>
+												重填
+											</button>
+										</div>
+									</div>
+								<!-- PAGE CONTENT ENDS -->
+								</form>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+
+</block>
+<block name="js">
+    <script type="text/javascript">
+		var a=true,d=true, e=true, f=true, g=true;
+		
+		
+		//验证用户名
+		$('#name').blur(function(){
+			var name = $(this).val();
+			var len = name.length;
+			//alert(name);
+			
+			if(name==""){
+				$("#yzname").html("用户名不能为空！");
+				$("#yzname").css("color","red");
+				a = false;
+			}else if(len < 6){
+				$("#yzname").html("用户名至少六位！");
+				$("#yzname").css("color","red");
+				a = false;
+			}else{
+				$("#yzname").html("有效！");
+				$("#yzname").css("color","green");
+				a = true;
+			}
+		
+		});
+		
+
+	
+		
+		//自定义一个函数验证汉字
+		function isChn(str){ 
+			var reg = /^[\u4E00-\u9FA5]+$/; 
+			if(!reg.test(str)){ 
+				$("#yzrealname").html("请输入中文！");
+				$("#yzrealname").css("color","red");
+				d = false;
+            }else{ 
+			    $("#yzrealname").html("有效！");
+				$("#yzrealname").css("color","green");
+				d = true;
+			}
+		}
+		
+		$("#realname").blur(function(){
+			var realname = $(this).val();
+			//alert(realname);
+			if(realname!=""){
+				isChn(realname);
+			}else{
+				$("#yzrealname").html("不能为空！");
+				$("#yzrealname").css("color","red");
+				d = false;
+			}
+		});
+		
+		//自定义一个函数用来验证手机号
+		function isPhone(str){
+		    var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			//var reg = /^[0-9]{11}$/;
+			if(reg.test(str)){
+				$("#yzphone").html("有效！");
+				$("#yzphone").css("color","green");
+				e = true;
+			}else{
+				$("#yzphone").html("请输入11位有效手机号！");
+				$("#yzphone").css("color","red");
+				e = false;
+			}
+		}
+		
+		$("#phone").blur(function(){
+			var phone = $(this).val();
+			var len = phone.length;
+			//alert(phone);
+			if(phone==""){
+			    $("#yzphone").html("手机号不能为空！");
+				$("#yzphone").css("color","red");
+					e = false;
+				
+			}else if(len != 11){
+				$("#yzphone").html("请输入11位有效手机号！");
+				$("#yzphone").css("color","red");
+					e = false;
+			}else{
+			    isPhone(phone);
+			}
+		});
+		
+		//验证详细地址（不能为空）
+		$("#address").blur(function(){
+			var address = $(this).val();
+			if(address==""){
+				$("#yzaddress").html("不能为空！");
+				$("#yzaddress").css("color","red");
+				f = false;
+			}else{
+				$("#yzaddress").html("有效！");
+				$("#yzaddress").css("color","green");
+				f = true;
+			}
+		});
+		
+		//自定义一盒函数来验证邮箱格式
+		function isEmail(str){
+			var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            if(reg.test(str)){
+				$("#yzemail").html("有效！");
+				$("#yzemail").css("color","green");
+				g = true;
+			}else{
+				$("#yzemail").html("无效！");
+				$("#yzemail").css("color","red");
+				g = false;
+			}
+		}
+		
+		$("#email").blur(function(){
+			var email = $(this).val();
+			//alert(email.length);
+		    if(email.length==0){
+			//alert(1);
+				$("#yzemail").html("不能为空！");
+				$("#yzemail").css("color","red");
+				g = false;
+			}else{
+			    isEmail(email);
+			}
+		});
+		
+
+	    document.getElementById("regform").onsubmit = function(){
+		     if(a==true&& d==true &&e==true &&f==true &&g==true){
+				return  true;
+			}else{
+				return false;
+			}
+		}
+		
+		
+	</script>
+</block>

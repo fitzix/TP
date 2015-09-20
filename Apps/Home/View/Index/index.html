@@ -1,0 +1,527 @@
+ <!DOCTYPE html>
+ <html>
+     <head>
+         <title>智联商城</title>
+         <meta charset="utf-8" />
+         <link href="__PUBLIC__/index/css/index.css" rel="stylesheet"/>
+         <link href="__PUBLIC__/index/css/public.css" rel="stylesheet"/>
+         <script src="__PUBLIC__/index/js/jquery.js"></script>
+         <script src="__PUBLIC__/js/plug.js"></script>
+         <script src="__PUBLIC__/index/js/index.js"></script>
+     </head>
+     <body>
+        <!--顶部快捷方式 START-->
+        <div id="shortcut">
+            <div class="w">
+                <ul class="sendto">
+                	<li>
+                        <div class="send-target">
+                            送至：<span>北京</span>
+                            <i><span>◇</span></i>
+                        </div>
+                        <!--城市列表 START-->
+                        <div class="send-list">
+                            <div></div>
+                            <ul class='sendcity'>
+                                <li><a href="#none" data-id="01">北京</a></li> 
+                                <li><a href="#none" data-id="02">上海</a></li> 
+                                <li><a href="#none" data-id="03">天津</a></li> 
+                                <li><a href="#none" data-id="04">重庆</a></li> 
+                                <li><a href="#none" data-id="05">河北</a></li> 
+                                <li><a href="#none" data-id="06">山西</a></li> 
+                                <li><a href="#none" data-id="07">河南</a></li> 
+                                <li><a href="#none" data-id="08">辽宁</a></li> 
+                                <li><a href="#none" data-id="09">吉林</a></li> 
+                                <li><a href="#none" data-id="10">江苏</a></li> 
+                                <li><a href="#none" data-id="11">山东</a></li> 
+                                <li><a href="#none" data-id="12">安徽</a></li> 
+                                <li><a href="#none" data-id="13">浙江</a></li> 
+                                <li><a href="#none" data-id="14">福建</a></li> 
+                                <li><a href="#none" data-id="15">湖北</a></li> 
+                                <li><a href="#none" data-id="16">湖南</a></li> 
+                                <li><a href="#none" data-id="17">广东</a></li> 
+                                <li><a href="#none" data-id="18">广西</a></li> 
+                                <li><a href="#none" data-id="19">江西</a></li> 
+                                <li><a href="#none" data-id="20">四川</a></li> 
+                                <li><a href="#none" data-id="21">海南</a></li> 
+                                <li><a href="#none" data-id="22">贵州</a></li> 
+                                <li><a href="#none" data-id="23">云南</a></li> 
+                                <li><a href="#none" data-id="24">西藏</a></li> 
+                                <li><a href="#none" data-id="25">陕西</a></li> 
+                                <li><a href="#none" data-id="26">甘肃</a></li> 
+                                <li><a href="#none" data-id="27">青海</a></li> 
+                                <li><a href="#none" data-id="28">宁夏</a></li> 
+                                <li><a href="#none" data-id="29">新疆</a></li> 
+                                <li><a href="#none" data-id="30">台湾</a></li> 
+                                <li><a href="#none" data-id="31">香港</a></li> 
+                                <li><a href="#none" data-id="32">澳门</a></li> 
+                                <li><a href="#none" data-id="33">钓鱼岛</a></li>
+                                <li><a href="#none" data-id="34">黑龙江</a></li> 
+                                <li><a href="#none" data-id="35">内蒙古</a></li>  
+                                <li><a href="#none" data-id="36">海外</a></li> 
+                            </ul>
+                        </div><!--城市列表 END-->
+                    </li>
+                </ul>
+                <!--快捷菜单 START-->
+                <ul class="short-menu" style="float: right">
+                	<li>
+                        <if condition="$v = session('username')">
+                        <a href="__APP__/User/index">{$v}</a>
+                        <a href="__APP__/login/logout">退出</a>
+                        <else/>
+                        <a href="__APP__/Login/login">登录</a>
+                        <a href="__APP__/Reg/index">快速注册</a>
+                        </if>
+                    </li>
+                    <li class="spacer"></li>
+                	<li>
+                        <a href="__APP__/Order/index">我的订单</a>
+                    </li>
+                    <li class="spacer"></li>
+                	<li>
+                        <a href="" class="short-user">我的智联</a>
+                        <div class="shortuser">
+                            <div class="u-spacer"></div>
+                            <div class="shortinfo">
+                                <div class="u-pic">
+                                    <a href="__APP__/User/index"><img src="__PUBLIC__/index/images/shortcut-user.jpg" alt="" /></a>
+                                </div>
+                                <div class="u-name"><a href="__APP__/User/index">{$v = session('username')}</a></div>
+                                <div class="u-ext">
+                                    <a href="__APP__/Car/index">购物车</a> | <a href="#">消息 <span style="color:red">1</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="spacer"></li>
+                	<li>
+                        <a href="javascript:;">手机智联</a>
+                    </li>
+                    <li class="spacer"></li>
+                    <li>
+                        <a href="javascript:;">关注智联</a>
+                    </li>
+                    <li class="spacer"></li>
+                	<li>
+                        <a href="javascript:;">智联会员</a>
+                    </li>
+                    <li class="spacer"></li>
+                    <li>
+                        <a href="javascript:;">客户服务</a>
+                	</li>
+                </ul><!--快捷菜单 END-->
+            </div>
+        </div><!--顶部快捷方式 END-->
+
+        <!--顶部BANNER START-->
+        <div id="top-banner">
+            <div class="w">
+                <a><img src="__PUBLIC__/Uploads/images/top-banner.jpg" /></a>
+            </div>
+        </div><!--顶部BANNER END-->
+        <!--搜索块 START-->
+        <div id="search" class="w">
+            <!--LOGO START-->
+            <div class="shop-logo">
+                <a href="__CONTROLLER__/index"><img src="__PUBLIC__/index/images/shop-logo.png" /></a>
+            </div><!--LOGO END-->
+            <!--搜索框 START-->
+            <div class="shop-search">
+                <div class="search-form">
+                    <form action="__APP__/List/index" method="get">
+                        <input type="text" name="keyword" value="" />
+                        <button type="submit">搜索</button>
+                    </form>
+                </div>
+            </div><!--搜索框 END-->
+            <!--购物车 START-->
+            <div class="shop-cart">
+                <div class="sc-icons">
+                    <i class="ci-left"></i>
+                    <i class="ci-right">></i>
+                    <i class="ci-count">{:W('Car/car_num')}</i>
+                    <a href="__APP__/Car/index" target="_blank">我的购物车</a>
+                </div>
+                <div class="sc-history">
+                    <div class="sc-spacer"></div>
+                    <div class="sc-content">
+                        <div class="sc-title">
+                            <h4>最新加入的商品</h4>
+                        </div>
+                        <div class="sc-list">
+                            {:W("Car/index")}
+                        </div>
+                        <div class="sc-bar">
+                            <div class="sc-bar-total">
+                                共 <b>{:W('Car/car_num')}</b> 件商品 共计 <strong>￥ {:W('Car/car_total')}</strong>
+                            </div>
+                            <a href="__APP__/Car/index">去购物车</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--购物车 END-->
+             <!--热搜关键词 START-->
+            <div class="shop-hotwords">
+                <a href="__APP__/List/index/keyword/太阳镜">太阳镜</a>
+                <a href="__APP__/List/index/keyword/短裤">短裤</a>
+                <a href="__APP__/List/index/keyword/T恤">T恤</a>
+                <a href="__APP__/List/index/keyword/男装">男装</a>
+                <a href="__APP__/List/index/keyword/吊带">吊带</a>
+                <a href="__APP__/List/index/keyword/女鞋">女鞋</a>
+                <a href="__APP__/List/index/keyword/精品">精品</a>
+                <a href="__APP__/List/index/keyword/亲子">亲子</a>
+                <a href="__APP__/List/index/keyword/凉鞋">凉鞋</a>
+            </div><!--热搜关键词 END-->
+        </div><!--搜索块 END-->
+        <!--导航 START-->
+        <div id="nav">
+            <div class="w">
+                <div id="categorys">
+                    <div class="dt">
+                        <a href="__APP__/List">全部商品分类</a>
+                    </div>
+                    <!--{begin 主类-->
+                    <div class="dd">
+                        <foreach name="types" item="type">
+                        <div class="dd-list">
+                            <div class="dd-items">
+                                <h3><a target="_blank" href="__APP__/List/index/typeid/{$type['id']}">{$type['name']}</a>
+                                    <for start="0" end="2" name="i">
+                                        <a target="_blank" href="__APP__/List/index/typeid/{$typeHost[$type['id']]['id'][$i]}">{$typeHost[$type['id']]['name'][$i]}</a>
+                                    </for>
+                                </h3><i>></i>
+                            </div>
+                            <!--{begin 子类模块-->
+                            <div class="dd-content">
+                                <ul class="pop-list">
+                                <foreach name="type['child']" item="v">
+                                    <li><a target="_blank" href="__APP__/List/index/typeid/{$v['id']}">{$v['name']}</a></li>
+                                </foreach>
+                                </ul>
+                                <ul class="brand-list">
+                                <for start="0" end="count($brands[$type['id']]['id'])" name="i">
+                                    <li><a style="display:none" href="__APP__/List/index/brandid/{$brands[$type['id']]['id'][$i]}"></a><a href="__APP__/List/index/brandid/{$brands[$type['id']]['id'][$i]}"><img width="70" src="__PUBLIC__/Uploads/brands/s_{$brands[$type['id']]['logo'][$i]}" alt="" /></a></li>
+                                </for>
+                                </ul>
+                            </div><!--}end 子类模块-->
+                        </div>
+                        </foreach>
+                    </div><!--}end 主类-->
+                </div>
+                <div id="navitems">
+                    <ul>
+                        <volist name="typeIndex" id="type">
+                    	<li><a href="__APP__/List/index/typeid/{$type['id']}">{$type['name']}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <div id="treasure">
+                    <a href="javascript:;"><img src="__PUBLIC__/Uploads/images/nav-treasure.jpg" alt="" /></a>
+                </div>
+            </div>
+        </div><!--导航 END-->
+        <!--轮播 START-->
+        <div id="focus">
+            <div class="slider">
+                <ul class="slider-main">
+                    <foreach name="focus" item="focu">
+                        <li class="picslist">
+                            <div class="pics">
+                                 <a target="_blank" href="{$focu['link']}"><img src="__PUBLIC__/Uploads/posts/s_{$focu['pic']}" alt="" /></a>
+                            </div>
+                        </li>
+                    </foreach>
+                </ul>
+                <div class="slider-extra">
+                    <ul>
+                    	<li class="slider-selected">1</li>
+                    	<li>2</li>
+                    	<li>3</li>
+                    	<li>4</li>
+                    	<li>5</li>
+                    	<li>6</li>
+                    </ul>
+                </div>
+                <div class="slider-page" style="display: none">
+                    <a class="slider-prev" href="javascript:void(0)"><</a>
+                    <a class="slider-next" href="javascript:void(0)">></a>
+                </div>
+            </div>
+        </div><!--轮播 END-->
+        <!--公告拦 START-->
+        <div id="focus-extra" class="w">
+            <div id="news">
+                <div class="nt">
+                    <h2>京东快报</h2>
+                    <!-- <a href="#">更多 ></a> -->
+                </div>
+                <div class="nc">
+                    <ul>
+                        <foreach name="news" item="new">
+                            <li>
+                                <a href="#"><span>
+                                    <if condition="$new['type'] eq '1'">
+                                        [特惠]
+                                    <else />
+                                        [公告]
+                                    </if>
+                                    </span>{$new['title']}
+                                </a>
+                            </li>
+                        </foreach>
+                        <foreach name="news" item="new">
+                            <li>
+                                <a href="#"><span>
+                                    <if condition="$new['type'] eq '1'">
+                                        [特惠]
+                                    <else />
+                                        [公告]
+                                    </if>
+                                    </span>{$new['title']}
+                                </a>
+                            </li>
+                        </foreach>
+                        <foreach name="news" item="new">
+                            <li>
+                                <a href="#"><span>
+                                    <if condition="$new['type'] eq '1'">
+                                        [特惠]
+                                    <else />
+                                        [公告]
+                                    </if>
+                                    </span>{$new['title']}
+                                </a>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div><!--公告拦 END-->
+        <!--特色推荐 START-->
+        <div class="w">
+            <div id="todays">
+                <div class="tm">
+                </div>
+                <div class="tc">
+                    <ul>
+                        <volist name="goods" id="good">
+                            <eq name="good.isbest" value="2">
+                            <li>
+                            <div>
+                                <a target="_blank" href="__APP__/Details/index/id/{$good['id']}"><img width="151" src="__PUBLIC__/Uploads/goods/l_{$good['pic']}" alt="" /></a>
+                            </div>
+                            </li>  
+                            </eq>
+                        </volist>
+                    </ul>
+                    <div class="slider-page" style="display: none">
+                        <a class="slider-prev" href="javascript:void(0)"><</a>
+                        <a class="slider-next" href="javascript:void(0)">></a>
+                    </div>
+                </div>
+            </div>
+            <div id="guess-like">
+                <div class="guessyou">
+                    <div class="gt">
+                        <h2>猜你喜欢</h2>
+                        <a class="gt-more" href="javascript:;">换一批</a>
+                    </div>
+                    <div class="gc">
+                        <div class="gc-spacer">
+                            <i></i>
+                        </div>
+                        <ul class="gc-list">
+                            <volist name="goodsHot" id="v">
+                        	<li>
+                                <div class="g-img">
+                                    <a target="_blank" href="__APP__/Details/index/id/{$v['id']}"><img width="130" src="__PUBLIC__/Uploads/goods/l_{$v['pic']}" alt="" /></a>
+                                </div>
+                                <div class="g-info">
+                                    <div class="g-name"><a title="" target="_blank" href="__APP__/Details/index/id/{$v['id']}">{$v['name']}</a></div>
+                                    <div class="g-price">
+                                        <i>￥</i>{$v['saleprice']}
+                                    </div>
+                                </div>
+                            </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="special-buy">
+                <h2>京东特色购</h2>
+                <div class="sp-count">
+                    <div class="sp-left">
+                        <for start="0" end="12" name="i">
+                        <a target="_blank" href="__APP__/Details/index/id/{$goods[$i]['id']}">
+                            <p class="sp-icons">
+                                <span class="spicon sp-icon-left"></span>
+                                <span>今日最大牌</span>
+                                <span class="spicon sp-icon-right"></span>
+                            </p>
+                            <p class="sp-title">{$goods[$i]['name']}</p>
+                            <img width="200" src="__PUBLIC__/Uploads/goods/l_{$goods[$i]['pic']}" alt="" />
+                        </a>
+                        </for>
+                    </div>
+                </div>
+            </div>
+        </div><!--特色推荐 END-->
+        <!--楼层 START-->
+        <div id="content">
+            <div class="w">
+                <!--广告banner START-->
+                <div class="content-banner">
+                    <a href="#"><img src="__PUBLIC__/Uploads/images/content-banner-1.jpg" alt="" /></a>
+                    <a href="#"><img src="__PUBLIC__/Uploads/images/content-banner-2.jpg" alt="" /></a>
+                    <a href="#"><img src="__PUBLIC__/Uploads/images/content-banner-3.jpg" alt="" /></a>
+                </div><!--广告banner END-->
+                <!--1楼 START-->
+                <div id="floor1">
+                    <assign name="typeId" value="107" /><!--设置楼层展示类别 -->
+                    <div class="ft">
+                        <h2>
+                            <i>1F</i>潮流女士
+                        </h2>
+                        <ul class="tab">
+                            <volist name="typeShow" id="v">
+                            <eq name="v['pid']" value="$typeId">
+                            <li class="tab-item" >
+                                <a href="javascript:;">{$v['name']}</a>
+                                <span>◆</span>
+                            </li>
+                            </eq>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="fc">
+                        <div class="side">
+                            <div class="side-inner">
+                                <div class="banner">
+                                    <a target="_blank" title="" href="">
+                                        <img width="330" height="475" src="__PUBLIC__/Uploads/images/floor1-side.jpg">
+                                    </a>
+                                </div>
+                                <!--{begin 推荐子类-->
+                                <ul class="themes">
+                                <for start="0" end="count($typeHost[$typeId]['id'])" name="i">
+                                    <li class="fore1">
+                                        <a href="__APP__/List/index/typeid/{$typeHost[$typeId]['id'][$i]}" target="_blank">
+                                            <span>{$typeHost[$typeId]['name'][$i]}</span>
+                                        </a>
+                                    </li>
+                                </for>
+                                </ul><!--}end 推荐子类-->
+                                <!--{begin 全部子类-->
+                                <ul class="words">
+                                    <li class="fore1">
+                                    <foreach name="types[$typeId]['child']" item="v">
+                                        <a target="_blank" href="__APP__/List/index/typeid/{$v['id']}">{$v['state'] == 3 ? '<span class="style-red">' : ''}{$v['name']}{$v['state'] == 3 ? '</span>' : ''}</a>
+                                    </foreach>
+                                    </li>
+                                </ul><!--}end 全部子类-->
+                            </div>
+                        </div>
+                        <!--{begin 商品展示-->
+                        <volist name="typeShow" id="v">
+                        <eq name="v['pid']" value="$typeId">
+                        <div class="main">
+                            <ul class="main-body">
+                                <volist name="goods" id="good">
+                                <eq name="good['type_id']" value="$v['id']">
+                                <li>
+                                    <div class="p-img">
+                                        <a target="_blank" href="__APP__/Details/index/id/{$good['id']}"><img width="130" height="130" src="__PUBLIC__/Uploads/goods/s_{$good['pic']}" alt="" /></a>
+                                    </div>
+                                    <div class="p-name">
+                                        <a title="{$good['name']}" target="_blank" href="__APP__/Details/index/id/{$good['id']}">{$good['name']}</a>
+                                    </div>
+                                    <div class="p-price">
+                                        <span>￥</span>{$good['saleprice']}
+                                    </div>
+                                </li>
+                                </eq>
+                                </volist>
+                            </ul>
+                        </div>
+                        </eq>
+                        </volist><!--}end 商品展示-->
+                        <!--{begin 本类品牌-->
+                        <div class="slider">
+                            <ul>
+                            <for start="0" end="count($brands[$typeId]['id'])" name="i"><!-- {$brands[$typeId]['logo'][$i]} -->
+                                <li><a href="__APP__/List/index/brandid/{$brands[$typeId]['id'][$i]}"><img width="70" src="__PUBLIC__/Uploads/brands/s_{$brands[$typeId]['logo'][$i]}" alt="" /></a></li>
+                            </for>
+                            </ul>
+                        </div><!--}end 本类品牌-->
+                    </div>
+                </div><!--1楼 END-->
+                
+                <div class="today-special">
+                    <div class="tst">
+                        <h2>今日抄底</h2>
+                    </div>
+                    <div class="tsc">
+                        <ul>
+                            
+                            <volist name="goods" id="good">
+                                <eq name="good['ishot']" value="2">
+                                <li>
+                                    <div class="p-img">
+                                        <a target="_blank" href="__APP__/Details/index/id/{$good['id']}"><img width="100" src="__PUBLIC__/Uploads/goods/s_{$good['pic']}" alt="" /></a>
+                                    </div>
+                                    <div class="p-info">
+                                        <div class="p-name">
+                                            <a target="_blank"  width="100" height="100" title="" href="__APP__/Details/index/id/{$good['id']}">{$good['name']}</a>
+                                        </div>
+                                        <div class="p-price">
+                                            <span>￥{$good['saleprice']}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                               </eq>
+                           </volist>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!--楼层 END-->
+        <!--footer START-->
+        <div id="footer">
+            <div class="slogen">
+                <div class="w">
+                    <i class="item1"></i>
+                    <i class="item2"></i>
+                    <i class="item3"></i>
+                    <i class="item4"></i>
+                </div>
+            </div>
+            <div class="w">
+                <div class="otherinfo">
+                    <div class="links">
+                        <foreach name="links" item="link" key="k">
+                            <a href="{$link['linkaddress']}" target="_blank">{$link['linkname']}</a><span>|</span>
+                        </foreach>
+                    </div>
+                    <div class="copyright">ICP经营许可证：<span>京ICP证XXXXXX号</span>
+                    </div>
+                </div>
+            </div>
+        </div><!--footer END-->
+        <script type="text/javascript">
+            $('.otherinfo .links span').last().remove();
+        </script>
+        
+        <!--电梯 START--/>
+        <div id="global-toolbar">
+        
+        </div><!--电梯 END--/>
+        </!--个人快捷栏 START--/>
+        <div id="elevator">
+        
+        </div><!--个人快捷栏 END-->
+        
+     </body>
+ </html>

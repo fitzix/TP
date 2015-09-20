@@ -1,0 +1,321 @@
+<extend name="Public:layout" />
+<block name="css">
+<style type="text/css">
+    ul,li{list-style: none;padding: 0;margin:0;}
+    .Father_Title li{float: right;}
+    .li_width{float: left;margin-right: 5px}
+    .li_width label{margin: 0px}
+</style>
+<js href="__PUBLIC__/js/jquery-2.0.2.js" />
+<js href="__PUBLIC__/ueditor/ueditor.config.js" />    
+<js href="__PUBLIC__/ueditor/ueditor.all.min.js" />
+<js href="__PUBLIC__/Admin/js/addGoods.js" />
+<script type="text/javascript">
+    //初始化编辑器
+    //window.UEDITOR_HOME_URL = "__PUBLIC__/ueditor/";
+    $(function(){
+        var ue = UE.getEditor('container',{
+            //serverUrl :'{:U('Home/Index/ueditor')}',
+            initialFrameWidth : 990,//编辑栏宽度
+            initialFrameHeight : 500,//编辑栏高度
+            autoFloatEnabled : false,//工具栏自动悬浮
+            saveInterval : 60000,//自动保存时间ms
+            autoHeightEnabled : false
+        });
+        
+        var html = '';//定义空字串存放图片名称
+        $("#goodsinfo").submit(function(){
+            getImgName();
+        });
+        
+        //获取商品描述图
+        function getImgName(){
+            $("#imgsName").val('');//清空内容
+            html = ue.getContent();//获取html商品描述内容
+            var imgSrc = /\/[0-9]{16}[.]{1}[a-z]{3,}/gi;//正则匹配src内容
+            var imgName = /[0-9]{16}[.]{1}[a-z]{3,}/gi;//正则过滤出图片地址,
+            if(html.match(imgSrc)){
+                var imgsStr = '';
+                var imgsName = '';
+                imgsStr = html.match(imgSrc).toString();//匹配得到title内容字串,
+                imgsName = imgsStr.match(imgName).toString();//匹配得到图片名称字符串,
+                $("#imgsName").val(imgsName);//图片名称字串赋值
+           }
+        }
+        
+        //获取商品属性组合
+        function getGoodsAttrs(){
+            $('#attrValue').val('');//清空原来内容
+            var colorsize ='';
+            var eqs =  $('#process tr').length;
+            for(var k = 0; k < eqs; k++){
+                var index = $('#process tr').eq(k).children('.color').length;
+                for(var i = 0; i< index; i++){
+                    colorsize += $('#process tr').eq(k).children('.color').eq(i).html()+",";
+                }
+                colorsize += '@';//用@符号分割每一组尺码颜色组合
+            }
+            $('#attrcolorSize').val(colorsize);//赋值商品颜色和尺码
+        }
+        
+        //验证表单
+        function checkF(){
+            var msgs = '<i style="font-style: normal; color: red">请补充信息！</i>';
+                var cname = checkForm($('#name'), msgs);
+                var ctype = checkForm($('#type'), msgs);
+                //var cbrands = checkForm($('#brands'), msgs);
+                var csale = checkForm($('#saleprice'), msgs);
+                var ccost = checkForm($('#costprice'), msgs);
+                //var gprice = checkForm($('.price'), msgs);
+                //var gnum = checkForm($('.num'), msgs);
+                if (cname && ctype && csale && ccost) {
+                    return true;
+                } else {
+                    return false;
+                }
+         }   
+        function checkForm(Obj, msg){
+            Obj.next().html('');
+            if(!Obj.val() || Obj.val().length == 0){
+                Obj.next().html(msg);
+                return false;
+            }
+        }
+
+    })
+    
+</script>
+    
+</block>
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="__APP__/Index">首页</a>
+                </li>
+
+                <li>
+                    <a href="__CONTROLLER__/index">商品管理</a>
+                </li>
+                <li class="active">添加商品</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/index">返回商品列表</a>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form id="goodsinfo" action="__CONTROLLER__/insert" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                        <input type="hidden" name="imagesName" id="imgsName" value="" />
+                        <!-- <input type="hidden" name="attrcolorSize" id="attrcolorSize" value="" /> -->
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 商品名 </label>
+
+                            <div class="col-sm-9">
+                                <input name="name" type="text" id='name' class="col-xs-10 col-sm-5" />
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle">60个字符以内</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 商品类别 </label>
+
+                            <div class="col-sm-9">
+                                <select name="type_id" id="type" type="text" class="msgs col-xs-10 col-sm-3" >
+                                    <option value='0'>请选择商品类别</option>
+                                    <foreach name="types" item="type">
+                                        <option value="{$type['id']}" {$type['pid']==0?'disabled': ''}>{$type['html']}{$type['name']}</option>
+                                    </foreach>
+                                </select>
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle" style="color: red;font-size: 20px">*</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                         <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 商品品牌 </label>
+
+                            <div class="col-sm-9">
+                                <select name="brand_id" type="text" id="brands" class="msgs col-xs-10 col-sm-3" >
+                                    <option value="0">请选择商品品牌</option>
+                                </select>
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle" style="color: red;font-size: 20px">*</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 主价格 </label>
+
+                            <div class="col-sm-9">
+                                <input type="text" name="saleprice" id="saleprice" class="msgs col-xs-10 col-sm-3" />
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle">两位小数点</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 成本价格 </label>
+
+                            <div class="col-sm-9">
+                                <input type="text" name="costprice" id="costprice" class="msgs col-xs-10 col-sm-3" />
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle">两位小数点</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div id="goodsattrvaluse">
+                            <div class="form-group">
+                             <ul class="Father_Title col-sm-1 no-padding-right" style="margin:0"><li>颜色</li></ul>
+
+                             <div class="col-sm-9">
+                                <ul class="Father_Item0" style="margin:0">
+                                    <foreach name="attrs" item="attr">
+                                        <if condition="$attr['attrname'] eq '颜色'">
+                                        <li class="li_width"><label><input type="checkbox" name="colors[]" class="ace ace-checkbox-2" value="{$attr['id']}" />{$attr['attrvalue']}<span  class="lbl"  contentEditable="true"></span></label></li>
+                                        </if>
+                                    </foreach>
+                                </ul>
+                             </div>
+                            </div>
+                            <div class="form-group">
+                                <ul class="Father_Title col-sm-1 no-padding-right" style="margin:0"><li>尺寸</li></ul>
+                             <div class="col-sm-9">
+                                <ul class="Father_Item1" style="margin:0">
+                                    <foreach name="attrs" item="attr">
+                                        <if condition="$attr['attrname'] eq '尺码'">
+                                        <li class="li_width"><label><input type="checkbox" name="sizes[]" class="ace ace-checkbox-2" value="{$attr['id']}" />{$attr['attrvalue']}<span class="lbl"> </span></label></li>
+                                        </if>
+                                    </foreach>
+                                </ul>
+                             </div>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <!-- 创建商品属性表单 START -->
+                        <div class="form-group">
+                             <label class="col-sm-1 control-label no-padding-right" for="form-field-2"></label>
+                            <div id="createTable" class="col-sm-9"></div>
+                        </div><!-- 创建商品属性表单 END -->
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 选择主图 </label>
+                            <div class="col-xs-10 col-sm-3">
+                                <input name="pic" type="file" class="msgs" />
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 商品描述 </label>
+                            <div class="col-xs-10 col-sm-6">
+                                <textarea id="container" name="editorValue" type="text/plain"></textarea>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" style="line-height: 18px" for="form-input-readonly"> 状态 </label>
+                            <div class="col-xs-10 col-sm-3">
+                                <input name="state" class="ace" type="radio" class="msgs" checked value="1" /><span class="lbl"> 进仓库</span>
+                                <input name="state" class="ace" type="radio" class="msgs" value="2" /><span class="lbl"> 立即上架</span>
+                                <input name="isbest" class="ace" type="checkbox" class="msgs" value="2" /><span class="lbl"> 推销</span>
+                                <input name="ishot" class="ace" type="checkbox" class="msgs" value="2" /><span class="lbl"> 热销</span>
+                            </div>
+                        </div>
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button class="btn btn-info" id="sub" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重填
+                                </button>   
+                            </div>
+                        </div>
+					</form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+
+</block>
+<block name="js">
+<script type="text/javascript">
+    
+    //根据类别获取商品品牌，属性
+    var a = $("#type").change(function(){
+            $("#brands").html('<option value="0">请选择商品品牌</option>');
+            getBrands($("#type"))
+        });
+    
+    //alert($("#type").change(getType()));
+    //ajax后台提交数据 根据商品类别获取商品品牌(参数为商品类别对象)
+    function getBrands(obj){
+        $.post('__CONTROLLER__/getBrands',
+            {'id' : obj.val()},
+            function(data){
+                if (data) {
+                var html = '';
+                for (var i = 0; i < data['id'].length; i++) {
+                    html += "<option value='" + data['id'][i] + "'>" + data['name'][i] + "</option>";
+                }
+                $("#brands").append(html);
+                }
+            },'json');
+    }
+    
+    //ajax后台提交数据 根据商品类别获取商品属性(参数1：商品类别对象；2：商品属性对象)
+    function getAttrs(obj, attrObj){
+        var attr = attrObj;
+        var attrvalue = attr.val();
+        $.post('__CONTROLLER__/getAttrs',
+            {'id' : obj.val(), 'attrname' : attrvalue},
+            function(data){
+                if (data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += "<option value='" + data[i]['id'] + "'>" + data[i]['attrvalue'] + "</option>";
+                }
+                attr.append(html);
+                }
+            },'json');
+    }
+</script>
+</block>

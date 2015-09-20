@@ -1,0 +1,107 @@
+<extend name="Public:layout" />
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">商品管理</a>
+                </li>
+                <li class="active">商品详情</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/index">返回商品列表</a>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form id="goodsinfo" action="__CONTROLLER__/insert" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                        <input type="hidden" name="imagesName" id="imgsName" value="" />
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 商品名 </label>
+
+                            <div class="col-sm-9">
+                                <span class="col-xs-10 col-sm-5" style="line-height: 29px;color: #438EB9">{$good['name']}</span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 商品类别 </label>
+                            <div class="col-sm-9">
+                                <span class="col-xs-10 col-sm-5" style="line-height: 29px;color: #438EB9">{$good['typename']}</span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 商品品牌 </label>
+
+                            <div class="col-sm-9">
+                                <span class="col-xs-10 col-sm-5" style="line-height: 29px;color: #438EB9">{$good['brandname']}</span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 主价格 </label>
+
+                            <div class="col-sm-9">
+                                <span class="col-xs-10 col-sm-5" style="line-height: 29px;color: #438EB9">{$good['saleprice']}</span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+
+                        
+                        
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 主图 </label>
+                            <div class="col-xs-10 col-sm-3">
+                                <img src="__PUBLIC__/Uploads/goods/s_{$good['pic']}" alt="" />
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 商品描述 </label>
+                            <div class="col-xs-10 col-sm-6">
+                                <div>{$good['descr']}</div>
+                            </div>
+                        </div>
+					</form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+
+</block>
+<block name="js">
+</block>

@@ -1,0 +1,175 @@
+<extend name="Public:layout" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/index/css/shopcart.css" type="text/css" />
+</block>
+<block name="main-content">
+<div id="shopcard">
+    <div class="w">
+        <!--{begin 表头-->
+        <div class="spt">
+            <ul>
+            	<li class="t-checkbox">
+                    <input type="checkbox" value=""/>全选
+                </li>
+            	<li class="t-goods">商品</li>
+            	<li class="t-props"></li>
+            	<li class="t-price">单价</li>
+            	<li class="t-num">数量</li>
+            	<li class="t-sum">小计(元)</li>
+            	<li class="t-action">操作</li>
+            </ul>
+        </div><!--}end 表头-->
+        <!--{begin 单品-->
+        <div class="shopcart-main">
+            <div class="spc">
+                <div class="item-list">
+                    <div class="item-full">
+                        <div class="item-item">
+                            <div class="item-form">
+                                <div class="p-checkbox">
+                                    <div>
+                                        <input type="checkbox" value="" />
+                                        <span class="line-circle"></span>
+                                    </div>
+                                </div>
+                                <div class="p-goods">
+                                    <div class="goods-item">
+                                        <div class="p-img">
+                                            <a href="#" target="_blank" ><img src="__PUBLIC__/Uploads/images/rBEbRlN0lhAIAAAAAAJ_xiat1rQAABSfQK_KRMAAn_e892.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="item-msg">
+                                            <div class="p-name">
+                                                <a target="_blank" href="">英特尔（Intel） 酷睿i5-4590 22纳米 Haswell全新架构盒装CPU处理器 （LGA1150/3.3GHz/6M三级缓存）</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-props">
+                                    <div class="props-txt">颜色：全新Haswell</div>
+                                    <div class="props-txt">尺码：I5 4590</div>
+                                </div>
+                                <div class="p-price">
+                                    <strong>1299.00</strong>
+                                </div>
+                                <div class="p-num">
+                                    <div class="num-form">
+                                        <a class="decrement disabled" style="width:18px" href="javascript:void(0);">-</a>
+                                        <input class="itxt" type="text" value="10" />
+                                        <a class="increment" href="javascript:void(0);">+</a>
+                                    </div>
+                                </div>
+                                <div class="p-sum">
+                                    <strong>12990.00</strong>
+                                </div>
+                                <div class="p-action">
+                                    <a href="#">删除</a>
+                                </div>
+                            </div>
+                            <div class="item-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--}end 单品-->
+            <!--{begin 单品-->
+            <div class="spc">
+                <div class="item-list">
+                    <div class="item-full">
+                        <div class="item-item">
+                            <div class="item-form">
+                                <div class="p-checkbox">
+                                    <div>
+                                        <input type="checkbox" value="" />
+                                        <span class="line-circle"></span>
+                                    </div>
+                                </div>
+                                <div class="p-goods">
+                                    <div class="goods-item">
+                                        <div class="p-img">
+                                            <a href="#" target="_blank" ><img src="__PUBLIC__/Uploads/images/rBEbRlN0lhAIAAAAAAJ_xiat1rQAABSfQK_KRMAAn_e892.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="item-msg">
+                                            <div class="p-name">
+                                                <a target="_blank" href="">英特尔（Intel） 酷睿i5-4590 22纳米 Haswell全新架构盒装CPU处理器 （LGA1150/3.3GHz/6M三级缓存）</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-props">
+                                    <div class="props-txt">颜色：全新Haswell</div>
+                                    <div class="props-txt">尺码：I5 4590</div>
+                                </div>
+                                <div class="p-price">
+                                    <strong>1299.00</strong>
+                                </div>
+                                <div class="p-num">
+                                    <div class="num-form">
+                                        <a class="decrement disabled" style="width:18px" href="javascript:void(0);">-</a>
+                                        <input class="itxt" type="text" value="10" />
+                                        <a class="increment" href="javascript:void(0);">+</a>
+                                    </div>
+                                </div>
+                                <div class="p-sum">
+                                    <strong>12990.00</strong>
+                                </div>
+                                <div class="p-action">
+                                    <a href="#">删除</a>
+                                </div>
+                            </div>
+                            <div class="item-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--{begin 单品-->
+        </div>
+        
+    </div>
+    <!--{begin 结算-->
+    <div class="cart-floatbar w">
+        <div class="cart-toolbar">
+            <div class="toolbar-wrap">
+                <div class="options-box">
+                    <div class="select-all">
+                        <div class="cart-checkbox"></div>
+                        <input type="checkbox" value="" />
+                    </div>
+                    <div class="operation">
+                        <a class="remove-batch" href="#none">删除选中的商品</a>
+                    </div>
+                    <div class="clr"></div>
+                    <div class="toolbar-right">
+                        <div class="normal">
+                            <div class="comm-right">
+                                <div class="btn-area">
+                                    <a class="submit-btn" href="javascript:void(0);">去结算<b></b></a>
+                                </div>
+                                <div class="price-sum">
+                                    <div>
+                                        <span class="txt">总价（不含运费）：</span>
+                                        <span class="price sumPrice">
+                                            <em data-bind="2851.00">¥2851.00</em>
+                                        </span>
+                                        <br>
+                                        <span class="txt">已节省：</span>
+                                        <span class="price totalRePrice">- ¥0.00</span>
+                                    </div>
+                                </div>
+                                <div class="amount-sum">
+                                     已选择
+                                    <em>7</em>
+                                    件商品
+                                    <b class="up"></b>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--}end 结算-->
+</div>
+<div style="height:0;clear:both;"></div>
+</block>
+<block naem="js">
+
+</block>

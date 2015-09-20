@@ -1,0 +1,404 @@
+<extend name="Public:layout"/>
+<block name="css">
+	<style type="text/css">
+		/*==========================主体部分开始=======================================*/
+		#hotsales{width:1210px;height:152px;margin:10px auto;background:#f1f1f1;}
+		#hotsales > div{float:left;}
+		#hotsales div.hotimg{width:60px;height:85px;background:#ddd;margin-left:20px;margin-right:10px;background-image:url("__PUBLIC__/index/images/20150715183029.png");}
+		#hotsales div.goods{width:920px;height:137px;margin-top:5px;}
+		#hotsales div.goods div.hotgoods{width:286px;height:122px;background:#fff;float:left;margin:7px;}
+		#hotsales div.goods div.hotgoods > div{float:left;}
+		#hotsales div.goods div.hotgoods div.goodspic{width:100px;height:100px;margin:11px 7px;}
+		#hotsales div.goods div.hotgoods div.goodsdescr{width:154px;height:100px;margin:11px 7px;}
+		#hotsales div.goods div.hotgoods div.goodsdescr div.goodstitle{width:154px;height:45px;line-height:40px;overflow:hidden;}
+		#hotsales div.goods div.hotgoods div.goodsdescr div.goodsprice{width:154px;height:25px;}
+		#hotsales div.goods div.hotgoods div.goodsdescr div.goodsget{width:154px;height:30px;overflow:hidden;}
+		#hotsales div.goods div.hotgoods div.goodsdescr div.goodsget a{display:block;text-align: center;width:74px;height:24px;line-height:24px;border:1px solid #bbb;}
+		#hotsales div.goods div.hotgoods div.goodsdescr div.goodsget a:hover{border:1px solid red;text-decoration:none}
+		
+		#hotsales div.activity{width:200px;height:152px;}
+		#hotsales div.activity > div{float:left;}
+		#hotsales div.activity div.actimg{width:60px;height:85px;background-image:url("__PUBLIC__/index/images/20150715183047.png");margin-right:10px;}
+		#hotsales div.activity div.saleactive{width:130px;height:152px;overflow:hidden;}
+		#hotsales div.activity div.saleactive ul{margin: 5px 5px 0 0;overflow: hidden;}
+		#hotsales div.activity div.saleactive ul li{font-family:simsun;height:25px;margin-top:5px;padding:0 5px;list-style-type:disc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+		
+		/*==========================主体部分结束=======================================*/
+		/*==========================商品品牌分类开始=======================================*/
+		#crumbs-nav-main{width:1210px;height:25px;margin:0px auto;line-height:25px;}
+		#crumbs-nav-main span.typefont{font-size:15px;}
+		#s-title{width:1210px;height:35px;background:#f1f1f1;margin:5px auto;line-height:35px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
+		#goods-brands{width:1210px;height:100px;margin:5px auto;}
+		#goods-brands > div {float:left;}
+		#goods-brands div.sl-key{width:110px;height:100px;}
+		#goods-brands div.sl-value{width:950px;height:100px;margin-top:1px;overflow:hidden}
+		#goods-brands div.sl-value ul li a{display:block;width:116px;height:48px;line-height:48px;text-align:center;float:left;border:1px solid #ddd;}
+		#goods-brands div.sl-value ul li a:hover{border:1px solid #e4393c;text-decoration:none;}
+		#goods-brands div.sl-ext{width:150px;height:100px;}
+		
+		#price{width:1210px;height:35px;margin:0px auto;border-top:1px solid #ddd;border-bottom:1px solid #ddd;line-height:35px;}
+		#price div.good-price{width:100px;height:35;}
+		#price > div{float:left;}
+		#price div.range ul li {margin:0px 50px 0px 0px;height:35px;float:left;text-indent:10px;}
+		#price div.range-price{width:300px;height:35px;}
+		
+		#attrtype{width:1210px;height:35px;margin:0px auto;border-bottom:1px solid #ddd;line-height:35px;}
+		#attrtype div.attr{width:100px;height:35;}
+		#attrtype > div{float:left;}
+		#attrtype div.attrvalue{float:left;width:800px;overflow:hidden;height: 35px;}
+		#attrtype div.attrvalue ul li {margin:0px 20px 0px 0px;height:35px;float:left;}
+		#attrtype div.attrbox{float:right;width:250px;height:35px;line-height:35px;}
+		#attrtype div.attrbox a, .attrbox button{display:inline;width:50px;height:20px;border:1px solid #bbb;float:left;margin-left:20px;line-height:20px;text-align:center;margin-top:7px;}
+		.attrbox button{display:none;height: 22px;background: #fff;color: #C4393C;}
+		#hotsale{clear:both;width:1210px;height:35px;margin:0px auto;border-bottom:1px solid #ddd;line-height:35px;}
+		#hotsale div.hot-m{width:100px;height:35;}
+		#hotsale > div{float:left;}
+		#hotsale div.hot-g ul li{margin:0px 20px 0px 0px;height:35px;float:left;text-indent:10px;}
+        .attrvalue a{margin-left:-10px;}
+        .attrvalue input, .hot-g input{visibility:hidden;width:0;height:0}
+        *.attrvalue .check, .hot-g .check{color: #C4393C;}
+        #searchgoods ul li .check{color:#C4393C;}
+		/*==========================商品品牌分类结束=======================================*/
+		
+		/*==========================商品列表开始=======================================*/
+		
+		#goodslist{overflow:hidden;width:1210px;margin:10px auto;}
+		#mc{width:210px;border:1px solid #bbb;float:left;}
+		#mc div.mt{width:210px;height:32px;line-height:32px;text-indent:10px;}
+		#mc div.mtgoods{width:210px;overflow:hidden;}
+		#mc div.mtgoods div.p-goods{width:190px;height:254px;margin:10px 10px 0px 10px;padding-bottom:5px;}
+		
+		#mc div.mtgoods div.p-goods div.p-img{width:190px;height:190px;}
+		#mc div.mtgoods div.p-goods div.p-name{width:190px;height:30px;background:#fff;text-indent:10px;overflow:hidden;}
+		#mc div.mtgoods div.p-goods div.p-name a{display:block;width:190px;height:30px;line-height:30px;overflow:hidden;}
+		#mc div.mtgoods div.p-goods div.p-price{width:190px;height:17px;background:#fff;text-indent:10px;overflow:hidden;line-height:16px;}
+		#mc div.mtgoods div.p-goods div.p-review{width:190px;height:17px;background:#fff;text-indent:10px;overflow:hidden;line-height:16px;}
+		
+		#ml{width:990px;background:#fff;float:right;border:1px solid #bbb;position:relative;}
+		#ml div.filter{width:990px;height:77px;}
+		#ml div.filter div.filter1{width:990px;height:37px;background:#f1f1f1;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
+		#ml div.filter div.filter1 > div{float:left;margin-top:6px }
+		#ml div.filter div.filter1 div.f-sort{width:216px;height:25px;margin-left:10px;}
+		#ml div.filter div.filter1 div.f-sort ul li a{display:block;padding:0px 8px 0px 8px;height:25px;float:left;line-height:25px;border:1px solid #ddd;color:#666;}
+		#ml div.filter div.filter1 div.f-sort ul li a:hover{border:1px solid #ddd;text-decoration:none;}
+		
+		#ml div.filter div.filter1 div.f-search{width:216px;height:25px;margin-left:30px;}
+		#ml div.filter div.filter1 div.f-search input.f-inp{height:20px;border:1px solid #bbb;}
+		#ml div.filter div.filter1 div.f-search input.f-btn{width:40px;height:23px;margin-left:-4px;}
+		#ml div.filter div.filter2{width:990px;height:38px;background:#f9f9f9;border-bottom:1px solid #ddd;}
+		#ml div.plist{width:990px;background:#fff;margin-top:10px;overflow:hidden}
+		#ml div.plist ul li{width:240px;height:400px;background:#fff;float:left;margin:2px;border:1px solid #fff;}
+
+		#ml div.plist ul li:hover{border:1px solid #e4393c;}
+		#ml div.plist ul li div.p-goods{width:240px;height:350px;background:#fff;}
+		#ml div.plist ul li div.p-goods div.p-img{width:220px;height:220px;margin-left:10px;margin-top:10px;}
+		#ml div.plist ul li div.p-goods div.p-scroll{display:none;width:220px;height:29px;margin-left:10px;margin-top:10px;background:#000;}
+		#ml div.plist ul li div.p-goods div.p-commit{width:220px;height:20px;margin-left:10px;margin-top:10px;}
+		#ml div.plist ul li div.p-goods div.p-price{width:220px;height:22px;margin-left:10px;margin-top:10px;}
+		#ml div.plist ul li div.p-goods div.p-name{width:220px;height:20px;margin-top:10px;overflow:hidden;text-indent:10px;}
+		#ml div.plist ul li div.p-goods div.p-shop{width:220px;height:18px;margin-left:10px;margin-top:10px;}
+		#ml div.page{width:990px;height:30px;background:#fff;}
+        .pagination{float: right;}
+		.pagination li{float: left;}
+		.pagination li a,.pagination li span{float:left;font-family:arial;font-size:14px;height:19px;line-height:20px;margin-left:2px;overflow:hidden;border-radius:3px;padding:4px 11px;font-weight:700;color:#005aa0;border:1px solid #ccc}
+		.pagination .active span{border:none;color:#f60;}
+		
+		/*===================================浏览历史开始==================================================*/
+		#review{width:1210px;height:160px;border:1px solid #bbb;margin:0px auto;}
+		#review div.mt{width:1210px;height:30px;border-top:1px solid #bbb;}
+		#review div.mt div.title{width:200px;height:30px;float:left;line-height:30px;text-indent:10px;}
+		#review div.mt div.extra{width:80px;height:30px;float:right;line-height:30px;}
+		#review div.mc{width:1210px;height:126px;}
+		#review div.mc ul li{width:86px;height:112px;float:left;margin-top:5px;margin-left:5px;border:1px solid #fff;}
+		#review div.mc ul li:hover{border:1px solid #bbb;}
+		#review div.mc ul li div.mc-img{width:70px;height:70px;margin:5px auto;}
+		#review div.mc ul li div.mc-price{width:70px;height:18px;margin:5px auto;color:#e4393c;text-align:center;}
+		/*===================================浏览历史结束==================================================*/
+		
+	</style>	
+</block>
+
+<block name="main-content">
+	<form id="filtervalue" action="__APP__/List/index/attrsizeid/45" method="post" style="display:none">
+			<input type="text" name="filter" value="{$filter}" />
+            <button type="submit" name="test" value="aaaa" id="subfilter"></button>
+		</form>
+		<!--======================热卖推荐开始==============================-->
+		<div id="hotsales">
+			<div class="hotimg"></div>
+			<div class="goods">
+				<foreach name="hot_goods" item="goods">
+					<div class="hotgoods">
+						<div class="goodspic"><img width="100" src="__PUBLIC__/Uploads/goods/l_{$goods['pic']}"></div>
+						<div class="goodsdescr">
+							<div class="goodstitle"><a target="_blank" href="__APP__/Details/index/id/{$goods['id']}">{$goods['name']}</a></div>
+							<div class="goodsprice">特价：{$goods['saleprice']}</div>
+							<div class="goodsget"><a target="_blank" href="__APP__/Details/index/id/{$goods['id']}">立即抢购</a></div>
+						</div>
+					</div>
+				</foreach>
+			</div>
+			<div class="activity">
+				<div class="actimg"></div>
+				<div class="saleactive">
+					<ul>
+						<foreach name="news" item="new">
+							<li>
+                            ·
+                            <a href="javascript:;">{$new['title']}</a></li>
+						</foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--======================热卖推荐结束==============================-->
+		<!--======================商品品牌分类开始==============================-->
+		<div id="crumbs-nav-main">
+			<span class="typefont"><b>手机</b></span>　>　
+			<span>手机通讯</span>　>　
+			<span>手机</span>
+		</div>
+		<div id="s-title">
+			<span style="color:red;font-size:15px;">　手机</span>
+			<span>　商品筛选</span>　
+			<span>共{$count}个商品</span>
+		</div>
+		<!--=========商品品牌===========-->
+        <div id="searchgoods">
+        <notempty name="brandList">
+		<div id="goods-brands">
+			<div class="sl-key"><span>　品牌：</span></div>
+			<div class="sl-value">
+				<ul>
+                    <volist name="brandList" id="v">
+                        <li><a class="subfilter" href="__APP__/List/index/brandid/{$v['id']}">{$v['name']}</a></li>
+                    </volist>
+				</ul>
+			</div>
+			<div class="sl-ext">
+				<span></span>　　
+				<span></span>
+			</div>
+		</div>
+		</notempty>
+		<div id="price">
+			<div class="good-price"><span>　价格：</span></div>
+			<div class="range">
+				<ul>
+					<li><a class="subfilter" href="__APP__/List/index/lt//get//elt/">不限</a></li>
+					<li><a class="subfilter" href="__APP__/List/index/lt/100">0-100</a></li>
+					<li><a class="subfilter" href="__APP__/List/index/elt/300/gt/100">100-300</a></li>
+					<li><a class="subfilter" href="__APP__/List/index/elt/500/gt/300">300-500</a></li>
+					<li><a class="subfilter" href="__APP__/List/index/elt/700/gt/500">500-700</a></li>
+					<li><a class="subfilter" href="__APP__/List/index/elt/1000/gt/700">700-1000</a></li>
+					<li><a class="subfilter" href="__APP__/List/index/gt/1000">1000以上</a></li>
+				</ul>
+			</div>
+			<div class="range-price">
+				<form action="__APP__/List/index" method="get">
+					<input type="text" name="egt" size=3 style="border:1px solid #bbb;height:20px;"> - 
+					<input type="text" name="elt" size=3 style="border:1px solid #bbb;height:20px;">　
+					<input type="submit" value="确定">
+				</form>
+			</div>
+		</div>
+		<div id="attrtype">
+			<div class="attr"><span>　颜色：</span></div>
+			<form action="__APP__/List/index" method="get">
+            <div class="attrvalue">
+				<ul>                        
+                <li><a class="subfilter" href="__APP__/List/index/id/"><input type="checkbox" name="id" value=""/>不限</a></li>
+                    <volist name="attrs" id="attr">
+                        <eq name="attr['attrname']" value="颜色">
+                        <li><a class="subfilter" href="__APP__/List/index/attrid/{$attr['id']}"><input type="checkbox" name="attrid[]" value="{$attr['id']}"/>{$attr['attrvalue']}</a></li>
+                        </eq>
+                    </volist>
+				</ul>
+			</div>
+			<div class="attrbox">
+				<a class="moreattr" href="javascript:;">更多</a>　　　
+				<a class="morecheck" href="javascript:;">+ 多选</a>
+				<button type="submit" onclick="$('#filtervalue').submit()">确认</button>
+			</div>
+            </form>
+		</div>
+		<div id="hotsale">
+			<div class="hot-m"><span>　尺码：</span></div>
+			<div class="hot-g">
+				<ul>
+                <li><a class="subfilter" href="__APP__/List/index/attrsizeid/"><span>不限</span></a></li>
+                    <volist name="attrs" id="attr">
+                        <eq name="attr['attrname']" value="尺码">
+                        <li><a class="subfilter" href="__APP__/List/index/attrsizeid/{$attr['id']}">{$attr['attrvalue']}</a></li>
+                        </eq>
+                    </volist>
+				</ul>
+			</div>
+		</div>
+        </div>
+		<!--======================商品品牌分类结束==============================-->
+		<!--======================商品列表开始==============================-->
+		<div id="goodslist">
+			<!--===========推荐商品=============-->
+			<div id="mc">
+				<div class="mt"><h3>商品推荐：</h3></div>
+				<div class="mtgoods">
+					<foreach name="best_goods" item="goods">
+						<div class="p-goods">
+							<div class="p-img"><a target="_blank" href="__APP__/Details/index/id/{$goods['id']}"><img width="190" src="__PUBLIC__/Uploads/goods/{$goods['pic']}"></a></div>
+							<div class="p-name"><a target="_blank" href="__APP__/Details/index/id/{$goods['id']}">{$goods['name']}</a></div>
+							<div class="p-price"><span style="color:#e4393c;font-size:15px;"><b>{$goods['saleprice']}</b></span></div>
+							<div class="p-review"><span>共有 <a href="#">{$goods['reviewcount']}</a> 个评价</span></div>
+						</div>
+					</foreach>
+				</div>
+			</div>
+			
+			<div id="ml">
+				<div class="filter">
+					<div class="filter1">
+						<div class="f-sort">
+							<ul>
+								<li><a class="f-sear f-num" style="background:#e4393c;color:#fff;border:1px solid red;" href="javascript:">销量</a></li>
+								<li><a href="javascript:" class="f-sear f-price">价格</a></li>
+								<li><a href="javascript:" class="f-sear f-review">评论数</a></li>
+								<li><a href="javascript:" class="f-sear f-addtime">上架时间</a></li>
+							</ul>
+						</div>
+						<div class="f-search">
+							<input class="goods-search" class="f-inp" type="text" value="请输入商品关键字" name="">
+							<input class="f-btn" type="submit" value="搜索">
+						</div>
+					</div>
+					<div class="filter2"></div>
+				</div>
+				<div class="plist">
+                    <empty name="goodsList">
+                        <strong style="display: block; width: 120px; margin: 0 auto;">没有搜索相关商品...</strong>
+                    </empty>
+					<ul>
+                    <volist name="goodsList" id="v">
+                        <li>
+							<div class="p-goods">
+								<div class="p-img"><a target="_blank" href="__APP__/Details/index/id/{$v['id']}"><img width="220" src="__PUBLIC__/Uploads/goods/l_{$v['pic']}"></a></div>
+								<div class="p-scroll"></div>
+								<div class="p-price"><span style="color:#e4393c;font-size:18px;">￥{$v['saleprice']}</span></div>
+								<div class="p-name"><a target="_blank" href="__APP__/Details/index/id/{$v['id']}">{$v['name']}</a></div>
+								<div class="p-commit"><span>已有人 <a style="color:#005aa0;font-size:15px;" href="javascript:;">{$v['reviewcount']}</a> 评价</span></div>
+						
+								<div class="p-shop"><a target="_blank" style="color:#000;" href="__APP__/List/index/typeid/{$v['type_id']}">{$typeList[$v['type_id']]}</a><!-- <span>　京东自营</span> --></div>
+							</div>
+						</li>
+                    </volist>
+					</ul>
+				</div>
+				<div class="page">{$page}</div>
+				
+				
+			</div>
+		</div>
+		<!--======================商品列表结束==============================-->
+		
+		<!--======================浏览历史开始==============================-->
+		<notempty name="histories">
+        <div id="review">
+			<div class="mt">
+				<div class="title"><h3>最近浏览</h3></div>
+				<div class="extra"><a href="#">更多浏览记录</a></div>
+			</div>
+			<div class="mc">
+				<ul>
+					<foreach name="histories" item="goods">
+						<li>
+							<div class="mc-img"><a href="#"><img src="__PUBLIC__/Uploads/goods/{$goods['pic']}"></a></div>
+							<div class="mc-price">{$goods['price']}</div>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+        </notempty>
+		<!--======================浏览历史结束==============================-->
+		
+</block>
+<block name="js">
+	<script type="text/javascript">
+    
+        //window.unonload = function(){alert('确定要离开吗?');} 
+		//===============商品排序方式====================
+		$(".f-sear").click(function(){
+			$(this).parent().siblings().children().css({"border":"1px solid #bbb","background":"#f1f1f1","color":"#666"})
+			$(this).css({"border":"1px solid red","background":"#e4393c","color":"#fff"});
+		});
+		
+		//===============商品搜索========================
+		$(".goods-search").focus(function(){
+			$(this).val("");
+		});
+		$(".goods-search").blur(function(){
+			$(this).val("请输入商品关键字");
+		});
+		
+		<!--
+        //===============颜色搜索================
+        //颜色收起、展开
+        $('.moreattr').toggle(function(){
+            $('.attrvalue').css({'height':'auto'});
+            $('.moreattr').html('收起');
+        },function(){
+            $('.attrvalue').css({'height':'35px'});
+            $('.moreattr').html('更多');
+        })
+        //单选、多选
+        var html = $('.attrvalue').html();
+        $('.morecheck').toggle(function(){
+            $('.attrvalue a').removeAttr('href');
+            $(this).html('单选');
+            $('.subfilter').unbind("click");//去除a标签单事件
+            //点击选择颜色
+            $('.attrvalue a').toggle(function(){
+                $(this).addClass('check');
+                $(this).find('input').attr('checked',true);
+                $('.attrbox button').css({'display':'block'});
+            },function(){
+                $(this).removeClass('check');
+                $(this).find('input').attr('checked',false);
+            })
+            
+        },function(){
+            $('.attrvalue').html(html);
+            $(this).html('+ 多选');
+            $('.attrbox button').css({'display':'none'});
+        })
+       
+       
+        $('.subfilter').click(function(){
+            return(subFilter($(this)));
+        });
+        $('.num').click(function(){
+            return(subFilter($(this)));
+        });
+        $('.prev').click(function(){
+            return(subFilter($(this)));
+        });
+        $('.next').click(function(){
+            return(subFilter($(this)));
+        });
+        //提交表单
+        function subFilter(Obj){
+            var html = Obj.attr('href');
+            $('#filtervalue').attr('action',html)
+            $('#filtervalue').submit();
+            return false;
+        }
+        var ss = $('#filtervalue').serialize();
+        alert(ss);
+        -->
+	</script>
+	
+</block>
+
+
+
+
+		

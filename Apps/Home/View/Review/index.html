@@ -1,0 +1,261 @@
+<extend name="Public:layout" />
+<block name="css">
+	<style type="text/css">
+		/*==================评价框======================*/
+		.review_box{display:none;position:fixed;top:40px;left:350px;width:600px;height:450px;background:#f7f7f7;border:1px solid #ddd;}
+		.review_box div.box{width:600px;height:390px;background:#f7f7f7;margin:0px auto}
+		.review_box div.box div.box_top{width:600px;height:40px;background:#e4393c;line-height:40px;border-bottom:1px solid #ddd;color:#fff;font-size:16px;text-indent:10px;}
+		.review_box div.box div.box_star{width:500px;height:40px;background:#f7f7f7;line-height:40px;border-bottom:1px solid #ddd;}
+	    .review_box div.box div.box_star div.star1{float:left;width:100px;height:40px;background:#f7f7f7;line-height:40px;text-align:center;}
+		.review_box div.box div.box_star div.star2{float:right;width:400px;height:40px;background:#ff7f7f7;line-height:40px;}
+		.review_box div.box div.box_star div.star2 > div{cursor:pointer;float:left;width:50px;border:1px solid #bbb;height:30px;line-height:30px;margin-left:10px;margin-top:5px;}
+		.review_box div.box div.box_star div.star2 > div input{visibility:hidden;}
+		.review_box div.box div.box_content{width:500px;height:140px;margin-top:5px;background:#f7f7f7;border-bottom:1px solid #ddd;}
+		.review_box div.box div.box_content div.content1{float:left;width:100px;height:140px;background:#f7f7f7;text-align:center;}
+	    .review_box div.box div.box_content div.content2{float:right;width:400px;height:140px;background:#f7f7f7;}
+		.review_box div.box div.box_pic{width:500px;height:140px;background:#f7f7f7;margin-top:5px;}
+		.review_box div.box div.box_pic div.pic1 {float:left;width:100px;height:140px;background:#f7f7f7;text-align:center;}
+		.review_box div.box div.box_pic div.pic2 {float:right;width:400px;height:140px;}
+		.review_box div.box div.box_pic div.pic2 div.pic21 {float:left;width:200px;height:140px;}
+		.review_box div.box div.box_pic div.pic2 div.pic22 {float:right;width:400px;height:140px;}
+		.review_box div.box div.box_foot{width:600px;height:40px;background:#f7f7f7;margin-top:35px;}
+		.review_box div.box div.box_foot button{border:0px;float:right;width:100px;height:30px;background:#e4393c;margin-top:5px;line-height:30px;text-align:center;color:#fff;font-size:15px;margin-right:10px;}
+		.star_num > div{float:left;width:60px;height:100%;background:red;}
+		.re_close_btn{width:25px;height:25px;border:1px solid #e4393b;float:right;font-size:16px;line-height:25px;text-align:center;}
+		.re_close_btn:hover{border:1px solid #e4393c;background:#e4393c;color:#fff;cursor:pointer}
+		
+		#contain{width:990px;margin:10px auto;border:1px solid #ddd;}
+		#contain div.review_top{width:990px;height:30px;background:#f7f7f7;border-bottom:1px solid #ddd;}
+		#contain div.review_top > div{float:left;line-height:30px;text-align:center;}
+		#contain div.review_top div.goods_name{width:400px;height:30px;}
+		#contain div.review_top div.goods_time{width:300px;height:30px;}
+		#contain div.review_top div.goods_review{width:290px;height:30px;b}
+		#contain div.review_top div.after_sale{width:190px;height:30px;b}
+		#contain div.goods_list{width:800px;background:red}
+		#contain div.goods_list div.goods_info{width:990px;height:120px;background:#fff;border-bottom:1px solid #ddd}
+		#contain div.goods_list div.goods_info > div{float:left;line-height:120px;}
+		#contain div.goods_list div.goods_info div.info_name{width:400px;height:120px;}
+		#contain div.goods_list div.goods_info div.info_name > div{float:left;margin-left:10px;margin-top:10px;}
+		#contain div.goods_list div.goods_info div.info_name div.goods_img{width:100px;height:100px;}
+		#contain div.goods_list div.goods_info div.info_name div.goods_name{width:260px;height:100px;line-height:18px;}
+		#contain div.goods_list div.goods_info div.info_time{width:300px;height:120px;text-align:center;}
+		#contain div.goods_list div.goods_info div.info_time a{color:#e4393c}
+		#contain div.goods_list div.goods_info div.info_review{width:290px;height:120px;text-align:center;}
+		#contain div.goods_list div.goods_info div.info_review a{color:#e4393c}
+
+		
+		/*================订单信息=======================*/
+		
+		
+		
+		
+		/*================申请售后弹出框===========================*/
+		#after_sale_box{display:none;width:600px;height:400px;border:1px solid #bbb;position:fixed;top:100px;left:350px;background:#f7f7f7}
+		#after_sale_box div.sale_box_top{width:600px;height:40px;border-bottom:1px solid #bbbstyle="visibility:hidden";background:#f2f2f2}
+		#after_sale_box div.sale_box_top > div{float:left;}
+		#after_sale_box div.sale_box_top div.top_left{width:400px;height:40px;}
+		#after_sale_box div.sale_box_top div.top_left > div{width:100px;height:28px;background:#f2f2f2;border:1px solid #aaa;float:left;margin-top:11px;margin-left:10px;line-height:28px;text-indent:20px;cursor:pointer;}
+		#after_sale_box div.sale_box_top div.top_right{width:25px;height:25px;border:1px solid #aaa;background:#f2f2f2;float:right;line-height:25px;text-align:center;font-size:16px;color:#aaa;}
+		#after_sale_box div.sale_box_top div.top_right:hover{background:#e4393c;color:#fff;border:1px solid #e4393c;cursor:pointer}
+		#after_sale_box div.sale_content{width:600px;height:320px;background:#f7f7f7;margin-top:5px;}
+		#after_sale_box div.sale_content div.content_head{width:600px;height:50px;background:#f7f7f7;margin-top:5px;border-bottom:1px solid #ddd;line-height:70px;text-indent:10px;font-size:14px;color:#e4393c}
+		#after_sale_box div.sale_btn{width:600px;height:30px;background:#f2f2f2;margin-top:5px;}
+		#after_sale_box div.sale_btn button{width:120px;height:30px;background:#e4393c;color:#fff;float:right;border:0px;cursor:pointer;}
+	</style>
+</block>
+<block name="main-content">
+	<!--=============================评价弹出框==========================================-->
+	<div class="review_box">
+	        <div class="re_close_btn">╳</div>
+		<form action="__CONTROLLER__/add_review" method="post" enctype="multipart/form-data">
+			<input class="g_id" type="hidden" name="goods_id" value=""><!--=========商品id===========-->
+			<input class="g_name" type="hidden" name="goods_name" value=""><!--=========商品id===========-->
+			<input class="d_id" type="hidden" name="detail_id" value=""><!--=========订单详情id===========-->
+			<div class="box">
+			 <!--=============评分=================-->
+				<div class="box_top">商品评价</div>
+				<div class="box_star">
+					<div class="star1">评分：</div>
+					<div class="star2">
+						<div class="star3"><input type="radio" name="star" value="1">1分</div>
+						<div class="star3"><input type="radio" name="star" value="2">2分</div>
+						<div class="star3"><input type="radio" name="star" value="3">3分</div>
+						<div class="star3"><input type="radio" name="star" value="4">4分</div>
+						<div class="star3"><input type="radio" name="star" value="5">5分</div>
+					</div>
+				</div>
+				<!--=============评价内容=================-->
+				<div class="box_content">
+					<div class="content1">内容：</div>
+					<div class="content2"><textarea name="message" style="width:400px;height:120px;"></textarea></div>
+				</div>
+				<!--=============图片=================-->
+				<div class="box_pic">
+					<div class="pic1">晒图：</div>
+					<div class="pic2">
+						<div class="pic21"><input type="file" name="goods_pic"></div>
+						<div class="pic22"></div>
+					</div>
+				</div>
+				<!--=============发表=================-->
+				<div class="box_foot">
+					<button type="submit">提交</button>
+				</div>
+			</div>
+		</form>
+	</div>
+<!--========================订单商品列表=============================-->
+	<div id="order_content"></div>
+<div id="contain">
+	
+	<div class="review_top">
+		<div class="goods_name">商品信息</div>
+		<div class="goods_time">商品状态</div>
+		<div class="goods_review">评价状态</div>
+
+	</div>
+	
+	<foreach name="data" item="goods">
+		<div class="goods_list">
+			<!--隐藏商品id,方便获取-->
+			<input class="s_g_id" type="hidden" name="" value="{$goods['goods_id']}">
+			<input class="s_detail_id"type="hidden" name="" value="{$goods['id']}">
+			<div class="goods_info">
+				<div class="info_name">
+					<div class="goods_img"><img width="100" src="{$goods['showimg']}"></div>
+					<div class="goods_name">
+					<p class="name">{$goods['goods_name']}</p>
+					<p>单　价：{$goods['price']}</p>
+					<p>数　量：{$goods['num']}</p>
+					<p>时　间：{$order['addtime']|date='Y-m-d H:i:s',###}</p>
+			
+					</div>
+				</div>
+				<input class="order_detail_id" type="hidden" name="" value="{$goods['id']}"><!--====订单详情id=====-->
+				<div class="info_time">
+				
+					<if condition="$goods['state'] eq 1">未发货 | <a href="__CONTROLLER__/order_state/id/{$goods['id']}/aa/1">提醒发货</a>
+					<elseif condition="$goods['state'] eq 2"/>未发货 | 已提醒发货
+					<elseif condition="$goods['state'] eq 3"/>已发货 | <a href="__CONTROLLER__/order_state/id/{$goods['id']}/aa/3">确认收货</a>
+					<elseif condition="$goods['state'] eq 4"/>已完成 | <a class="apply_sale" href="javascript:">申请售后</a>
+					<elseif condition="$goods['state'] eq 5"/>申请退货中 | <a  href="__CONTROLLER__/order_state/id/{$goods['id']}/aa/5">取消</a>
+					<elseif condition="$goods['state'] eq 6"/>退货已完成
+					<elseif condition="$goods['state'] eq 7"/>申请换货中 | <a href="#">取消</a>
+					<elseif condition="$goods['state'] eq 8"/>换货已完成
+					<elseif condition="$goods['state'] eq 9"/>申请保修中 | <a href="#">取消</a>
+					<elseif condition="$goods['state'] eq 10"/>保修完成
+					<else/>
+					</if>
+				
+				</div>
+				<div class="info_review">
+					<if condition="$goods['isreview'] eq 1"><a class="review_btn"  href="javascript:">评价商品</a>
+					<else/>已评价 | <a class="review_btn"  href="javascript:">追加评价</a>
+					</if>
+				</div>
+				
+			
+			</div>
+		</div>
+	</foreach>
+	
+	<!--==================================售后弹出框=======================================-->
+	<div id="after_sale_box">
+		<form action="__CONTROLLER__/order_state" method="get">
+			
+			<input type="hidden" name="order_detail_id" class="form_detail_id" value="">
+			<input type="hidden" name="aa" value="4">
+			<div class="sale_box_top">
+				<div class="top_left">
+					<div style="border:1px solid #e4393c;color:#e4393c" class="t_goods top_left_check"><input style="visibility:hidden" checked type="radio" name="sl" value="1">退货</div>
+					<div class="h_goods top_left_check"><input style="visibility:hidden" type="radio" name="sl" value="2">换货</div>
+					<div class="b_goods top_left_check"><input style="visibility:hidden" type="radio" name="sl" value="3">保修</div>
+				</div>
+				<div  class="top_right">╳</div>
+				
+				
+				<div class="sale_content">
+					<div class="content_head">请说明原因：</div>
+					<div class="content_main"><textarea style="width:550px;height:100px;margin-top:10px;margin-left:20px;"></textarea></div>
+				</div>
+				
+				
+				<div class="sale_btn"><button>提 交</button></div>
+			</div>
+		</form>
+	</div>
+</div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		
+		$(".top_left_check").click(function(){
+			var aa = $(this).children("input").attr("checked");
+			if(!aa){
+				$(this).children("input").attr("checked",true);
+				$(".top_left_check").css({"border":"1px solid #bbb","color":"#666"});
+				$(this).css({"border":"1px solid #e4393c","color":"#e4393c"});
+			}
+		
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//=================s申请售后=========================
+		$(".apply_sale").click(function(){
+			var a = $(this).parents(".info_time").siblings(".order_detail_id").val();
+			$(".form_detail_id").val(a);
+		    $("#after_sale_box").css("display","block");
+		});
+		
+		///==========关闭按钮============
+		$(".top_right").click(function(){
+			$("#after_sale_box").css("display","none");
+		});
+		
+		
+		
+		
+		$(".review_btn").click(function(){
+			$(".review_box").css("display","block");
+			//获取商品id
+			var goods_id = $(this).parents(".goods_info").siblings(".s_g_id").val()
+			//alert(goods_id)
+			//获取订单详情id
+			var detail_id = $(this).parents(".goods_info").siblings(".s_detail_id").val()
+			
+			//获取商品名字
+			var goods_name = $(this).parent().siblings(".info_name").children(".goods_name").children(".name").html();
+			
+			//将获取到的值添加到表单中
+			$(".g_id").val(goods_id);
+			$(".d_id").val(detail_id);
+			$(".g_name").val(goods_name);
+		});
+	
+		$(".re_close_btn").click(function(){
+			$(".review_box").css("display","none");
+		});
+	    
+		
+		$(".star3").click(function(){
+			if(!$(this).children("input").attr("checked")){
+				$(this).children("input").attr("checked",true);
+				$(".star3").css("border","1px solid #bbb");
+				$(".star3").css("background","#f2f2f2");
+				$(".star3").css("color","#555");
+				$(this).css("color","#fff");
+				$(this).css("background","#e4393c");
+				$(this).css("border","1px solid #e4393c");
+			}
+		
+		});
+	</script>
+</block>

@@ -1,0 +1,185 @@
+<extend name="Public:layout" />
+<block name="css">
+<script type="text/javascript">
+    //初始化编辑器
+    //window.UEDITOR_HOME_URL = "__PUBLIC__/ueditor/";
+    $(function(){
+        var html = '';//定义空字串存放图片名称
+        $("form").submit(function(){
+            //表单验证
+            var msgs = '<i style="font-style: normal; color: red">请补充信息！</i>';
+            var cname = checkForm($('#name'), msgs);
+            var ctype = checkForm($('#type'), msgs);
+            var cbrands = checkForm($('#brands'), msgs);
+            var csale = checkForm($('#saleprice'), msgs);
+            var ccost = checkForm($('#costprice'), msgs);
+            if (!(cname || ctype || cbrands || csale || ccost)) {
+                return false;
+            }
+        });
+        
+        /**
+         * 表单验证函数
+         * Obj 要验证的对象
+         * msg 提示信息
+         */
+        function checkForm(Obj, msg){
+            Obj.next().html('');
+            if(!Obj.val() || Obj.val() == 0){
+                Obj.next().html(msg);
+                return false;
+            }
+        }
+          
+    })
+</script>
+    
+</block>
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">商品管理</a>
+                </li>
+                <li class="active">添加商品</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/index">返回商品列表</a>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <form id="goodsinfo" action="__CONTROLLER__/insert" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{}" />
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> SKU组合 </label>
+
+                            <div class="col-sm-9">
+                                <select name="attrvalue_id" type="text" id="attrColor" class="col-xs-10 col-sm-2" >
+                                    <option value="颜色">请选择颜色</option>
+                                </select>
+                                <select name="" type="text" id="attrSize" class="col-xs-10 col-sm-2" >
+                                    <option value="尺码">请选择尺码</option>
+                                </select>
+                                价格 <input type="text" value="" name="price" />
+                                库存 <input type="text" value="" name="store" />库存
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <label class="middle">
+                                        <span class="lbl"> 添加一组</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 选择主图 </label>
+                            <div class="col-xs-10 col-sm-3">
+                                <input name="pic" type="file" class="msgs" />
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label no-padding-right" for="form-input-readonly"> 商品描述 </label>
+                            <div class="col-xs-10 col-sm-6">
+                                <textarea id="container" name="editorValue" type="text/plain"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button class="btn btn-info" id="sub" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重填
+                                </button>
+                            </div>
+                        </div>
+					</form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+
+</block>
+<block name="js">
+<script type="text/javascript">
+    
+    //根据类别获取商品品牌，属性
+    var a = $("#type").change(function(){
+            $("#brands").html('<option value="0">请选择商品品牌</option>');
+            getBrands($("#type"))
+        }).change(function(){
+            getAttrs($("#type"), $("#attrColor"));
+        }).change(function(){
+            getAttrs($("#type"), $("#attrSize"));
+        });
+    
+    //alert($("#type").change(getType()));
+    //ajax后台提交数据 根据商品类别获取商品品牌(参数为商品类别对象)
+    function getBrands(obj){
+        $.post('__CONTROLLER__/getBrands',
+            {'id' : obj.val()},
+            function(data){
+                if (data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += "<option value='" + data[i]['id'] + "'>" + data[i]['name'] + "</option>";
+                }
+                $("#brands").append(html);
+                }
+            },'json');
+    }
+    
+    //ajax后台提交数据 根据商品类别获取商品属性(参数1：商品类别对象；2：商品属性对象)
+    function getAttrs(obj, attrObj){
+        var attr = attrObj;
+        var attrvalue = attr.val();
+        $.post('__CONTROLLER__/getAttrs',
+            {'id' : obj.val(), 'attrname' : attrvalue},
+            function(data){
+                if (data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += "<option value='" + data[i]['id'] + "'>" + data[i]['attrvalue'] + "</option>";
+                }
+                attr.append(html);
+                }
+            },'json');
+    }
+</script>
+</block>

@@ -1,0 +1,57 @@
+<extend name="Public:layout" />
+<block name="css">
+<style type="text/css">
+<!--
+.col-xs-12>div{
+    float: left;
+    margin-left: 20px;
+}
+-->
+</style>
+</block>
+<block name="main-content">
+
+<div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="">首页</a>
+                </li>
+            </ul><!-- .breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+<div class="row">
+    <div class="col-xs-12"><h1>欢迎使用网站后台管理系统</h1></div>
+    <div class="col-xs-12">
+        <div>
+            <h2><a href="__APP__/Admin"> 员工管理</a></h2>
+        </div>
+        <div>
+            <h2><a href="__APP__/Goods"> 商品管理</a></h2>
+        </div>
+        <div>
+            <h2><a href="__APP__/Orders"> 订单管理</a></h2>
+        </div>
+        <div>
+            <h2><a href="__APP__/News"> 新闻管理</a></h2>
+        </div>
+    </div>
+</div>
+                    
+
+                    <div class="hr hr-18 dotted hr-double"></div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</block>

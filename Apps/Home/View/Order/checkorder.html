@@ -1,0 +1,170 @@
+	<extend name="Public:layout" />
+	<block name="css">
+		<script src="__PUBLIC__/index/js/jquery.js"></script>
+		<style type="text/css">
+			#main_center{width:990px;margin:0px auto;margin-top:10px;}
+			.sear{background:#e4393c;}
+			.searcher{width:73px;}
+			#bread{height:20px;padding:0 0 4px 6px;margin-bottom:10px;overflow:hidden;line-height:20px;vertical-align:baseline;}
+			#bread strong{display:inline;font-weight:700;line-height:20px;font-size:18px;}
+			#bread strong span{font-size:8px;}
+			#orderstate{background:#fffceb;border:1px solid #eed97c; padding:0 5px;}
+			.order{margin-bottom:10px;overflow:hidden;}
+			.order1 strong span{color:green;}
+			.order1 strong{color:#333;font-size:14px;}
+			.order1{border-bottom:1px solid #eed97c;height:25px;line-height:25px;padding:4px 8px;}
+			.order2{overflow:hidden;color:#333;padding:10px 8px;}
+			.important a{color:#005aa0;}
+			.important a:hover{color:red;}
+			#orderinfo{color:#333;background:#ededed;border:1px solid #dadada;overflow:visible;padding:0 5px 10px;margin-bottom:10px;}
+			#orderinfo .mt{font-size:14px;height:30px;line-height:30px;padding:0 8px;}
+			#orderinfo .nt{background:#fff;overflow:visible;padding:5px 8px;}
+			#orderinfo .nt dl{border-bottom:1px solid #ededed;padding:10px 5px;}
+			#orderinfo .nt dl .for{border-top:none;color:#333;}
+			.nt dl dt{font-weight:bold;}
+			.shop_list{border-left:1px solid #dedede;margin-right:-1px;overflow:hidden;}
+			#orderinfo .shop_list table {
+			-moz-border-bottom-colors: none;
+			-moz-border-left-colors: none;
+			-moz-border-right-colors: none;
+			-moz-border-top-colors: none;
+			border-collapse: collapse;
+			border-color: #dedede;
+			border-image: none;
+			border-style: solid;
+			border-width: 0 1px;
+			margin-left: -1px;
+			}
+			#orderinfo .shop_list table{border-collapse:collapse;}
+			#orderinfo .shop_list td {
+			background: #fff none repeat scroll 0 0;
+			border-bottom: 1px solid #dedede;
+			border-left: 1px solid #f0f0f0;
+			border-top: 1px solid #dedede;
+			padding: 5px;
+			text-align: center;
+			}
+			.shop_list table td a{color:#005aa0;}
+			.total{clear:both;content:".";display:block;padding:15px 10px 0;}
+			#orderinfo .total::after{
+				clear: both;
+				content: ".";
+				display: block;
+				height: 0;
+				visibility: hidden;
+			}
+			.total ul{list-style:outside none none;float:right;display:block;font-size:14px;}
+			.total li{line-height:20px;overflow:hidden;}
+			.total li span{float:left;text-align:right;width:150px;}
+			.extra{clear:both;border-top:1px solid #ccc;float:right;font-size:16px;font-weight:bold;padding:10px 20px 0 0;}
+			.extra span{color:#f00;}
+		</style>
+	</block>
+	<block name="main-content">
+	<div id="main_center">
+		<div id="bread">
+			<strong><a href="__APP__/Index">我的京东</a></strong>
+			<span>
+			&nbsp; ＞ &nbsp;<a href="__PUBLIC__/index">订单中心</a>&nbsp; ＞ &nbsp;订单：{$orders['osn']}
+			</span>
+		</div>
+		<div class="order" id="orderstate">
+			<div class="order1">
+				<strong>
+				订单号：{$orders['osn']}　　状态：
+				<span>{$state[$orders['state']]}</span>
+				</strong>
+			</div>
+			<div class="order2">
+				订单已经完成，感谢您在京东商城购物，欢迎您对本次交易及所购商品进行评价.
+			</div>
+		</div>
+		<div class="important">
+			 重要提醒：京东平台及销售商不会以
+			<strong style="color:red;">订单异常、系统升级</strong>
+			为由，要求您点击任何网址链接进行退款操作。烦请关注京东平台
+			<a href="#">“谨防诈骗公告声明”</a>
+		</div>
+		<div id="orderinfo">
+			<div class="mt">
+				<strong>订单信息</strong>
+			</div>
+			<div class="nt">
+				<dl>
+					<dt class="for">收货人信息</dt>
+					<dd>
+						<ul>
+							<li>收货人：{$orders['linkman']}</li>
+							<li>地　址：{$orders['address']|explode="#",###|implode="",###}</li>
+							<li>手机号：{$orders['phone']}</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt>商品清单</dt>
+					<dd class="shop_list">
+						<table width="100%" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr style="background:#f0f0f0;">
+									<th width="12%">商品ID</th>
+									<th width="18%">商品图片</th>
+									<th width="40%">商品名称</th>
+									<th width="10%">京东价</th>
+									<th width="10%">京豆数量</th>
+									<th width="10%">商品数量</th>
+								</tr>
+								
+								<foreach name="details" item="detail">
+									<tr>
+										<td>{$detail['goods_id']}</td>
+										<td>
+											<div>
+												<volist name="goods" id="good">
+												<eq name="good['id']" value="$detail['goods_id']">
+												<img src="__PUBLIC__/Uploads/goods/a_{$good['pic']}"/>
+												</eq>
+												</volist>
+											</div>
+										</td>
+										<td>
+											<div><a href="__APP__/details/index/id/{$detail['goods_id']}">{$detail['goods_name']}</a></div>
+										</td>
+										<td>
+											<span>￥{$detail['price']}</span>
+										</td>
+										<td>{$orders['integral']}</td>
+										<td>{$detail['num']}</td>
+									</tr>
+								</foreach>
+							</tbody>
+						</table>
+					</dd>
+				</dl>
+			</div>
+			
+			<div class="total">
+				<ul>
+					<li>
+						<span>总商品金额：</span>
+						￥{$orders['money']}
+					</li>
+					<li>
+						<span>- 返现：</span>
+						￥0.00
+					</li>
+					<li>
+						<span>+ 运费：</span>
+						￥0.00
+					</li>
+				</ul>
+				<div class="extra">
+					应付总额：
+					<span><b>￥{$orders['money']}</b></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="clear"></div>
+	</block>
+<block name="js">
+</block>

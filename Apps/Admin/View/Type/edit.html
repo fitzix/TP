@@ -1,0 +1,92 @@
+<extend name="Public:layout" />
+<block name="main-content">
+<div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="__APP__/Index">首页</a>
+                </li>
+
+                <li>
+                    <a href="__CONTROLLER__/index">商品分类管理</a>
+                </li>
+                <li class="active">修改分类</li>
+            </ul><!-- .breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="__CONTROLLER__/index">返回分类列表</a>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form action="__CONTROLLER__/update" class="form-horizontal" method="post" role="form" >
+                        <input type="hidden" name="id" value="{$type['id']}" />
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 分类名称 </label>
+                            <div class="col-sm-9">
+                                <input name="name" value="{$type['name']}" type="text" id="form-field-1" class="col-xs-10 col-sm-3" />
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle" id="msg"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 状态 </label>
+                            <div class="col-sm-9">
+                                <input name="state" class="ace" value="1" {$type['state'] == 1 ? 'checked' : ''} type="radio">
+                                <span class="lbl"> 显示</span>
+                                <input name="state" class="ace" value="2" {$type['state'] == 2 ? 'checked' : ''} type="radio">
+                                <span class="lbl"> 不显示</span>
+                                <input name="state" class="ace" value="3" {$type['state'] == 3 ? 'checked' : ''} type="radio">
+                                <span class="lbl"> 是否推荐</span>
+                                <input name="state" class="ace" value="4" {$type['state'] == 4 ? 'checked' : ''} type="radio">
+                                <span class="lbl"> 是否首页展示</span>
+                            </div>
+                        </div>
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重填
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+</block>
+<block name="js">
+<script type="text/javascript">
+    //判断是否填写类名
+    $("#form-field-1").get(0).focus();
+    $("#form-field-1").blur(function(){
+        if(!$(this).val()) {
+            $("#msg").html('请填写分类名称！');
+        }
+    })
+    
+</script>
+</block>

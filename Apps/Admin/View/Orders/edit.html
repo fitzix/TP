@@ -1,0 +1,400 @@
+<extend name="Public:layout" />
+<block name="plugin-css">
+<link rel="stylesheet" href="__PUBLIC__/admin/asseats/css/dropzone.css" />
+</block>
+<block name="main-content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">订单管理</a>
+                </li>
+                <li class="active">订单修改</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    订单管理
+                    <small>
+                        <i class="icon-double-angle-right"></i>
+                        订单修改
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form action="__CONTROLLER__/update" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{$_GET['id']}"/>
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 联系人 </label>
+
+                            <div class="col-sm-9">
+                                <input name="linkman" type="text" id="form-field-1" placeholder="请输入联系人" class="col-xs-10 col-sm-3" value="{$orders['linkman']}"/>
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 收货地址 </label>
+                            <div class="col-sm-9">
+                                <input type="text" name="address" id="address" class="col-xs-10 col-sm-3" value="{$addr}"/>
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span id="readdress"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 邮编 </label>
+                            <div action="__CONTROLLER__/insert" class="col-sm-9">
+                                <div class="fallback">
+									<input type="text" name="code" id="code" class="col-xs-10 col-sm-3" value="{$orders['code']}"/>
+									<span id="recode"></span>
+								</div>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 电话 </label>
+                            <div action="__CONTROLLER__/insert" class="col-sm-9">
+                                <div class="fallback">
+									<input type="text" name="phone" id="mobile" class="col-xs-10 col-sm-3" value="{$orders['phone']}"/>
+									<span id="remobile"></span>
+								</div>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 支付金额 </label>
+                            <div action="__CONTROLLER__/insert" class="col-sm-9">
+                                <div class="fallback">
+									<input type="text" name="money" id="form-field-2" class="col-xs-10 col-sm-3" value="{$orders['money']}"/>
+                                </div>
+                            </div>
+                        </div>
+						
+						<!-- <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-2">状态</label>
+							<div class="col-sm-9">
+								<input name="state" class="ace" type="radio" value="1" {$orders['state']==1?'checked':''}>
+								<span class="lbl"> 未发货</span>
+								<input name="state" class="ace" type="radio" value="2" {$orders['state']==2?'checked':''}>
+								<span class="lbl"> 已提醒发货</span>
+								<input name="state" class="ace" type="radio" value="3" {$orders['state']==3?'checked':''}>
+								<span class="lbl"> 已发货</span>
+								<input name="state" class="ace" type="radio" value="4" {$orders['state']==4?'checked':''}>
+								<span class="lbl"> 已完成</span>
+								<input name="state" class="ace" type="radio" value="5" {$orders['state']==5?'checked':''}>
+								<span class="lbl"> 申请退货中</span>
+								<input name="state" class="ace" type="radio" value="6" {$orders['state']==6?'checked':''}>
+								<span class="lbl"> 退货完成</span>
+								<input name="state" class="ace" type="radio" value="7" {$orders['state']==7?'checked':''}>
+								<span class="lbl"> 申请换货</span>
+								<input name="state" class="ace" type="radio" value="8" {$orders['state']==8?'checked':''}>
+								<span class="lbl"> 换货完成</span>
+								<input name="state" class="ace" type="radio" value="9" {$orders['state']==9?'checked':''}>
+								<span class="lbl"> 申请保修</span>
+								<input name="state" class="ace" type="radio" value="10" {$orders['state']==10?'checked':''}>
+								<span class="lbl"> 保修完成</span>
+							</div> 
+						</div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 排序 </label>
+								<div class="col-sm-9">
+									<input type="text" name="order" class="col-xs-10 col-sm-3" id="form-input-readonly" value="{$link['order']}"/>
+									<span class="help-inline col-xs-12 col-sm-7">
+										<label class="middle">
+											<span class="lbl"></span>
+										</label>
+									</span>
+								</div>
+						</div> -->
+                        
+                        <div class="space-4"></div>
+                        
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button class="btn btn-info" type="submit" id="sub">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重填
+                                </button>
+                            </div>
+                        </div>
+					</form>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+
+</block>
+<block name="js">
+    <!--<script src="__PUBLIC__/admin/assets/js/dropzone.min.js"></script>
+    <script type="text/javascript">
+			jQuery(function($){
+			
+			try {
+			  $(".dropzone").dropzone({
+			    paramName: "file", // The name that will be used to transfer the file
+			    maxFilesize: 0.5, // MB
+			  
+				addRemoveLinks : true,
+				dictDefaultMessage :
+				'<span class="bigger-150 bolder"><i class="icon-caret-right red"></i> 拖动图片</span> 上传 \
+				<span class="smaller-80 grey">(或点击选择)</span> <br /> \
+				<i class="upload-icon icon-cloud-upload blue icon-3x"></i>'
+			,
+				dictResponseError: 'Error while uploading file!',
+				
+				//change the previewTemplate to use Bootstrap progress bars
+				previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+			  });
+			} catch(e) {
+			  alert('Dropzone.js does not support older browsers!');
+			}
+			
+			});
+		</script>-->
+        
+		<script src="__PUBLIC__/admin/assets/js/jquery.hotkeys.min.js"></script>
+		<script src="__PUBLIC__/admin/assets/js/bootstrap-wysiwyg.min.js"></script>
+        <script type="text/javascript">
+			var a=true,c=true,p=true;
+		
+		$('#address').blur(function(){
+			var address = $(this).val();
+			var len = address.length;
+			
+			if(address==""){
+				$("#readdress").html("地址不能为空！");
+				$("#readdress").css("color","red");
+				a = false;
+			}else if(len >20){
+				$("#readdress").html("地址不能大于20个字符！");
+				$("#readdress").css("color","red");
+				a = false;
+			}else{
+				$("#readdress").html("有效地址");
+				$("#readdress").css("color","green");
+				a = true;
+			}
+		});
+		
+		$('#code').blur(function(){
+			var code = $(this).val();
+			var len = code.length;
+			
+			if("#recode"==""){
+				$("#recode").html("邮编不能为空！");
+				$("#recode").css("color","red");
+			}else if(len != 6){
+				$("#recode").html("邮编格式错误！");
+				$("#recode").css("color","red");
+			}else{
+				$("#recode").html("有效邮箱！");
+				$("#recode").css("color","green");
+			}
+		});
+		
+		function isPhone(str){
+		    var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			if(reg.test(str)){
+				$("#remobile").html("有效手机号！");
+				$("#remobile").css("color","green");
+				e = true;
+			}else{
+				$("#remobile").html("111请输入11位有效手机号！");
+				$("#remobile").css("color","red");
+				e = false;
+			}
+		}
+		
+		$("#mobile").blur(function(){
+			var mobile = $(this).val();
+			var len = mobile.length;
+			if(mobile==""){
+			    $("#remobile").html("手机号不能为空！");
+				$("#remobile").css("color","red");
+					p = false;
+				
+			}else if(len != 11){
+				$("#remobile").html("请输入11位有效手机号！");
+				$("#remobile").css("color","red");
+					p = false;
+			}else{
+			    isPhone(mobile);
+			}
+		});
+		
+		var sub = document.getElementById("sub");
+		sub.onsubmit = function(){
+			if(a==true&& c==true&& p==true){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		
+			jQuery(function($){
+	
+	function showErrorAlert (reason, detail) {
+		var msg='';
+		if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+		else {
+			console.log("error uploading file", reason, detail);
+		}
+		$('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+		 '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+	}
+
+	//$('#editor1').ace_wysiwyg();//this will create the default editor will all buttons
+
+	//but we want to change a few buttons colors for the third style
+	$('#editor1').ace_wysiwyg({
+		toolbar:
+		[
+			'font',
+			null,
+			'fontSize',
+			null,
+			{name:'bold', className:'btn-info'},
+			{name:'italic', className:'btn-info'},
+			{name:'strikethrough', className:'btn-info'},
+			{name:'underline', className:'btn-info'},
+			null,
+			{name:'insertunorderedlist', className:'btn-success'},
+			{name:'insertorderedlist', className:'btn-success'},
+			{name:'outdent', className:'btn-purple'},
+			{name:'indent', className:'btn-purple'},
+			null,
+			{name:'justifyleft', className:'btn-primary'},
+			{name:'justifycenter', className:'btn-primary'},
+			{name:'justifyright', className:'btn-primary'},
+			{name:'justifyfull', className:'btn-inverse'},
+			null,
+			{name:'createLink', className:'btn-pink'},
+			{name:'unlink', className:'btn-pink'},
+			null,
+			{name:'insertImage', className:'btn-success'},
+			null,
+			'foreColor',
+			null,
+			{name:'undo', className:'btn-grey'},
+			{name:'redo', className:'btn-grey'}
+		],
+		'wysiwyg': {
+			fileUploadError: showErrorAlert
+		}
+	}).prev().addClass('wysiwyg-style2');
+
+	$('[data-toggle="buttons"] .btn').on('click', function(e){
+		var target = $(this).find('input[type=radio]');
+		var which = parseInt(target.val());
+		var toolbar = $('#editor1').prev().get(0);
+		if(which == 1 || which == 2 || which == 3) {
+			toolbar.className = toolbar.className.replace(/wysiwyg\-style(1|2)/g , '');
+			if(which == 1) $(toolbar).addClass('wysiwyg-style1');
+			else if(which == 2) $(toolbar).addClass('wysiwyg-style2');
+		}
+	});
+
+	//Add Image Resize Functionality to Chrome and Safari
+	//webkit browsers don't have image resize functionality when content is editable
+	//so let's add something using jQuery UI resizable
+	//another option would be opening a dialog for user to enter dimensions.
+	if ( typeof jQuery.ui !== 'undefined' && /applewebkit/.test(navigator.userAgent.toLowerCase()) ) {
+		
+		var lastResizableImg = null;
+		function destroyResizable() {
+			if(lastResizableImg == null) return;
+			lastResizableImg.resizable( "destroy" );
+			lastResizableImg.removeData('resizable');
+			lastResizableImg = null;
+		}
+
+		var enableImageResize = function() {
+			$('.wysiwyg-editor')
+			.on('mousedown', function(e) {
+				var target = $(e.target);
+				if( e.target instanceof HTMLImageElement ) {
+					if( !target.data('resizable') ) {
+						target.resizable({
+							aspectRatio: e.target.width / e.target.height,
+						});
+						target.data('resizable', true);
+						
+						if( lastResizableImg != null ) {//disable previous resizable image
+							lastResizableImg.resizable( "destroy" );
+							lastResizableImg.removeData('resizable');
+						}
+						lastResizableImg = target;
+					}
+				}
+			})
+			.on('click', function(e) {
+				if( lastResizableImg != null && !(e.target instanceof HTMLImageElement) ) {
+					destroyResizable();
+				}
+			})
+			.on('keydown', function() {
+				destroyResizable();
+			});
+	    }
+		
+		enableImageResize();
+
+		/**
+		//or we can load the jQuery UI dynamically only if needed
+		if (typeof jQuery.ui !== 'undefined') enableImageResize();
+		else {//load jQuery UI if not loaded
+			$.getScript($path_assets+"/js/jquery-ui-1.10.3.custom.min.js", function(data, textStatus, jqxhr) {
+				if('ontouchend' in document) {//also load touch-punch for touch devices
+					$.getScript($path_assets+"/js/jquery.ui.touch-punch.min.js", function(data, textStatus, jqxhr) {
+						enableImageResize();
+					});
+				} else	enableImageResize();
+			});
+		}
+		*/
+	}
+
+
+});
+		</script>
+</block>

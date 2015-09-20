@@ -1,0 +1,175 @@
+<extend name="Public:layout" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/index/css/safety.css" type="text/css" />
+    <script rel="stylesheet" src="__PUBLIC__/index/js/jequery.js" type="text/javascript"></script>
+</block>
+<block name="header">
+    <div id="nav">
+        <div class="w">
+            <div class="logo">
+                <a class="fore1" href="__APP__/Index"></a>
+                <a class="fore2" href="#">我的京东</a>
+                <a class="fore3" href="__APP__/Index">返回京东首页</a>
+            </div>
+            <div class="navitems">
+                <ul>
+                	<li><a href="#" target="_self">首页</a></li>
+                	<li><a href="#" target="_self">个人主页</a></li>
+                	<li>
+                        <div>
+                            <div class="dt">
+                                <span>账户设置</span>
+                                <b></b>
+                            </div>
+                            <div class="dd" style="display:none;">
+                                <a href="" target="_self"><span>个人设置</span></a>
+                                <a href="" target="_self"><span>账户安全</span></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-r">
+                <!--{begin 搜索-->
+                <div class="form">
+                    <form action="">
+                    	<input type="text" value="搜索" style="color: rgb(153, 153, 153);"/>
+                        <button class="button" type="button"><i></i>搜索</button>
+                    </form>
+                </div><!--搜索 }end -->
+                <!--{begin 购物车-->
+                <div class="shop-cart">
+                    <div class="sc-icons active">
+                        <i class="ci-left"></i>
+                        <i class="ci-right">></i>
+                        <i class="ci-count"></i>
+                        <a href="__CONTROLLER__/shopcart" target="_blank">我的购物车</a>
+                    </div>
+                    <div class="sc-history" style="display:none;">
+                        <div class="sc-spacer"></div>
+                        <div class="sc-content">
+                            <div class="sc-title">
+                                <h4>最新加入的商品</h4>
+                            </div>
+                          <!--{:W("Car/index")}-->
+                          {:W("Car/index")}
+                        </div>
+                    </div>
+                </div><!--购物车 }end -->
+            </div>
+        </div>
+    </div>
+</block>
+<block name="main-content">
+<div class="w">
+    <!--{begin 主体-->
+    <div id="content">
+        <!--{begin 快捷栏-->
+        <div id="sub">
+            <div class="menu_text">
+                <ul>
+                    <li><b>设置</b></li>
+                    <li><a href="__APP__/user">个人信息</a></li>
+                    <li><a href="#">账号绑定</a></li>
+                    <li><a href="#" style="font-weight:bold;color:red;">账户安全</a></li>
+                    <li><a href="">我的级别</a></li>
+                    <li><a href="__CONTROLLER__/address">收货地址</a></li>
+                    <li><a href="">消费记录</a></li>
+                </ul>
+            </div>
+        </div><!--}end 快捷栏-->
+        <!--{begin 信息栏-->
+        <div id="main">
+            <div class="mod-main">
+                <div class="mt">
+                    <ul>
+                    	<li class="fore-1"><a class="curr" href="">个人安全信息</a></li>
+                    </ul>
+                </div>
+                <div class="mc">
+				
+		<div class="user-set">
+			<div class="form">
+				<div class="item">
+					<span class="label"><em>*</em>是否验证邮箱：</span>
+					<div class="fl">
+						<span class="itxt" style="display:none">{$res[$userdetails['verifyemail']]}</span>
+						<span class="itxt">{$res[$userdetails['verifyemail']]}</span>
+						<div class="clr"></div>
+						<div class="prompt-06">
+							<span id="nickName_msg"></span>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<span class="label"><em>*</em>最后访问IP：</span>
+					<div class="fl">
+						<div>
+							<span class="itxt">{$userdetails['lastvisitip']}</span>
+						</div>
+					</div>
+
+					<div class="clr"></div>
+				</div>
+				<div class="item">
+					<span class="label"><em>*</em>最后访问时间：</span>
+					<div class="fl">
+						<span class="itxt">{$userdetails['lastvisittime']|date="y-m-d",###}</span>
+						<div class="clr"></div>
+						<div class="prompt-06"><span id="realName_msg"></span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+                    <div class="user-info">
+                        <div class="u-pic">
+                            <img src="__PUBLIC__/index/images/shortcut-user.jpg" width="100px" />
+                            <div class="mask"></div>
+                        </div>
+                        <div class="info-m">
+                            <div><b>用户名：{$v = session('username')}</b></div>
+                            <div class="u-level">
+                                <span class="rank">
+                                    <s></s>
+                                    <a href="#" target="_black">银牌会员</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--}end 信息栏-->
+    </div><!--}end 主体-->
+</div>
+<div style="height: 0px;clear: both;"></div>
+<div class="w">
+    
+</div>
+<script type="text/javascript">
+		$(".dt").hover(function(){
+			$(".dd").show();
+		},function(){
+			$(".dd").mouseover(function(){
+				$(".dt").addClass('dtactive');
+				$(this).show();
+			})
+			$(".dd").hide();
+		});
+		$(".dd").mouseout(function(){
+			$(".dt").removeClass('dtactive')
+			$(this).hide();
+		})
+		
+		$(".active").hover(function(){
+			$(".sc-history").show();
+		},function(){
+			$(".sc-history").mouseover(function(){
+				$(this).show();
+			})
+			$(".sc-history").hide();
+		});
+		$(".sc-history").mouseout(function(){
+			$(this).hide();
+		})
+</script>
+</block>
