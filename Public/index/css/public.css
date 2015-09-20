@@ -1,0 +1,13 @@
+/*------公共样式表------*/
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,form,input,select,textarea,option,iframe,pre,a,address,big,cite,code,del,em,font,img,ins,small,strong,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend{margin:0;padding:0}
+li{list-style: none;}
+ol,ul,li{list-style:none}
+:focus{outline:0}
+a img{border:0}
+img{vertical-align:middle}
+table{empty-cells:show}
+a{text-decoration:none}
+del{text-decoration:line-through}
+em,i{font-style:normal}
+body{font: 12px/150% Arial,Verdana,"宋体"}
+h1,h2,h3,h4,h5,h6{font-family:"microsoft yahei";font-weight:normal}

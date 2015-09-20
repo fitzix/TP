@@ -1,0 +1,494 @@
+.w{width: 990px}
+#nav{
+    background: #e45050;
+    height: 80px;
+}
+#nav .logo{
+    width: 265px;
+    height: 100%;
+    float: left;
+}
+#nav .navitems{
+    width: 342px;
+    height: 36px;
+    line-heght: 36px;
+    float: left;
+    font-size: 14px;
+    padding: 22px 0;
+    margin-left: 30px;
+}
+.navitems .dtactive{
+    background-color: #fff;
+    border-color: #ddd #ddd -moz-use-text-color;
+    box-shadow: 0 3px 5px rgba(153, 153, 153, 0.5);
+    padding: 8px 15px;
+}
+.navitems .dtactive span {
+    color: #000;
+}
+.navitems .dtactive b{
+    background-position: 0 -135px;
+    transform: rotate(180deg);
+}
+#nav .nav-r{
+    float: right;
+    width: 340px;
+    height: 61px;
+    margin-right: 5px;
+}
+.logo a,.navitems a{
+    color: #fff;
+}
+.logo .fore1{
+    width: 158px;
+    height: 80px;
+    margin-right: 10px;
+    float: left;
+    background: url('/zl_shop/Public/index/images/logo-1.png') no-repeat 0 0;
+}
+.logo .fore2{
+    height: 22px;
+    float: left;
+    font-size: 20px;
+    margin: 20px 0 0 6px;
+}
+.logo .fore3{
+    height: 18px;
+    line-height: 18px;
+    margin: 5px 0 0;
+    padding: 0 10px;
+    float: left;
+    border: 1px solid #ffb2b2;
+    border-radius: 10px;
+}
+.logo a:hover{
+    text-decoration: none;
+}
+.logo .fore3:hover{
+    background: #fff;
+    color: #e4393c;
+}
+.navitems ul{
+    height: 36px;
+    line-height: 36px;
+    display: block;
+}
+.navitems ul li{
+    float: left;
+    margin: 0 20px 0 0;
+}
+.navitems ul li>div{
+    position: relative;
+}
+.navitems ul li .dt{
+    height: 18px;
+    line-height: 18px;
+    padding: 9px 16px;
+    white-space: nowrap;
+    width: 74px;
+}
+.navitems ul li .dd{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-width: 0 1px 1px;
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    top: 34px;
+}
+.navitems .dt b{
+    background: url("/zl_shop/Public/index/images/icon.png") no-repeat scroll 0 -120px;
+    display: inline-block;
+    height: 6px;
+    margin-left: 5px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in 0s;
+    vertical-align: middle;
+    width: 9px;
+}
+.dt span{
+    color: #fff;
+}
+.navitems .dt:hover{
+    background-color: #fff;
+    border-color: #ddd #ddd -moz-use-text-color;
+    border: 1px solid #ddd;
+    border-width: 1px 1px 0;
+    box-shadow: 0 3px 5px rgba(153, 153, 153, 0.5);
+    padding: 8px 15px;
+}
+.navitems .dt:hover span {
+    color: #000;
+}
+.navitems .dt:hover b{
+    background-position: 0 -135px;
+    transform: rotate(180deg);
+}
+.navitems ul li .dd a{
+    display: block;
+    line-height: 30px;
+    padding: 0 0 0 16px;
+    text-decoration: none;
+    width: 88px;
+}
+.navitems ul li .dd a:hover {
+    background: #f5f5f5;
+    color: #e4393c;
+}
+.navitems ul li .dd a:hover span {
+    color: #e4393c;
+}
+.navitems ul li .dd span{
+    color: #000;
+}
+#nav .nav-r>div{
+    float: left;
+}
+#nav .nav-r .form{
+    height: 36px;
+    margin-top:25px;
+}
+.form input[type=text]{
+    width: 120px;
+    border: 1 none;
+    float: left;
+    font-family: "microsoft yahei";
+    font-size: 14px;
+    height: 22px;
+    line-height: 24px;
+    margin-bottom: 4px;
+    outline: 0 none;
+    padding: 4px;
+}
+.form button{
+    background-color: #f7f7f7;
+    color: #333;
+    font-size: 12px;
+    height: 32px;
+    width: 56px;
+    border: medium none;
+    cursor: pointer;
+    float: left;
+    font-family: "Microsoft YaHei";
+    line-height: 1;
+    position: relative;
+}
+#nav .nav-r .shop-cart{
+    float: right;
+    height: 36px;
+    margin-top: 25px;
+    margin-right: 0px;
+    position: relative;
+}
+.sc-icons{
+    width: 75px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #dfdfdf;
+    padding: 0 28px 0 36px;
+    background: #f9f9f9;
+}
+.sc-icons i{
+    display: block;
+    overflow: hidden;
+    position: absolute;
+}
+.shop-cart .ci-left{
+    width: 18px;
+    height: 16px;
+    background: url('/zl_shop/Public/index/images/zl_img.png') no-repeat 0 -58px;
+    top: 8px;
+    left: 18px;
+}
+.shop-cart .ci-right{
+    color: #999;
+    width: 7px;
+    font: 400 13px/13px simsun;
+    height: 13px;
+    top: 10px;
+    right: 10px;
+}
+.shop-cart .ci-count{
+    color: #fff;
+    font-size: 12px;
+    background-color: #c81623;
+    border-radius: 7px 7px 7px 0;
+    display: inline-block;
+    min-width: 12px;
+    line-height: 12px;
+    padding: 1px 2px;
+    text-align: center;
+    top: -4px;
+    left: 104px;
+}
+.sc-history{
+    display: block;
+    position: absolute;
+    width: 308px;
+    top: 32px;
+    right: 0;
+    border: 1px solid #ddd;
+    background: #fff;
+    z-index: 2;
+}
+.sc-spacer{
+    width: 139px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    background: #fff;
+    top: -5px;
+    right: 0;
+}
+.sc-content{
+    position: relative;
+    width: 100%;
+    background: #fff;
+}
+.sc-title{
+    height: 25px;
+    line-height: 25px;
+    padding: 6px 8px;
+}
+.sc-list{
+    height: auto !important;
+    max-height: 334px;
+    overflow-y: auto;
+}
+.sc-bar{
+    padding: 8px;
+    height: 29px;
+    background: #f5f5f5;
+}
+.sc-bar-total{
+    float: left;
+    line-height: 29px;
+}
+.sc-bar a{
+    height: 29px;
+    line-height: 29px;
+    font-weight: 700;
+    color: #fff;
+    float: right;
+    padding: 0 10px;
+    text-align: center;
+    border-radius: 3px;
+    background: #e4393c;
+}
+.sc-icons:hover,.sc-history:hover .sc-icons,.sc-history{
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.active{
+    background: #FFFFFF;
+    border: 1px solid #ddd;
+}
+
+#content{padding-left:120px;padding-top:20px;display:block;margin: 0 auto}
+#sub{float:left;width:120px;height:387px;position:relative;left:-120px;}
+#sub div{padding-left:20px;margin-top:10px;}
+#sub ul li a{color:#777;}
+#sub ul li a:hover{color:#f00; text-decoration:underline;}
+#sub ul li{font-size:12px;line-height:28px;}
+
+#main{
+    float: left;
+    margin-right: -120px;
+    overflow: hidden;
+    width: 99.9%;
+}
+#main .mod-main{
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.mod-main .mt{
+    height: 20px;
+    display: block;
+    padding: 10px;
+}
+.mod-main .mt li{
+    float: left;
+    padding-left: 20px;
+}
+.mod-main .mt li a{
+    color: #999;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+.mod-main .mt li a:hover{
+    text-decoration: none;
+    color: #e4393c;
+}
+.mod-main .mt li .curr{
+    border-bottom: 2px solid #e4393c;
+    color: #e4393c;
+    cursor: default;
+    font-weight: 700;
+    padding-bottom: 0;
+    text-decoration: none;
+}
+.mod-main .mc .user-set{
+    width: 500px;
+    float: left;
+    padding: 20px 5px 0 15px;
+    background: #fff;
+}
+.mod-main .mc .user-info{
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    color: #666;
+    float: left;
+    height: 102px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 10px;
+    width: 280px;
+}
+.mod-main .mc .user-info .u-pic{
+    float: left;
+    height: 104px;
+    margin-right: 6px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 104px;
+    z-index: 0;
+}
+.mod-main .mc .user-info .mask{
+    background: rgba(0, 0, 0, 0) url("/zl_shop/Public/index/images/myjd-bg2.png") repeat scroll 0 0;
+    height: 104px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 104px;
+    z-index: 2;
+}
+.mc .user-info .info-m{
+    float: left;
+    width: 170px;
+    margin-top: 20px;
+}
+
+.mc .user-info .info-m .u-level{
+    height: 18px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.info-m .u-level .rank{
+    margin-right: 10px;
+    display: inline-block;
+    height: 17px;
+    line-height: 17px;
+}
+.info-m .u-level .rank s{
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+    overflow: hidden;
+    text-decoration: none;
+    vertical-align: middle;
+    background: url("/zl_shop/Public/index/images/rank2014.gif");
+    background-position: 0 -34px;
+}
+
+.form .item {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+.form .item span.label {
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    padding: 6px 0;
+    text-align: right;
+    width: 100px;
+}
+.form em {
+    color: #e4393c;
+}
+em, i, u {
+    font-style: normal;
+}
+.fl {
+    float: left;
+}
+
+.form .jdcheckbox, .form .jdradio {
+    float: none;
+    margin: 0 3px 0 0;
+    padding: 0;
+    vertical-align: -2px;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.area{
+	margin-right: 5px;
+}
+.mr5 {
+    margin-right: 5px;
+}
+.user-set .birthday-info {
+    overflow: hidden;
+    width: 397px;
+}
+
+.ftx-05, .ftx05 {
+    color: #005ea7;
+}
+.ml5 {
+    margin-left: 5px;
+}
+.ftx-03, .ftx03 {
+    color: #999;
+}
+
+.clr {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.form .itxt, .form .text {
+    height: 27px;
+    padding: 5px 23px 5px 5px;
+    width: 127px;
+}
+.form .area, .form .itxt, .form .sele, .form .selt , .form .area{
+    border: 1px solid #ccc;
+    float: none;
+    line-height: 18px;
+    padding: 5px;
+}
+.form .sele, .form .selt {
+    width: 100px;
+}
+
+.form .itxt1 {
+    width: 287px;
+}
+.btn-5{
+    background-color: #f5fbef;
+    background-image: linear-gradient(to bottom, #f5fbef 0px, #eaf6e2 100%);
+    border: 1px solid #bfd6af;
+    border-radius: 2px;
+    display: inline-block;
+    height: 25px;
+    line-height: 18px;
+    padding: 2px 14px 3px;
+}
+
+.btn-5:link, .btn-5:visited{
+    color: #323333;
+    text-decoration: none;
+}

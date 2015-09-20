@@ -1,0 +1,386 @@
+.w{
+    width: 990px;
+    margin: 0 auto;
+}
+.spt{
+    background: #f3f3f3;
+    border: 1px solid #e9e9e9;
+    border-width: 0 1px 1px;
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 0 10px;
+    padding: 5px 0;
+    clear: both;
+}
+.spt li{
+    float: left;
+}
+.spt .t-checkbox{
+    height: 18px;
+    line-height: 18px;
+    padding-left: 11px;
+    padding-top: 7px;
+    width: 122px;
+}
+.spt .t-goods{
+    width: 268px;
+}
+.spt .t-props {
+    height: 32px;
+    padding: 0 20px;
+    width: 80px;
+}
+.spt .t-price {
+    padding-right: 40px;
+    text-align: right;
+    width: 120px;
+}
+.spt .t-num {
+    text-align: center;
+    width: 80px;
+}
+.spt .t-sum {
+    padding-right: 40px;
+    text-align: right;
+    width: 100px;
+}
+.spt .t-action {
+    width: 75px;
+}
+.spc{
+    margin-bottom: 20px;
+    clear: both;
+    height: 108px;
+}
+.shopcart-main{
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+.spc .item-list{
+    background: #fff none repeat scroll 0 0;
+    height: 100%;
+}
+.spc .item-full{
+    height: 100%;
+}
+.spc .item-item {
+    background: #fff none repeat scroll 0 0;
+    height: 100%;
+    line-height: 20px;
+    padding: 0 10px 1px 40px;
+    position: relative;
+}
+.spc .selected{
+    background: #fff4e8 none repeat scroll 0 0;
+}
+.spc .item-line {
+    background: rgba(0, 0, 0, 0) url("/zl_shop/Public/index/images/cart-line-02.png") repeat-y scroll -9px 0;
+    height: 100%;
+    left: 15px;
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 109px;
+    z-index: 1;
+}
+.spc .item-form {
+    display: block;
+    border-bottom: 1px solid #c5c5c5;
+    height: 100%;
+}
+.spc .item-form>div{
+    float: left;
+    padding: 15px 0 10px;
+}
+.spc .item-item .p-checkbox {
+    left: 10px;
+    min-height: 10px;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    z-index: 3;
+}
+.spc .item-item .p-goods {
+    width: 360px;
+}
+.spc .item-item .p-props {
+    min-height: 10px;
+    height: 80px;
+    line-height: 20px;
+    overflow: hidden;
+    padding: 15px 10px 0;
+    width: 100px
+}
+.spc .item-item .p-price {
+    font-family: verdana;
+    padding-right: 40px;
+    text-align: right;
+    width: 120px;
+    color: #999;
+}
+.spc .item-item .p-num{
+    width: 80px;
+}
+.spc .item-item .p-sum {
+    font-family: verdana;
+    padding-right: 40px;
+    text-align: right;
+    width: 100px;
+}
+.spc .item-item .p-ops {
+    width: 75px;
+}
+.spc .item-item .p-checkbox input{
+    float: none;
+    margin: 0 3px 0 0;
+    padding: 0;
+    position: relative;
+    vertical-align: middle;
+    z-index: 5;
+}
+
+.spc .item-item .line-circle {
+    background:url("/zl_shop/Public/index/images/cart-line-02.png") no-repeat scroll 0 -17px;
+    display: block;
+    height: 29px;
+    left: 2px;
+    position: absolute;
+    top: -17px;
+    width: 7px;
+    z-index: 2;
+}
+.item-item .goods-item .p-img {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #eee;
+    float: left;
+    height: 80px;
+    margin-right: 10px;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+    width: 80px;
+}
+.item-item .goods-item .p-name {
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.item-item .p-props .props-txt {
+    cursor: default;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+    line-height: 20px;
+}
+.item-item .p-num .num-form {
+    height: 22px;
+    overflow: hidden;
+    position: relative;
+    width: 80px;
+}
+.item-item .p-num .decrement,.increment {
+    background: #fff;
+    color: #666;
+    height: 18px;
+    line-height: 18px;
+    margin: 0;
+    padding: 1px 0;
+    text-align: center;
+    width: 16px;
+}
+.item-item .p-num .decrement{
+    display: inline-block;
+    border: 1px solid #cacbcb;
+    border-width: 1px 0 1px 1px;
+}
+.item-item .p-num .itxt {
+    border: 1px solid #cacbcb;
+    color: #333;
+    font-family: verdana;
+    font-size: 12px;
+    height: 18px;
+    left: 17px;
+    line-height: 18px;
+    margin: 0;
+    padding: 1px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 42px;
+}
+.item-item .p-num .increment {
+    border: 1px solid #cacbcb;
+    border-width: 1px 1px 1px 0;
+    color: #666;
+    float: right;
+}
+.disabled {
+    color: #e9e9e9;
+    cursor: default;
+}
+.spc a:hover{
+    text-decoration: none;
+}
+.cart-floatbar {
+    height: 52px;
+    width: 990px;
+}
+.cart-toolbar {
+    height: 50px;
+    width: 988px;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #f0f0f0;
+    height: 50px;
+    position: relative;
+}
+.toolbar-wrap {
+    margin: 0 auto;
+    position: relative;
+    width: 988px;
+}
+.toolbar-wrap .options-box {
+    height: 50px;
+    position: relative;
+}
+.toolbar-wrap .select-all {
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    padding: 16px 0 16px 9px;
+    white-space: nowrap;
+}
+
+.toolbar-wrap .operation {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    width: 210px;
+}
+.toolbar-wrap .toolbar-right {
+    height: 52px;
+    position: absolute;
+    right: 0;
+    top: -1px;
+    width: 710px;
+}
+
+.clr {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.cart-checkbox {
+    float: left;
+    margin-right: 5px;
+    position: relative;
+    z-index: 3;
+}
+
+.cart-checkbox input {
+    float: none;
+    margin: 0 3px 0 0;
+    padding: 0;
+    position: relative;
+    vertical-align: middle;
+}
+.toolbar-wrap .operation a {
+    color: #666;
+    float: left;
+    margin-left: 25px;
+}
+
+.toolbar-wrap .toolbar-right .normal {
+    height: 52px;
+}
+
+.toolbar-wrap .toolbar-right .normal .comm-right {
+    float: right;
+    width: 710px;
+}
+
+.toolbar-wrap .btn-area {
+    float: right;
+}
+.toolbar-wrap .price-sum {
+    color: #666;
+    float: right;
+    height: 43px;
+    line-height: 20px;
+    margin: 7px 20px 0 10px;
+    width: auto;
+}
+.toolbar-wrap .amount-sum {
+    color: #999;
+    cursor: pointer;
+    float: right;
+    height: 44px;
+    line-height: 20px;
+    margin: 7px 0 0;
+}
+.toolbar-wrap .btn-area .submit-btn {
+    background: #e54346 none repeat scroll 0 0;
+    color: #fff;
+    display: block;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    height: 52px;
+    line-height: 52px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 96px;
+}
+.toolbar-wrap .btn-area .submit-btn b {
+    background: rgba(0, 0, 0, 0) url("/zl_shop/Public/index/images/cart-submit-btn-new.png") no-repeat scroll 0 0;
+    display: block;
+    height: 52px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 96px;
+}
+.toolbar-wrap .price-sum div {
+    white-space: nowrap;
+}
+.toolbar-wrap .price-sum .txt {
+    color: #999;
+    float: left;
+    text-align: right;
+    width: 110px;
+}
+.toolbar-wrap .price-sum .price {
+    display: inline-block;
+    font-family: verdana;
+    text-align: right;
+}
+.toolbar-wrap .price-sum .price em {
+    color: #e4393c;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+}
+.toolbar-wrap .amount-sum em {
+    color: #e4393c;
+    font-family: verdana;
+    font-weight: 700;
+    margin: 0 3px;
+    font-style: normal;
+}
+.toolbar-wrap .amount-sum b {
+    background:url("/zl_shop/Public/index/images/cart-icons-new.png") repeat scroll -45px -91px;
+    display: inline-block;
+    height: 5px;
+    margin: -5px 0 0 5px;
+    overflow: hidden;
+    transition: all 0.2s ease-in 0s;
+    vertical-align: middle;
+    width: 9px;
+}
